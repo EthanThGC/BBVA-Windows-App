@@ -235,14 +235,14 @@ public class LoginApplication extends JFrame {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
-				lbl_login_mode_icon.setIcon(new ImageIcon("C:/Users/ithan/Downloads/chevron_right_24dp_1ABC9C_FILL0_wght300_GRAD0_opsz24.png"));
+				lbl_login_mode_icon.setIcon(new ImageIcon("C:/Users/ithan/Downloads/icon_login_mode_entered.png"));
 				lbl_change_login_mode.setForeground(new Color(26, 188, 156));
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
 				 
-				lbl_login_mode_icon.setIcon(new ImageIcon("C:/Users/ithan/Downloads/chevron_right_24dp_17A589_FILL0_wght300_GRAD0_opsz24.png"));
+				lbl_login_mode_icon.setIcon(new ImageIcon("C:/Users/ithan/Downloads/icon_login_mode_exited.png"));
 				lbl_change_login_mode.setForeground(new Color(23, 165, 137));
 			}
 			
@@ -276,7 +276,7 @@ public class LoginApplication extends JFrame {
 		panel_form_login_sect.add(lbl_change_login_mode);
 		
 		lbl_login_mode_icon = new JLabel();
-		lbl_login_mode_icon.setIcon(new ImageIcon("C:/Users/ithan/Downloads/chevron_right_24dp_17A589_FILL0_wght300_GRAD0_opsz24.png"));
+		lbl_login_mode_icon.setIcon(new ImageIcon("C:/Users/ithan/Downloads/icon_login_mode_exited.png"));
 		lbl_login_mode_icon.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_form_login_sect.add(lbl_login_mode_icon);
 		
@@ -642,7 +642,6 @@ public class LoginApplication extends JFrame {
 		this.password = password.getText();
 	}
 	
-	@SuppressWarnings("unused")
 	private void setPassword(JPasswordField password) {
 		this.password = String.valueOf(password.getPassword());
 	}

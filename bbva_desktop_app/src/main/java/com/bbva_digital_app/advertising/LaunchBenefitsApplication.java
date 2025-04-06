@@ -657,7 +657,8 @@ public class LaunchBenefitsApplication extends JFrame {
 	 * @param layer_button
 	 * @param initial_position_x
 	 */
-	private void createLayerButton(LayerButton[] layer_button, int initial_position_x) {
+	
+	/*private void createLayerButton(LayerButton[] layer_button, int initial_position_x) {
 		
 		for (int i = 0; i < layer_button.length; i++)
 		{
@@ -691,7 +692,7 @@ public class LaunchBenefitsApplication extends JFrame {
 		}
 		
 		initial_position_x = 200;
-	}
+	}*/
 	
 	private void layerButtonEvents() {
 		
