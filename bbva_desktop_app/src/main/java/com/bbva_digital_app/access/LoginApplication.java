@@ -124,6 +124,7 @@ public class LoginApplication extends JFrame {
 			
 			public void windowOpened(WindowEvent e) {
 				applyLoginMode("launch");
+				lbl_change_login_mode.setText("E-mail");
 			}
 		});
 		
@@ -251,14 +252,15 @@ public class LoginApplication extends JFrame {
 				
 				if ((loginModeUser()) && (!loginModeEmail()))
 				{
-					lbl_change_login_mode.setText("Continuar con Usuario");
+					lbl_change_login_mode.setText("Usuario");
 					setLoginMode(login_with_loginMode = false, login_with_email = true);
 				}
 				else
 				{
 					if ((!loginModeUser()) && (loginModeEmail()))
 					{
-						lbl_change_login_mode.setText("Continuar con E-mail");
+						System.out.print("hola");
+						lbl_change_login_mode.setText("E-mail");
 						setLoginMode(login_with_loginMode = true, login_with_email = false);
 					}
 				}
@@ -266,18 +268,20 @@ public class LoginApplication extends JFrame {
 				applyLoginMode("not-launched");
 			}
 		});
-		lbl_change_login_mode.setBounds(32, 0, 174, 22);
-		lbl_change_login_mode.setText("Continuar con E-mail");
+		lbl_change_login_mode.setBounds(270, 54, 65, 22);
 		lbl_change_login_mode.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 17));
 		lbl_change_login_mode.setForeground(new Color(23, 165, 137));
-		lbl_change_login_mode.setHorizontalAlignment(SwingConstants.LEFT);
+		lbl_change_login_mode.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_change_login_mode.setVerticalAlignment(SwingConstants.CENTER);
 		lbl_change_login_mode.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		lbl_change_login_mode.setIcon(null);
 		panel_form_login_sect.add(lbl_change_login_mode);
 		
 		lbl_login_mode_icon = new JLabel();
+		lbl_login_mode_icon.setBounds(335, 52, 20, 30);
 		lbl_login_mode_icon.setIcon(new ImageIcon("C:/Users/ithan/Downloads/icon_login_mode_exited.png"));
 		lbl_login_mode_icon.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_login_mode_icon.setVerticalAlignment(SwingConstants.CENTER);
 		panel_form_login_sect.add(lbl_login_mode_icon);
 		
 		lbl_login_mode = new JLabel();
@@ -290,7 +294,7 @@ public class LoginApplication extends JFrame {
 		panel_form_login_sect.add(lbl_login_mode);
 		
 		lbl_login_mode_illustration = new JLabel();
-		lbl_login_mode_illustration.setBounds((lbl_login_mode.getX() + lbl_login_mode.getWidth()) + 10, 46, 35, 35);
+		lbl_login_mode_illustration.setBounds(212, 47, 35, 35);
 		lbl_login_mode_illustration.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_login_mode_illustration.setVerticalAlignment(SwingConstants.CENTER);
 		lbl_login_mode_illustration.setIcon(icon.LOGIN_USER);
@@ -729,7 +733,6 @@ public class LoginApplication extends JFrame {
 		{
 			lbl_login_mode.setText("Nombre de usuario");
 			lbl_login_mode_illustration.setIcon(icon.LOGIN_USER);
-			lbl_login_mode_icon.setBounds(lbl_change_login_mode.getX() + lbl_change_login_mode.getWidth() - 3, 0, 10, 25);
 			
 			setPlaceHolder("Escribe tu usuario");
 			text_box_credential.setText(getPlaceHolder());
@@ -742,7 +745,6 @@ public class LoginApplication extends JFrame {
 		{
 			lbl_login_mode.setText("Correo electrónico");
 			lbl_login_mode_illustration.setIcon(icon.LOGIN_EMAIL);
-			lbl_login_mode_icon.setBounds(lbl_change_login_mode.getX() + lbl_change_login_mode.getWidth() + 6, 0, 10, 25);
 			
 			setPlaceHolder("Escribe tu dirección de email");
 			text_box_credential.setText(getPlaceHolder());
