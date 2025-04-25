@@ -93,14 +93,6 @@ public abstract class ControlSpecialCases {
 		}
 	}
 	
-	/**
-	 * @see {@link #setActualMonth()}
-	 * @return actual month in String type
-	 */
-	private String getActualMonth() {
-		return ACTUAL_MONTH;
-	}
-	
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	
 	/**
@@ -322,9 +314,6 @@ public abstract class ControlSpecialCases {
 						//CASE 1
 						if ((entryMonth[0] == POSITION_OF_ACTUAL_MONTH[0])
 								&& (entryMonth[1] == POSITION_OF_ACTUAL_MONTH[1])) {
-							
-							/*if (day <= ACTUAL_DAY) return access = true;
-							return access = false;*/
 							
 							return access = true;
 						}
