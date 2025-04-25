@@ -1,6 +1,6 @@
 package main.resources.visual.swingcomponents;
 
-import main.java.com.bbva_digital_app.access.LoginApplication;
+import main.java.com.visual.access.LoginApplication;
 
 public class IconsEventsController extends LoginApplication {
 	

@@ -1,4 +1,4 @@
-package main.java.com.bbva_digital_app.advertising;
+package main.java.com.visual.advertising;
 
 import java.awt.Color;
 

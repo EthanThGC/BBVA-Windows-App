@@ -1,4 +1,4 @@
-package main.java.com.bbva_digital_app.popup;
+package main.java.com.visual.popup;
 
 import java.awt.BorderLayout;
 

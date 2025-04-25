@@ -2,7 +2,7 @@ package main.resources.control.manager.clientControl;
 
 import javax.swing.JTextField;
 
-import main.java.com.bbva_digital_app.register.client.LaunchRegister1;
+import main.java.com.visual.register.LaunchRegister1;
 
 public class ProcessesClientData extends LaunchRegister1 {
 	

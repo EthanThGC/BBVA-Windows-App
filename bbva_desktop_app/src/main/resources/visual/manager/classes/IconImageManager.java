@@ -17,8 +17,12 @@ public class IconImageManager {
 	 * REDIRECTION WINDOW 
 	 * 
      */
+	public final Icon PRIVACY_POLICY_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/user_redirection/privacy_policies_icon_exited.png"));
+	public final Icon PRIVACY_POLICY_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/user_redirection/privacy_policies_icon_entered.png"));
+	
 	public final Icon RETURN_TO_REDIRECTION_PAGE_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/user_redirection/arrow_left_direction_entered_80height.png")); 
 	public final Icon RETURN_TO_REDIRECTION_PAGE_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/user_redirection/arrow_left_direction_exited_80height.png"));
+	
 	public final Icon OPEN_EXTERNAL_WEB_SITE_ABOUT_BBVA_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/user_redirection/icon_open_web_site_entered.png"));
 	public final Icon OPEN_EXTERNAL_WEB_SITE_ABOUT_BBVA_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/user_redirection/icon_open_web_site_exited.png"));
 	
@@ -29,8 +33,8 @@ public class IconImageManager {
 	public final Icon BENEFITS_BBVA_DIGITAL_ILUSTRATION = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/benefits_bbva_app/bbva_digital_benefits_3D.png"));
 	public final Icon NOT_AVAILABLE_CONTENT = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/benefits_bbva_app/not_available_content.png"));
 	
-	public final Icon LEAVE_PAGE = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/benefits_bbva_app/leave_page30x30.png"));
-	public final Icon LEAVE_PAGE_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/benefits_bbva_app/leave_page_exited30x30.png"));
+	public final Icon LEAVE_PAGE = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/benefits_bbva_app/leave_page_right.png"));
+	public final Icon LEAVE_PAGE_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/benefits_bbva_app/leave_page30x30.png"));
 	
 	public final Icon LEFT_ARROW_LAYER_BENEFIT_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/benefits_bbva_app/arrow_move_left_exited.png"));
 	public final Icon LEFT_ARROW_LAYER_BENEFIT_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/benefits_bbva_app/arrow_move_left_entered.png"));
@@ -114,8 +118,14 @@ public class IconImageManager {
 	public final Icon BANNER_PRESENTATION_LOGIN_APP = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/banner_presentation_login_app_op1.png"));
 	
 	public final Icon LOGIN_USER = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_user.png"));
-	public final Icon LOGIN_EMAIL = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_email.png"));
+    public final Icon LOGIN_EMAIL = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_email.png"));
 	
+    public final Icon LOGIN_MODE_USER_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_user_entered.png"));
+    public final Icon LOGIN_MODE_USER_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_user_exited.png"));
+    public final Icon LOGIN_MODE_EMAIL_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_email_entered.png"));
+    public final Icon LOGIN_MODE_EMAIL_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_email_exited.png"));
+    public final Icon CHANGE_LOGIN_MODE_ARROW = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/change_mode_login_arrow.png"));
+    
 	public final Icon BLOCKED_PASSWORD = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/blocked_password.png"));
 	public final Icon UNLOCKED_PASSWORD = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/unlocked_password.png"));
 

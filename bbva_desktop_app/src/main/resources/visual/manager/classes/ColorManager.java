@@ -14,6 +14,7 @@ public class ColorManager {
 	public final Color BACKGROUND_COLOR_BBVA_OFFICIAL = new Color(7,33,70);
 	public final Color BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL = new Color(245,249,255);
 	
+	public final Color FOREGROUND_COLOR_BBVA_LIGHT_COLOR = new Color(0, 156, 165);
 	public final Color FOREGROUND_COLOR_BBVA_DEFAULT_COLOR = new Color(5,51,101);
 	public final Color BACKGROUND_COLOR_BBVA_DEFAULT_COLOR = new Color(5,51,101);
 	

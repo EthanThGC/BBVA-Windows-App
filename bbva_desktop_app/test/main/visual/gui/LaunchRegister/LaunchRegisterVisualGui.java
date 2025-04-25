@@ -20,8 +20,8 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-import main.java.com.bbva_digital_app.popup.RegisterAdditionalEmail;
-import main.java.com.bbva_digital_app.register.client.LaunchRegister1;
+import main.java.com.visual.popup.RegisterAdditionalEmail;
+import main.java.com.visual.register.LaunchRegister1;
 import main.resources.visual.manager.classes.*;
 import main.resources.visual.swingcomponents.RoundedJTextField;
 

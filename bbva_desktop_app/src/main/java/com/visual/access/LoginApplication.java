@@ -1,4 +1,9 @@
-package main.java.com.bbva_digital_app.access;
+package main.java.com.visual.access;
+
+/**
+ * @author BBVA Group 
+ * Copyright 2025 - All rights reserved
+ */
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -20,11 +25,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
-import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
 
-import main.java.com.bbva_digital_app.advertising.BenefitsBBVA;
-
+import main.java.com.visual.advertising.BenefitsBBVA;
 import main.resources.visual.manager.classes.*;
 import main.resources.visual.swingcomponents.*;
 
@@ -42,7 +45,9 @@ public class LoginApplication extends JFrame {
 	private static final boolean NOT_VISIBLE = false;
 	
 	/*attributes for mode login*/
-	private boolean login_with_loginMode = false;
+	private static final String NOT_LAUNCH = "not-launched";
+	private static final String LAUNCHED = "launch";
+	private boolean login_with_username = false;
 	private boolean login_with_email    = false;
 	
 	/*attributes from user*/
@@ -51,10 +56,12 @@ public class LoginApplication extends JFrame {
 	private String password = "not available";
 	
 	//objects for visual resources
+	//private static CursorTitle title = new CursorTitle();
 	private static IconImageManager icon = new IconImageManager();
+	private static ColorManager foregroundText        = new ColorManager();
 	private static ColorManager backgroundLoginButton = new ColorManager();
-	private static ColorManager backgroundLoginPage = new ColorManager();
-	private static ColorManager backgroundTextBoxes = new ColorManager();
+	private static ColorManager backgroundFrame       = new ColorManager();
+	private static ColorManager backgroundTextBoxes   = new ColorManager();
 	
 	//declaration to another page
 	private static ClientRedirection redirection;
@@ -75,7 +82,8 @@ public class LoginApplication extends JFrame {
 	/**/
 	private JLabel lbl_title_banner;
 	/**/
-	private static JLabel lbl_login_mode, lbl_change_login_mode;
+	private static JLabel lbl_cursor_dialog;
+	private static JLabel lbl_login_mode, lbl_change_login_mode_icon;
 	private static JLabel lbl_login_mode_empty, lbl_empty_password;
 	private static JLabel lbl_input_password, lbl_forgot_password;
 	/**/
@@ -92,7 +100,7 @@ public class LoginApplication extends JFrame {
 	private static JTextField text_box_credential;
 	private static JTextField txt_input_password;	
 	private static JPasswordField jps_input_password;
-	private JLabel lbl_login_mode_icon;
+	private JLabel lbl_change_login_mode_arrow;
 	
 	/**
 	 * Launch the application.
@@ -123,8 +131,7 @@ public class LoginApplication extends JFrame {
 			}
 			
 			public void windowOpened(WindowEvent e) {
-				applyLoginMode("launch");
-				lbl_change_login_mode.setText("E-mail");
+				applyLoginMode(LAUNCHED);
 			}
 		});
 		
@@ -173,26 +180,26 @@ public class LoginApplication extends JFrame {
 		
 		panel_container_login_section = new JPanel();
 		panel_container_login_section.setBounds(385,0,499,501);
-		panel_container_login_section.setBackground(backgroundLoginPage.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
+		panel_container_login_section.setBackground(backgroundFrame.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
 		panel_container_login_section.setLayout(null);
 		frame.add(panel_container_login_section);
 		
 		panel_content_login_section = new JPanel();
 		panel_content_login_section.setBounds(0,0,499,495);
-		panel_content_login_section.setBackground(backgroundLoginPage.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
+		panel_content_login_section.setBackground(backgroundFrame.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
 		panel_content_login_section.setLayout(null);
 		panel_container_login_section.add(panel_content_login_section);
 		
 		panel_banner_login_sect = new JPanel();
 		panel_banner_login_sect.setBounds(0,0,499,81);
 		panel_banner_login_sect.setLayout(null);
-		panel_banner_login_sect.setBackground(backgroundLoginPage.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
+		panel_banner_login_sect.setBackground(backgroundFrame.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
 		panel_content_login_section.add(panel_banner_login_sect);
 		
 		panel_form_login_sect = new JPanel();
 		panel_form_login_sect.setForeground(new Color(255, 255, 255));
 		panel_form_login_sect.setBounds(0,80,499,410);
-		panel_form_login_sect.setBackground(backgroundLoginPage.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
+		panel_form_login_sect.setBackground(backgroundFrame.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
 		panel_form_login_sect.setLayout(null);
 		panel_content_login_section.add(panel_form_login_sect);
 		
@@ -202,10 +209,12 @@ public class LoginApplication extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				lbl_close_and_back.setIcon(icon.RETURN_TO_REDIRECTION_PAGE_ENTERED);
 			}
+			
 			@Override
 			public void mouseExited(MouseEvent e) {
 				lbl_close_and_back.setIcon(icon.RETURN_TO_REDIRECTION_PAGE_EXITED);
 			}
+			
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				closeLoginPage();
@@ -230,62 +239,82 @@ public class LoginApplication extends JFrame {
 		 * VISUAL ELEMENTS OF LOGIN WINDOW - LOGIN SECTION
 		 */
 		
-		lbl_change_login_mode = new JLabel();
-		lbl_change_login_mode.addMouseListener(new MouseAdapter() 
-		{
+		lbl_cursor_dialog = new JLabel();
+		lbl_cursor_dialog.setBounds(315, 11, 130, 20);
+		lbl_cursor_dialog.setForeground(new Color(0, 0, 0));
+		lbl_cursor_dialog.setFont(new Font("Nirmala UI Semilight", Font.PLAIN, 13));
+		lbl_cursor_dialog.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_cursor_dialog.setVerticalAlignment(SwingConstants.CENTER);
+		panel_form_login_sect.add(lbl_cursor_dialog);
+		
+		lbl_change_login_mode_icon = new JLabel();
+		lbl_change_login_mode_icon.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				lbl_change_login_mode_arrow.setIcon(icon.CHANGE_LOGIN_MODE_ARROW);
+				lbl_cursor_dialog.setVisible(true);
 				
-				lbl_login_mode_icon.setIcon(new ImageIcon("C:/Users/ithan/Downloads/icon_login_mode_entered.png"));
-				lbl_change_login_mode.setForeground(new Color(26, 188, 156));
+				if (loginModeEmail()) {
+					lbl_cursor_dialog.setText("Ingresar con tu Correo");
+					lbl_change_login_mode_icon.setIcon(icon.LOGIN_MODE_EMAIL_ENTERED);
+				    return;
+				}
+				
+				lbl_cursor_dialog.setText("Ingresar con tu Usuario");
+				lbl_change_login_mode_icon.setIcon(icon.LOGIN_MODE_USER_ENTERED);
 			}
 			
 			@Override
-			public void mouseExited(MouseEvent e) {
-				 
-				lbl_login_mode_icon.setIcon(new ImageIcon("C:/Users/ithan/Downloads/icon_login_mode_exited.png"));
-				lbl_change_login_mode.setForeground(new Color(23, 165, 137));
+			public void mouseExited(MouseEvent e) {				
+				lbl_change_login_mode_arrow.setIcon(icon.LEAVE_PAGE_EXITED);
+				lbl_cursor_dialog.setVisible(false);
+
+				if (loginModeEmail()) {
+					lbl_change_login_mode_icon.setIcon(icon.LOGIN_MODE_EMAIL_EXITED);
+				    return;
+				}
+				
+				lbl_change_login_mode_icon.setIcon(icon.LOGIN_MODE_USER_EXITED);
 			}
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				if ((loginModeUser()) && (!loginModeEmail()))
-				{
-					lbl_change_login_mode.setText("Usuario");
-					setLoginMode(login_with_loginMode = false, login_with_email = true);
-				}
-				else
-				{
-					if ((!loginModeUser()) && (loginModeEmail()))
-					{
-						System.out.print("hola");
-						lbl_change_login_mode.setText("E-mail");
-						setLoginMode(login_with_loginMode = true, login_with_email = false);
-					}
+				applyLoginMode(NOT_LAUNCH);
+				
+				if (loginModeUser()) {
+					lbl_change_login_mode_icon.setIcon(icon.LOGIN_MODE_USER_ENTERED);
+				}else {
+					lbl_change_login_mode_icon.setIcon(icon.LOGIN_MODE_EMAIL_ENTERED);
 				}
 				
-				applyLoginMode("not-launched");
+				if (loginModeUser())
+				{
+					setLoginMode(login_with_username = true, login_with_email = false);
+					return;
+				}
+				else if (loginModeEmail())
+				{
+					setLoginMode(login_with_username = false, login_with_email = true);
+				}				
 			}
 		});
-		lbl_change_login_mode.setBounds(270, 54, 65, 22);
-		lbl_change_login_mode.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 17));
-		lbl_change_login_mode.setForeground(new Color(23, 165, 137));
-		lbl_change_login_mode.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_change_login_mode.setVerticalAlignment(SwingConstants.CENTER);
-		lbl_change_login_mode.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		lbl_change_login_mode.setIcon(null);
-		panel_form_login_sect.add(lbl_change_login_mode);
+		lbl_change_login_mode_icon.setBounds(305, 40, 45, 25);
+		lbl_change_login_mode_icon.setIcon(icon.LOGIN_MODE_EMAIL_EXITED);
+		lbl_change_login_mode_icon.setHorizontalAlignment(SwingConstants.LEFT);
+		lbl_change_login_mode_icon.setVerticalAlignment(SwingConstants.CENTER);
+		lbl_change_login_mode_icon.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		panel_form_login_sect.add(lbl_change_login_mode_icon);
 		
-		lbl_login_mode_icon = new JLabel();
-		lbl_login_mode_icon.setBounds(335, 52, 20, 30);
-		lbl_login_mode_icon.setIcon(new ImageIcon("C:/Users/ithan/Downloads/icon_login_mode_exited.png"));
-		lbl_login_mode_icon.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_login_mode_icon.setVerticalAlignment(SwingConstants.CENTER);
-		panel_form_login_sect.add(lbl_login_mode_icon);
+		lbl_change_login_mode_arrow = new JLabel();
+		lbl_change_login_mode_arrow.setBounds(341, 38, 15, 30);
+		lbl_change_login_mode_arrow.setIcon(icon.LEAVE_PAGE_EXITED);
+		lbl_change_login_mode_arrow.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_change_login_mode_arrow.setVerticalAlignment(SwingConstants.CENTER);
+		panel_form_login_sect.add(lbl_change_login_mode_arrow);
 		
 		lbl_login_mode = new JLabel();
-		lbl_login_mode.setBounds(32, 43, 170, 40);
+		lbl_login_mode.setBounds(32, 29, 170, 40);
 		lbl_login_mode.setText("Nombre de usuario");
 		lbl_login_mode.setFont(new Font("Yu Gothic UI", Font.PLAIN, 20));
 		lbl_login_mode.setForeground(new Color(0,0,0));
@@ -294,14 +323,14 @@ public class LoginApplication extends JFrame {
 		panel_form_login_sect.add(lbl_login_mode);
 		
 		lbl_login_mode_illustration = new JLabel();
-		lbl_login_mode_illustration.setBounds(212, 47, 35, 35);
+		lbl_login_mode_illustration.setBounds(212, 33, 35, 35);
 		lbl_login_mode_illustration.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_login_mode_illustration.setVerticalAlignment(SwingConstants.CENTER);
 		lbl_login_mode_illustration.setIcon(icon.LOGIN_USER);
 		panel_form_login_sect.add(lbl_login_mode_illustration);
 		
 		lbl_login_mode_empty = new JLabel();
-		lbl_login_mode_empty.setBounds(32, 137, 260, 30);
+		lbl_login_mode_empty.setBounds(32, 123, 260, 30);
 		lbl_login_mode_empty.setText(ERROR_EMPTY_DATA);
 		lbl_login_mode_empty.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 16));
 		lbl_login_mode_empty.setForeground(new Color(231, 76, 60));
@@ -313,25 +342,22 @@ public class LoginApplication extends JFrame {
 		text_box_credential = new RoundedJTextField(.5);
 		text_box_credential.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) 
-			{
+			public void mouseClicked(MouseEvent e) { 
+				
 				text_box_credential.setEditable(true);
 				text_box_credential.setFont(new Font("Yu Gothic UI", Font.PLAIN, 18));
 				text_box_credential.setForeground(new Color(0,0,0));
 
-				if (text_box_credential.getText().equals(getPlaceHolder())) 
-				{
+				if (text_box_credential.getText().equals(getPlaceHolder())) {
 					text_box_credential.setText("");
-				}
-				else 
-				{
-					text_box_credential.setText(text_box_credential.getText()+"");
+				}else {
+					text_box_credential.setText(text_box_credential.getText() + "");
 				}
 				
 				if (lbl_login_mode_empty.isVisible()) lbl_login_mode_empty.setVisible(false);
 			}
 		});
-		text_box_credential.setBounds(32,91,322,45);
+		text_box_credential.setBounds(32,77,322,45);
 		text_box_credential.setText(getPlaceHolder());
 		text_box_credential.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
 		text_box_credential.setForeground(new Color(98, 101, 103));
@@ -359,18 +385,16 @@ public class LoginApplication extends JFrame {
 		jps_input_password = new RoundedJPasswordField(.5);
 		jps_input_password.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) 
-			{
+			public void mouseClicked(MouseEvent e) {
+				
 				jps_input_password.setEditable(true);
 				jps_input_password.setFont(new Font("Yu Gothic UI", Font.PLAIN, 11));
 
-				if (String.valueOf(jps_input_password.getPassword()).length() != 0) 
-				{
-					jps_input_password.setText(String.valueOf(jps_input_password.getPassword())+"");
+				if (String.valueOf(jps_input_password.getPassword()).length() != 0) {
+					jps_input_password.setText(String.valueOf(jps_input_password.getPassword()) + "");
 				}
 				
-				if (lbl_empty_password.isVisible()) 
-				{
+				if (lbl_empty_password.isVisible()) {
 					lbl_empty_password.setVisible(false);
 					lbl_forgot_password.setBounds(32, 270, 165, 30);
 				}
@@ -389,17 +413,15 @@ public class LoginApplication extends JFrame {
 		txt_input_password = new RoundedJTextField(.5);
 		txt_input_password.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) 
-			{
+			public void mouseClicked(MouseEvent e) {
+				
 				txt_input_password.setEditable(true);
 				
-				if (txt_input_password.getText().length() != 0)
-				{
+				if (txt_input_password.getText().length() != 0) {
 					txt_input_password.setText(txt_input_password.getText() + "");
 				}
 				
-				if (lbl_empty_password.isVisible())
-				{
+				if (lbl_empty_password.isVisible()) {
 					lbl_empty_password.setVisible(false);
 					lbl_forgot_password.setBounds(32, 270, 165, 30);
 				}
@@ -415,8 +437,7 @@ public class LoginApplication extends JFrame {
 		panel_form_login_sect.add(txt_input_password);
 		
 		lbl_visibility_password = new JLabel();
-		lbl_visibility_password.addMouseListener(new MouseAdapter() 
-		{
+		lbl_visibility_password.addMouseListener(new MouseAdapter() {
 			//If getPasswordVisibility() return true -> Password is visible
 			//If getPasswordVisibility() return false -> Password is not visible
 			
@@ -481,65 +502,59 @@ public class LoginApplication extends JFrame {
 		panel_form_login_sect.add(lbl_empty_password);
 		
 		lbl_forgot_password = new JLabel();
-		lbl_forgot_password.addMouseListener(new MouseAdapter() 
-		{
+		lbl_forgot_password.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
-				lbl_forgot_password.setForeground(new Color(5,51,101));
+			public void mouseEntered(MouseEvent e) {
+				lbl_forgot_password.setForeground(backgroundLoginButton.FOREGROUND_COLOR_BBVA_DEFAULT_COLOR);
 			}
 			
 			@Override
-			public void mouseExited(MouseEvent e) 
-			{
-				lbl_forgot_password.setForeground(new Color(0,0,0));
+			public void mouseExited(MouseEvent e) {
+				lbl_forgot_password.setForeground(backgroundLoginButton.PRIMARY_COLOR_FONT_TEXT_BLACK);
 			}
 			
 			@Override
-			public void mouseClicked(MouseEvent e) 
-			{
+			public void mouseClicked(MouseEvent e) {
 				JOptionPane.showMessageDialog(null, "Funcionalidad aún en desarrollo...", "Mensaje del desarrollador", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		lbl_forgot_password.setBounds(32, 270, 165, 30);
 		lbl_forgot_password.setText("Olvidé mi contraseña");
 		lbl_forgot_password.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 17));
-		lbl_forgot_password.setForeground(new Color(0, 0, 0));
+		lbl_forgot_password.setForeground(backgroundLoginButton.PRIMARY_COLOR_FONT_TEXT_BLACK);
 		lbl_forgot_password.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_forgot_password.setVerticalAlignment(SwingConstants.CENTER);
 		lbl_forgot_password.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		panel_form_login_sect.add(lbl_forgot_password);
 		
 		button_login_app = new RoundedPanel();
-		button_login_app.addMouseListener(new MouseAdapter() 
-		{
+		button_login_app.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
-				button_login_app.setBackground(new Color(11, 61, 115));
+			public void mouseEntered(MouseEvent e) {
+				button_login_app.setBackground(new Color(19, 53, 101));
 			}
-			public void mouseExited(MouseEvent e) 
-			{
-				button_login_app.setBackground(new Color(7, 33, 70));
+			
+			public void mouseExited(MouseEvent e) {
+				button_login_app.setBackground(backgroundLoginButton.BACKGROUND_COLOR_BBVA_OFFICIAL);
 			}
-			public void mouseClicked(MouseEvent e) 
-			{
+			
+			public void mouseClicked(MouseEvent e) {
 				
 				/**
 				 * <p>Does the user want login with the user-name 
 				 *    or email?</p>
 				 */
-				if (loginModeUser() && (!loginModeEmail()))
+				if (loginModeUser() && !loginModeEmail())
 				{
 					/*The user wants login with the user-name*/
 					setUser(text_box_credential);
-					setLoginMode(login_with_loginMode = true, login_with_email = false);
+					setLoginMode(login_with_username = true, login_with_email = false);
 				}
-				else if ((!loginModeUser()) || loginModeEmail())
+				else if (!loginModeUser() || loginModeEmail())
 				{
 					/*The user wants login with the email address*/
 					setEmail(text_box_credential);
-					setLoginMode(login_with_loginMode = false, login_with_email = true);
+					setLoginMode(login_with_username = false, login_with_email = true);
 				}
 				
 				/**
@@ -554,9 +569,8 @@ public class LoginApplication extends JFrame {
 					setPassword(txt_input_password); // -> is visible
 				}
 				
-				/**
-				 * <p>There is any null or empty data?</p>
-				 */
+				//There is any null or empty data?
+				
 				if (isLoginModeEmpty() || isPasswordEmpty())
 				{
 					applyErrorLoginEvents(); // -> error detected, deny access
@@ -571,8 +585,8 @@ public class LoginApplication extends JFrame {
 				}
 			}
 		});
-		button_login_app.setSize(210, 53);
 		button_login_app.setLocation(144, 345);
+		button_login_app.setSize(210, 53);
 		button_login_app.setBackground(backgroundLoginButton.BACKGROUND_COLOR_BBVA_OFFICIAL);
 		((RoundedPanel) button_login_app).setCornerRadius(10);
 		button_login_app.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -580,12 +594,13 @@ public class LoginApplication extends JFrame {
 		panel_form_login_sect.add(button_login_app);
 		
 		text_login_app = new JLabel();
-		text_login_app.setSize(button_login_app.getWidth() - 5, button_login_app.getHeight() - 5);
 		text_login_app.setLocation(5, 5);
+		text_login_app.setSize(button_login_app.getWidth() - 5, button_login_app.getHeight() - 5);
 		text_login_app.setText("Iniciar sesión");
 		text_login_app.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 21));
 		text_login_app.setForeground(new Color(255,255,255));
 		text_login_app.setHorizontalAlignment(SwingConstants.CENTER);
+		text_login_app.setVerticalAlignment(SwingConstants.CENTER);
 		button_login_app.add(text_login_app);
 		
 		/*
@@ -595,7 +610,7 @@ public class LoginApplication extends JFrame {
 		panel_footer_login_sect = new JPanel();
 		panel_footer_login_sect.setBounds(385, 502, 499, 129);
 		frame.add(panel_footer_login_sect);
-		panel_footer_login_sect.setBackground(backgroundLoginPage.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
+		panel_footer_login_sect.setBackground(backgroundFrame.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
 		panel_footer_login_sect.setLayout(null);
 		
 		lbl_suscription = new JLabel();
@@ -621,7 +636,7 @@ public class LoginApplication extends JFrame {
 		lbl_to_create_account.setLocation((lbl_suscription.getWidth()/2) - lbl_to_create_account.getWidth() / 2, 59);
 		lbl_to_create_account.setText("Regístrate aquí");
 		lbl_to_create_account.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 16));
-		lbl_to_create_account.setForeground(new Color(0, 156, 165));
+		lbl_to_create_account.setForeground(foregroundText.FOREGROUND_COLOR_BBVA_LIGHT_COLOR);
 		lbl_to_create_account.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_to_create_account.setVerticalAlignment(SwingConstants.CENTER);
 		lbl_to_create_account.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -679,18 +694,18 @@ public class LoginApplication extends JFrame {
 	}
 	
 	/**
-	 * @param login_with_loginMode
+	 * @param login_with_username
 	 * @param login_with_email
 	 */
-	private void setLoginMode(boolean login_with_loginMode,
+	private void setLoginMode(boolean login_with_username,
 			boolean login_with_email)
 	{
-		this.login_with_loginMode = login_with_loginMode;
+		this.login_with_username = login_with_username;
 		this.login_with_email = login_with_email;
 	}
 	
 	private boolean loginModeUser() {
-		return login_with_loginMode;
+		return login_with_username;
 	}
 	
 	private boolean loginModeEmail() {
@@ -729,7 +744,7 @@ public class LoginApplication extends JFrame {
 	
 	private void applyLoginMode(String event) {
 		
-		if ((loginModeUser()) || (event.equals("launch")))
+		if (loginModeUser() || event.equals(LAUNCHED))
 		{
 			lbl_login_mode.setText("Nombre de usuario");
 			lbl_login_mode_illustration.setIcon(icon.LOGIN_USER);
@@ -737,11 +752,11 @@ public class LoginApplication extends JFrame {
 			setPlaceHolder("Escribe tu usuario");
 			text_box_credential.setText(getPlaceHolder());
 			
-			setLoginMode(login_with_loginMode = true, login_with_email = false);
+			setLoginMode(login_with_username = false, login_with_email = true);
 			return;
 		}
 		
-		if ((loginModeEmail()) && (!event.equals("launch")))
+		if (loginModeEmail() && event.equals(NOT_LAUNCH))
 		{
 			lbl_login_mode.setText("Correo electrónico");
 			lbl_login_mode_illustration.setIcon(icon.LOGIN_EMAIL);
@@ -749,31 +764,19 @@ public class LoginApplication extends JFrame {
 			setPlaceHolder("Escribe tu dirección de email");
 			text_box_credential.setText(getPlaceHolder());
 			
-			setLoginMode(login_with_loginMode = false, login_with_email = true);
+			setLoginMode(login_with_username = true, login_with_email = false);
 		}
 	}
 	
-	private boolean isLoginModeEmpty() {
-		boolean approved = false;
-		
-		if (loginModeUser() && (!loginModeEmail()))
+	private boolean isLoginModeEmpty() {			
+		if (loginModeUser() && !loginModeEmail()) 
 		{
-			if (getUser().length() == 0
-				|| getUser().equals(getPlaceHolder()))
-			{
-				approved = true;
-			}
-		}
-		else
-		{
-			if (getEmail().length() == 0
-					|| getEmail().equals(getPlaceHolder()))
-				{
-			    	approved = true;
-				}
+			return getUser().length() == 0
+			    	|| getUser().equals(getPlaceHolder());
 		}
 		
-		return approved;
+		return getEmail().length() == 0
+				|| getEmail().equals(getPlaceHolder());
 	}
 	
 	private boolean isPasswordEmpty() {

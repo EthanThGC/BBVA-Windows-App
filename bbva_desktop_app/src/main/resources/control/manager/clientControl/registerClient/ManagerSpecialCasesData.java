@@ -3,7 +3,7 @@ package main.resources.control.manager.clientControl.registerClient;
 public class ManagerSpecialCasesData extends ControlSpecialCases {
 	
 	/**
-	 * @author Ethan T. Anwar
+	 * @author Ethan T. Godínez Cisneros
 	 */
 	
 	@SuppressWarnings("unused")

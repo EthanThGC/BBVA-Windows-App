@@ -10,15 +10,16 @@ public class Dialogs {
 	/**
 	 * @see Message to print in GUI Frame
 	 */
-	public final String NOT_AVAILABLE_CONTENT_MESSAGE = "Lo sentimos, no hay nada por mostrar en estos momentos";
-
+	public final String NOT_AVAILABLE_CONTENT_MESSAGE = "Al parecer no hay nada para mostrar en estos momentos";
+	public final String NOT_AVAILABLE_CONTENT_MESSAGE2 = "Asegúrate de estar conectado a internet...";
+	
 	/**
 	 * @see DIALOGS FOR JLABELS TITLE IN REGISTER FORM
 	 */
-	public static final String TITLE_FORM_SECTION1 = "Proporciona tus datos generales";
-	public static final String TITLE_FORM_SECTION2 = "¿En donde resides actualmente?";
-	public static final String TITLE_FORM_SECTION3 = "Proporcione su información de contacto";
-	public static final String TITLE_FORM_SECTION4 = "Establece una contraseña de seguridad";
+	public static final String TITLE_FORM_SECTION1 = "  Proporciona tus datos generales";
+	public static final String TITLE_FORM_SECTION2 = "  ¿En donde resides actualmente?";
+	public static final String TITLE_FORM_SECTION3 = "  Proporcione información de contacto";
+	public static final String TITLE_FORM_SECTION4 = "  Crea una contraseña de seguridad";
 
 	/**
 	 * @see ERROR TITLES FOR POPUP MESSAGE 

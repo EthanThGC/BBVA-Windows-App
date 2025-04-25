@@ -1,4 +1,4 @@
-package main.java.com.bbva_digital_app.register.client;
+package main.java.com.visual.register;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -27,9 +27,9 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-import main.java.com.bbva_digital_app.access.ClientRedirection;
-import main.java.com.bbva_digital_app.access.LoginApplication;
-import main.java.com.bbva_digital_app.popup.RegisterAdditionalEmail;
+import main.java.com.visual.access.ClientRedirection;
+import main.java.com.visual.access.LoginApplication;
+import main.java.com.visual.popup.RegisterAdditionalEmail;
 import main.resources.control.manager.clientControl.registerClient.ManagerSpecialCasesData;
 import main.resources.control.manager.dialogs.Dialogs;
 import main.resources.visual.manager.classes.ColorManager;
@@ -141,20 +141,15 @@ public class LaunchRegister1 extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) 
-	{
-		EventQueue.invokeLater(new Runnable() 
-		{
-			public void run()
-			{
-				try 
-				{
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					LaunchRegister1 frame = new LaunchRegister1();
 					frame.setVisible(true);
 				} 
-				catch (Exception e) 
-				{
+				catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -165,19 +160,15 @@ public class LaunchRegister1 extends JFrame {
 	 * Create the frame.
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public LaunchRegister1() 
-	{
-		addWindowListener(new WindowAdapter() 
-		{
-			public void windowOpened(WindowEvent e) 
-			{
+	public LaunchRegister1() {
+		addWindowListener(new WindowAdapter() {
+			public void windowOpened(WindowEvent e) {
 				initialEventsInSectionForm();
 			}
 		});
-		addWindowListener(new WindowAdapter() 
-		{
-			public void windowClosing(WindowEvent e) 
-			{
+		
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
 				showCancelRegisterWarningMessage();
 			}
 		});
@@ -244,7 +235,7 @@ public class LaunchRegister1 extends JFrame {
 				showCancelRegisterWarningMessage();
 			}
 		});
-		lbl_close_and_back.setBounds(13,29,15,40);
+		lbl_close_and_back.setBounds(25,29,15,40);
 		lbl_close_and_back.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		lbl_close_and_back.setIcon(icon.RETURN_TO_REDIRECTION_PAGE_EXITED);
 		lbl_close_and_back.setHorizontalAlignment(SwingConstants.CENTER);
@@ -253,12 +244,12 @@ public class LaunchRegister1 extends JFrame {
 		
 		lbl_title_header = new JLabel();
 		lbl_title_header.setVerticalAlignment(SwingConstants.BOTTOM);
-		lbl_title_header.setBounds(0, 0, 604, 70);
-		lbl_title_header.setText("Inicia tu registro en BBVA Digital");
+		lbl_title_header.setBounds(56, 30, 548, 40);
+		lbl_title_header.setText("Crear mi cuenta");
 		lbl_title_header.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 34));
 		//lbl_title_header.setForeground(new Color(0,167,179));
 		lbl_title_header.setForeground(new Color(5,51,101));
-		lbl_title_header.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_title_header.setHorizontalAlignment(SwingConstants.LEFT);
 		header.add(lbl_title_header);
 		
 		lbl_indications_form = new JLabel();
@@ -347,7 +338,7 @@ public class LaunchRegister1 extends JFrame {
 		lbl_input_name = new JLabel();
 		lbl_input_name.setBounds(27,31,247,40);
 		lbl_input_name.setText("Nombre(s) *");
-		lbl_input_name.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 18));
+		lbl_input_name.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_input_name.setForeground(new Color(0, 0, 0));
 		lbl_input_name.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_input_name.setVerticalAlignment(SwingConstants.CENTER);
@@ -356,7 +347,7 @@ public class LaunchRegister1 extends JFrame {
 		lbl_input_lastnameP = new JLabel();
 		lbl_input_lastnameP.setBounds(27,133,247,40);
 		lbl_input_lastnameP.setText("Apellido paterno *");
-		lbl_input_lastnameP.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 18));
+		lbl_input_lastnameP.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_input_lastnameP.setForeground(new Color(0, 0, 0));
 		lbl_input_lastnameP.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_input_lastnameP.setVerticalAlignment(SwingConstants.CENTER);
@@ -365,13 +356,13 @@ public class LaunchRegister1 extends JFrame {
 		lbl_input_lastnameM = new JLabel();
 		lbl_input_lastnameM.setBounds(27,237,247,40);
 		lbl_input_lastnameM.setText("Apellido  materno *");
-		lbl_input_lastnameM.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 18));
+		lbl_input_lastnameM.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_input_lastnameM.setForeground(new Color(0, 0, 0));
 		lbl_input_lastnameM.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_input_lastnameM.setVerticalAlignment(SwingConstants.CENTER);
 		container_form_section1.add(lbl_input_lastnameM);
 		
-		txt_client_name = new RoundedJTextField(1);
+		txt_client_name = new RoundedJTextField(0);
 		txt_client_name.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -395,7 +386,7 @@ public class LaunchRegister1 extends JFrame {
 		txt_client_name.setOpaque(false);
 		container_form_section1.add(txt_client_name);
 		
-		txt_last_name_p = new RoundedJTextField(1);
+		txt_last_name_p = new RoundedJTextField(0);
 		txt_last_name_p.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -419,7 +410,7 @@ public class LaunchRegister1 extends JFrame {
 		txt_last_name_p.setOpaque(false);
 		container_form_section1.add(txt_last_name_p);
 		
-		txt_last_name_m = new RoundedJTextField(1);
+		txt_last_name_m = new RoundedJTextField(0);
 		txt_last_name_m.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -446,7 +437,7 @@ public class LaunchRegister1 extends JFrame {
 		lbl_input_curp = new JLabel();
 		lbl_input_curp.setText("CURP *");
 		lbl_input_curp.setBounds(307,237,270,40);
-		lbl_input_curp.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 18));
+		lbl_input_curp.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_input_curp.setForeground(new Color(0, 0, 0));
 		lbl_input_curp.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_input_curp.setVerticalAlignment(SwingConstants.CENTER);
@@ -482,7 +473,7 @@ public class LaunchRegister1 extends JFrame {
 		lbl_consult_curp.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		container_form_section1.add(lbl_consult_curp);
 		
-		txt_curp_client = new RoundedJTextField(1);
+		txt_curp_client = new RoundedJTextField(0);
 		txt_curp_client.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -509,7 +500,7 @@ public class LaunchRegister1 extends JFrame {
 		lbl_input_dateborn = new JLabel();
 		lbl_input_dateborn.setBounds(307,31,270,40);
 		lbl_input_dateborn.setText("Fecha de nacimiento *");
-		lbl_input_dateborn.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 18));
+		lbl_input_dateborn.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_input_dateborn.setForeground(new Color(0, 0, 0));
 		lbl_input_dateborn.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_input_dateborn.setVerticalAlignment(SwingConstants.CENTER);
@@ -547,7 +538,7 @@ public class LaunchRegister1 extends JFrame {
 		lbl_state_residence = new JLabel();
 		lbl_state_residence.setBounds(27,31,247,40);
 		lbl_state_residence.setText("Estado *");
-		lbl_state_residence.setFont(new Font("Yu Gothic UI", Font.PLAIN, 18));
+		lbl_state_residence.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_state_residence.setForeground(new Color(0, 0, 0));
 		lbl_state_residence.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_state_residence.setVerticalAlignment(SwingConstants.CENTER);
@@ -556,13 +547,13 @@ public class LaunchRegister1 extends JFrame {
 		lbl_city_residence = new JLabel();
 		lbl_city_residence.setBounds(27,133,247,40);
 		lbl_city_residence.setText("Ciudad / Municipio *");
-		lbl_city_residence.setFont(new Font("Yu Gothic UI", Font.PLAIN, 18));
+		lbl_city_residence.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_city_residence.setForeground(new Color(0, 0, 0));
 		lbl_city_residence.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_city_residence.setVerticalAlignment(SwingConstants.CENTER);
 		container_form_section2.add(lbl_city_residence);
 		
-		txt_state_residence = new RoundedJTextField(1);
+		txt_state_residence = new RoundedJTextField(0);
 		txt_state_residence.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -586,7 +577,7 @@ public class LaunchRegister1 extends JFrame {
 		txt_state_residence.setBackground(new Color(255,255,255));
 		container_form_section2.add(txt_state_residence);
 		
-		txt_city_residence = new RoundedJTextField(1);
+		txt_city_residence = new RoundedJTextField(0);
 		txt_city_residence.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -613,13 +604,13 @@ public class LaunchRegister1 extends JFrame {
 		lbl_street_residence = new JLabel();
 		lbl_street_residence.setBounds(27,237,247,40);//x:290 y: 31
 		lbl_street_residence.setText("Calle / Avenida *");
-		lbl_street_residence.setFont(new Font("Yu Gothic UI", Font.PLAIN, 18));
+		lbl_street_residence.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_street_residence.setForeground(new Color(0, 0, 0));
 		lbl_street_residence.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_street_residence.setVerticalAlignment(SwingConstants.CENTER);
 		container_form_section2.add(lbl_street_residence);
 		
-		txt_street_residence = new RoundedJTextField(1);
+		txt_street_residence = new RoundedJTextField(0);
 		txt_street_residence.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -649,7 +640,7 @@ public class LaunchRegister1 extends JFrame {
 		lbl_cp = new JLabel();
 		lbl_cp.setBounds(307,31,270,40);//y: 113
 		lbl_cp.setText("Código postal *");
-		lbl_cp.setFont(new Font("Yu Gothic UI", Font.PLAIN, 18));
+		lbl_cp.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_cp.setForeground(new Color(0, 0, 0));
 		lbl_cp.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_cp.setVerticalAlignment(SwingConstants.CENTER);
@@ -685,7 +676,7 @@ public class LaunchRegister1 extends JFrame {
 		lbl_consult_cp.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		container_form_section2.add(lbl_consult_cp);
 		
-		txt_cp_residence = new RoundedJTextField(1);
+		txt_cp_residence = new RoundedJTextField(0);
 		txt_cp_residence.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -715,7 +706,7 @@ public class LaunchRegister1 extends JFrame {
 		lbl_num_exterior = new JLabel();
 		lbl_num_exterior.setBounds(307,133,126,40);//y: 194
 		lbl_num_exterior.setText("No. Exterior *");
-		lbl_num_exterior.setFont(new Font("Yu Gothic UI", Font.PLAIN, 18));
+		lbl_num_exterior.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_num_exterior.setForeground(new Color(0, 0, 0));
 		lbl_num_exterior.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_num_exterior.setVerticalAlignment(SwingConstants.CENTER);
@@ -724,13 +715,13 @@ public class LaunchRegister1 extends JFrame {
 		lbl_num_interior = new JLabel();
 		lbl_num_interior.setBounds(453,133,126,40);//y: 194
 		lbl_num_interior.setText("No. Interior");
-		lbl_num_interior.setFont(new Font("Yu Gothic UI", Font.PLAIN, 18));
+		lbl_num_interior.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_num_interior.setForeground(new Color(0, 0, 0));
 		lbl_num_interior.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_num_interior.setVerticalAlignment(SwingConstants.CENTER);
 		container_form_section2.add(lbl_num_interior);
 		
-		txt_num_exterior = new RoundedJTextField(1);
+		txt_num_exterior = new RoundedJTextField(0);
 		txt_num_exterior.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -757,7 +748,7 @@ public class LaunchRegister1 extends JFrame {
 		txt_num_exterior.setForeground(colorFont.PLACEHOLDER_COLOR_FONT_TEXT_GRAY);
 		container_form_section2.add(txt_num_exterior);
 		
-		txt_num_interior = new RoundedJTextField(1);
+		txt_num_interior = new RoundedJTextField(0);
 		txt_num_interior.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -792,13 +783,13 @@ public class LaunchRegister1 extends JFrame {
 		lbl_email_address = new JLabel();
 		lbl_email_address.setBounds(27,31,247,40);
 		lbl_email_address.setText("Correo electrónico *");
-		lbl_email_address.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 18));
+		lbl_email_address.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_email_address.setForeground(new Color(0, 0, 0));
 		lbl_email_address.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_email_address.setVerticalAlignment(SwingConstants.CENTER);
 		container_form_section3.add(lbl_email_address);
 		
-		txt_email_address = new RoundedJTextField(1);
+		txt_email_address = new RoundedJTextField(0);
 		txt_email_address.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -890,7 +881,7 @@ public class LaunchRegister1 extends JFrame {
 		lbl_phone_number_principal = new JLabel();
 		lbl_phone_number_principal.setBounds(27,133,300,40);
 		lbl_phone_number_principal.setText("Número teléfonico principal *");
-		lbl_phone_number_principal.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 18));
+		lbl_phone_number_principal.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_phone_number_principal.setForeground(new Color(0, 0, 0));
 		lbl_phone_number_principal.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_phone_number_principal.setVerticalAlignment(SwingConstants.CENTER);
@@ -899,13 +890,13 @@ public class LaunchRegister1 extends JFrame {
 		lbl_phone_number_secundary = new JLabel();
 		lbl_phone_number_secundary.setBounds(27,232,300,40);
 		lbl_phone_number_secundary.setText("Número teléfonico secundario");
-		lbl_phone_number_secundary.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 18));
+		lbl_phone_number_secundary.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_phone_number_secundary.setForeground(new Color(0, 0, 0));
 		lbl_phone_number_secundary.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_phone_number_secundary.setVerticalAlignment(SwingConstants.CENTER);
 		container_form_section3.add(lbl_phone_number_secundary);
 		
-		txt_phone_number_principal = new RoundedJTextField(1);
+		txt_phone_number_principal = new RoundedJTextField(0);
 		txt_phone_number_principal.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -932,7 +923,7 @@ public class LaunchRegister1 extends JFrame {
 		txt_phone_number_principal.setOpaque(false);
 		container_form_section3.add(txt_phone_number_principal);
 		
-		txt_phone_number_secundary = new RoundedJTextField(1);
+		txt_phone_number_secundary = new RoundedJTextField(0);
 		txt_phone_number_secundary.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -967,7 +958,7 @@ public class LaunchRegister1 extends JFrame {
 		lbl_input_password = new JLabel();
 		lbl_input_password.setBounds(150,40,300,40);
 		lbl_input_password.setText("Contraseña");
-		lbl_input_password.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 18));
+		lbl_input_password.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_input_password.setForeground(new Color(0, 0, 0));
 		lbl_input_password.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_input_password.setVerticalAlignment(SwingConstants.CENTER);
@@ -976,7 +967,7 @@ public class LaunchRegister1 extends JFrame {
 		lbl_input_confirm_password = new JLabel();
 		lbl_input_confirm_password.setBounds(150,150,300,40);
 		lbl_input_confirm_password.setText("Confirmar contraseña");
-		lbl_input_confirm_password.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 18));
+		lbl_input_confirm_password.setFont(new Font("Dubai Light", Font.PLAIN, 20));
 		lbl_input_confirm_password.setForeground(new Color(0, 0, 0));
 		lbl_input_confirm_password.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_input_confirm_password.setVerticalAlignment(SwingConstants.CENTER);
@@ -1014,7 +1005,7 @@ public class LaunchRegister1 extends JFrame {
 		jpsf_confirm_password.setOpaque(false);
 		container_form_section4.add(jpsf_confirm_password);
 		
-		txt_password = new RoundedJTextField(1);
+		txt_password = new RoundedJTextField(0);
 		txt_password.setBounds(150,91,300,37);
 		txt_password.setFont(fontStyle.getFont(fontStyle.TEXTFIELD_STANDARD));
 		txt_password.setForeground(colorFont.PRIMARY_COLOR_FONT_TEXT_BLACK);
@@ -1024,7 +1015,7 @@ public class LaunchRegister1 extends JFrame {
 		txt_password.setOpaque(false);
 		container_form_section4.add(txt_password);
 		
-		txt_confirm_password = new RoundedJTextField(1);
+		txt_confirm_password = new RoundedJTextField(0);
 		txt_confirm_password.setBounds(150,200,300,37);
 		txt_confirm_password.setFont(fontStyle.getFont(fontStyle.TEXTFIELD_STANDARD));
 		txt_confirm_password.setForeground(colorFont.PRIMARY_COLOR_FONT_TEXT_BLACK);
@@ -1195,15 +1186,15 @@ public class LaunchRegister1 extends JFrame {
 		btn_move_right.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				btn_move_right.setCursor(new Cursor(Cursor.HAND_CURSOR));
 				btn_move_right.setBackground(new Color(212, 230, 241));
 				lbl_icon_move_right.setIcon(icon.arrow_right_entered);
 			}
+			
 			public void mouseExited(MouseEvent e) {
-				btn_move_right.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 				btn_move_right.setBackground(new Color(214, 234, 248));
 				lbl_icon_move_right.setIcon(icon.arrow_right_exited);
 			}
+			
 			public void mouseClicked(MouseEvent e) {
 							
 				setMoveToRight(true);
@@ -1240,6 +1231,7 @@ public class LaunchRegister1 extends JFrame {
 		((RoundedPanel) btn_move_right ).setCornerRadius(10);
 		btn_move_right.setOpaque(false);
 		btn_move_right.setLayout(null);
+		btn_move_right.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		footer.add(btn_move_right);
 		
 		btn_move_left = new RoundedPanel();

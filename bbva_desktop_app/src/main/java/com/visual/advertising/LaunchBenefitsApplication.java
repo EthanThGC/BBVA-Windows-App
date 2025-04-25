@@ -1,4 +1,4 @@
-package main.java.com.bbva_digital_app.advertising;
+package main.java.com.visual.advertising;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-import main.java.com.bbva_digital_app.register.client.LaunchRegister1;
+import main.java.com.visual.register.LaunchRegister1;
 import main.resources.control.manager.dialogs.Dialogs;
 import main.resources.visual.manager.classes.ColorManager;
 import main.resources.visual.manager.classes.IconImageManager;
@@ -162,6 +162,7 @@ public class LaunchBenefitsApplication extends JFrame {
 	            private JLabel RightDirectionArrow;
 	     
 	        // 3.1.3
+	        private JLabel LeavePageIcon;
 	        private JLabel LeavePage;
 	
 	/**
@@ -197,26 +198,19 @@ public class LaunchBenefitsApplication extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LaunchBenefitsApplication(String event) 
-	{
-		addWindowListener(new WindowAdapter() 
-		{			
-			public void windowClosing(WindowEvent e) 
-			{
+	public LaunchBenefitsApplication(String event) {
+		addWindowListener(new WindowAdapter() {			
+			public void windowClosing(WindowEvent e) {
 				closeWindowAndInvokeRedirection();
 			}
 			
-			public void windowOpened(WindowEvent e) 
-			{		
+			public void windowOpened(WindowEvent e) {		
 				setEvent(event);
 
-				if (isEventEqualsLaunch())
-				{
+				if (isEventEqualsLaunch()){
 					setFirstLayerSection();
 					visibilityRedirectionArrowEvents();
-				}
-				else
-				{
+				}else{
 					applyNotAvailableEvents();
 				}
 			}
@@ -381,9 +375,7 @@ public class LaunchBenefitsApplication extends JFrame {
 			@Override
 			public void mouseEntered(MouseEvent e) 
 			{
-				if (isEventEqualsLaunch()) 
-				{
-					LeftDirectionArrow.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				if (isEventEqualsLaunch()) {
 					LeftDirectionArrow.setIcon(ICON.LEFT_ARROW_LAYER_BENEFIT_ENTERED);
 				}
 			}
@@ -391,9 +383,7 @@ public class LaunchBenefitsApplication extends JFrame {
 			@Override
 			public void mouseExited(MouseEvent e) 
 			{
-				if (isEventEqualsLaunch()) 
-				{
-					LeftDirectionArrow.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+				if (isEventEqualsLaunch()) {
 					LeftDirectionArrow.setIcon(ICON.LEFT_ARROW_LAYER_BENEFIT_EXITED);
 				}
 			}
@@ -402,6 +392,7 @@ public class LaunchBenefitsApplication extends JFrame {
 		LeftDirectionArrow.setIcon(ICON.LEFT_ARROW_LAYER_BENEFIT_EXITED);
 		LeftDirectionArrow.setHorizontalAlignment(SwingConstants.CENTER);
 		LeftDirectionArrow.setVerticalAlignment(SwingConstants.CENTER);
+		LeftDirectionArrow.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		LeftDirectionArrow.setVisible(true);
 		LayerRedirectionPanel.add(LeftDirectionArrow);
 				
@@ -421,9 +412,7 @@ public class LaunchBenefitsApplication extends JFrame {
 			@Override
 			public void mouseEntered(MouseEvent e) 
 			{
-				if (isEventEqualsLaunch()) 
-				{
-					RightDirectionArrow.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				if (isEventEqualsLaunch()) {
 					RightDirectionArrow.setIcon(ICON.RIGHT_ARROW_LAYER_BENEFIT_ENTERED);
 				}
 			}
@@ -431,9 +420,7 @@ public class LaunchBenefitsApplication extends JFrame {
 			@Override
 			public void mouseExited(MouseEvent e) 
 			{
-				if (isEventEqualsLaunch()) 
-				{
-					RightDirectionArrow.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+				if (isEventEqualsLaunch()) {
 					RightDirectionArrow.setIcon(ICON.RIGHT_ARROW_LAYER_BENEFIT_EXITED);
 				}
 			}
@@ -442,6 +429,7 @@ public class LaunchBenefitsApplication extends JFrame {
 		RightDirectionArrow.setIcon(ICON.RIGHT_ARROW_LAYER_BENEFIT_EXITED);
 		RightDirectionArrow.setHorizontalAlignment(SwingConstants.CENTER);
 		RightDirectionArrow.setVerticalAlignment(SwingConstants.CENTER);
+		RightDirectionArrow.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		RightDirectionArrow.setVisible(true);
 		LayerRedirectionPanel.add(RightDirectionArrow);
 		
@@ -449,25 +437,36 @@ public class LaunchBenefitsApplication extends JFrame {
 		LeavePage.setIcon(null);
 		LeavePage.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) 
-			{
+			public void mouseClicked(MouseEvent e) {
 				registerAccount = new LaunchRegister1();
 				registerAccount.setVisible(true);
 				dispose();
 			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				LeavePage.setForeground(FOREGROUND.FOREGROUND_COLOR_BBVA_LIGHT_COLOR);
+				LeavePageIcon.setIcon(ICON.LEAVE_PAGE);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				LeavePage.setForeground(FOREGROUND.FOREGROUND_COLOR_BBVA_DEFAULT_COLOR);
+				LeavePageIcon.setIcon(ICON.LEAVE_PAGE_EXITED);
+			}
 		});
 		LeavePage.setBounds(LayerRedirectionPanel.getWidth() + LayerRedirectionPanel.getX(), 20, 100, 30);
-		LeavePage.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		LeavePage.setText("Registrarme");
 		LeavePage.setFont(new Font("Yu Gothic UI", Font.PLAIN, 18));
 		LeavePage.setForeground(FOREGROUND.FOREGROUND_COLOR_BBVA_DEFAULT_COLOR);
 		LeavePage.setHorizontalAlignment(SwingConstants.CENTER);
 		LeavePage.setVerticalAlignment(SwingConstants.TOP);
+		LeavePage.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		FooterContainer.add(LeavePage);
 		
-		JLabel LeavePageIcon = new JLabel();
+		LeavePageIcon = new JLabel();
 		LeavePageIcon.setBounds(LeavePage.getX() + LeavePage.getWidth(), 20, 30, 30);
-		LeavePageIcon.setIcon(ICON.LEAVE_PAGE);
+		LeavePageIcon.setIcon(ICON.LEAVE_PAGE_EXITED);
 		LeavePageIcon.setHorizontalAlignment(SwingConstants.CENTER);
 		LeavePageIcon.setVerticalAlignment(SwingConstants.BOTTOM);
 		FooterContainer.add(LeavePageIcon);
@@ -645,7 +644,11 @@ public class LaunchBenefitsApplication extends JFrame {
 		//modify message to user
 		ParagraphRowTop.setText(NOT_AVAILABLE.showPresentationMessage(NOT_AVAILABLE.NOT_AVAILABLE_CONTENT_MESSAGE));
 		ParagraphRowTop.setHorizontalAlignment(SwingConstants.CENTER);
-		ParagraphRowTop.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+		ParagraphRowTop.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 22));
+		
+		ParagraphRowCenter.setText(NOT_AVAILABLE.showPresentationMessage(NOT_AVAILABLE.NOT_AVAILABLE_CONTENT_MESSAGE2));
+		ParagraphRowCenter.setHorizontalAlignment(SwingConstants.CENTER);
+		ParagraphRowCenter.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 19));
 		
 		//apply changes to redirection arrow
 		RightDirectionArrow.setIcon(ICON.RIGHT_ARROW_LAYER_BENEFIT_EXITED);

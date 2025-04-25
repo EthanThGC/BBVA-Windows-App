@@ -1,4 +1,4 @@
-package main.java.com.bbva_digital_app.register.client;
+package main.java.com.visual.register;
 
 import java.awt.Color;
 import java.awt.EventQueue;

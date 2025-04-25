@@ -1,4 +1,4 @@
-package main.java.com.bbva_digital_app.launch;
+package main.java.com.visual.launch;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
-import main.java.com.bbva_digital_app.access.ClientRedirection;
+import main.java.com.visual.access.ClientRedirection;
 import main.resources.visual.manager.classes.IconImageManager;
 
 public class InitializingApplication extends JDialog {
@@ -88,8 +88,8 @@ public class InitializingApplication extends JDialog {
 	}
 	
 	private void redirectToUser() {
+		dispose();
         redirection = new ClientRedirection();
         redirection.setVisible(true);
-		dispose();
 	}
 }

@@ -1,4 +1,9 @@
-package main.java.com.bbva_digital_app.advertising;
+package main.java.com.visual.advertising;
+
+/**
+ * @author BBVA Group 
+ * Copyright 2025 - All rights reserved
+ */
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -16,8 +21,8 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import main.java.com.bbva_digital_app.register.client.LaunchRegister1;
-import main.java.com.bbva_digital_app.access.ClientRedirection;
+import main.java.com.visual.access.ClientRedirection;
+import main.java.com.visual.register.LaunchRegister1;
 import main.resources.visual.manager.classes.*;
 import main.resources.visual.swingcomponents.RoundedPanel;
 
@@ -148,11 +153,13 @@ public class BenefitsBBVA extends JFrame {
 	 * Create the Frame.
 	 */
 	public BenefitsBBVA() {
+		
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				closeWindowAndInvokeRedirection();
 			}
 		});
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(BenefitsBBVA.class.getResource("/main/resources/visual/icons/V2/bbva_logo/favicon.png")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("Beneficios BBVA Digital");
@@ -262,22 +269,20 @@ public class BenefitsBBVA extends JFrame {
 		readBenefits = new RoundedPanel();
 		readBenefits.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
+			public void mouseEntered(MouseEvent e) {
 				readBenefits.setBackground(new Color(19, 53, 101));
 			}
 			
 			@Override
-			public void mouseExited(MouseEvent e) 
-			{
+			public void mouseExited(MouseEvent e) {
 				readBenefits.setBackground(background.BACKGROUND_COLOR_BBVA_OFFICIAL);
 			}
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				dispose();
 				LaunchBenefits = new LaunchBenefitsApplication("launch");
 				LaunchBenefits.setVisible(true);
+				dispose();
 			}
 		});
 		readBenefits.setBounds(65, 184, 260, 50);
