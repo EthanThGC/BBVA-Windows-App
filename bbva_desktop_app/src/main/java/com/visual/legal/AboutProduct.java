@@ -12,6 +12,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import main.resources.visual.manager.classes.*;
+import javax.swing.ImageIcon;
 
 public class AboutProduct extends JDialog {
 
@@ -44,6 +45,7 @@ public class AboutProduct extends JDialog {
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setModalityType(ModalityType.DOCUMENT_MODAL);
 		setTitle("BBVA for Windows");
+		setUndecorated(true);
 		setType(Type.POPUP);
 		setResizable(false);
 		setBounds(435, 100, 500, 400);
@@ -54,20 +56,28 @@ public class AboutProduct extends JDialog {
 		contentPanel.setLayout(null);
 		
 		JLabel lbl = new JLabel();
-		lbl.setLocation(0, 142);
-		lbl.setSize(484, 30);
-		lbl.setText("Information about the product");
-		lbl.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 25));
+		lbl.setIcon(new ImageIcon(AboutProduct.class.getResource("/main/resources/visual/icons/V2/previewDataClient/BBVA_logo_light.png")));
+		lbl.setLocation(0, 88);
+		lbl.setSize(500, 30);
+		lbl.setFont(new Font("Yu Gothic UI", Font.PLAIN, 25));
 		lbl.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl.setVerticalAlignment(SwingConstants.CENTER);
 		contentPanel.add(lbl);
 		
 		JLabel lblComingSoon = new JLabel();
 		lblComingSoon.setVerticalAlignment(SwingConstants.CENTER);
-		lblComingSoon.setText("coming soon...");
+		lblComingSoon.setText("Information about this software");
 		lblComingSoon.setHorizontalAlignment(SwingConstants.CENTER);
-		lblComingSoon.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 22));
-		lblComingSoon.setBounds(0, 183, 484, 30);
+		lblComingSoon.setFont(new Font("Yu Gothic UI", Font.PLAIN, 22));
+		lblComingSoon.setBounds(0, 183, 500, 30);
 		contentPanel.add(lblComingSoon);
+		
+		JLabel lblComingSoon_1 = new JLabel();
+		lblComingSoon_1.setVerticalAlignment(SwingConstants.CENTER);
+		lblComingSoon_1.setText("coming soon...");
+		lblComingSoon_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblComingSoon_1.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 19));
+		lblComingSoon_1.setBounds(0, 224, 500, 30);
+		contentPanel.add(lblComingSoon_1);
 	}
 }

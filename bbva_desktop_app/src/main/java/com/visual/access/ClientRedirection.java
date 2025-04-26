@@ -56,6 +56,9 @@ public class ClientRedirection extends JFrame {
 	private JPanel content_central;
 	
 	private JPanel content_buttons_redirection;
+	private JPanel content_version_card;
+	
+	private JPanel footer;
 	
 	private JLabel lbl_login_application;
 	private JLabel lbl_register_account;
@@ -105,6 +108,10 @@ public class ClientRedirection extends JFrame {
 		setContentPane(Frame);
 		Frame.setLayout(null);
 		
+		/**
+		 * ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+		 */
+		
 		container = new JPanel();
 		container.setBounds(0, 0, 897, 661);
 		container.setBackground(background.BACKGROUND_COLOR_BBVA_OFFICIAL);
@@ -119,8 +126,8 @@ public class ClientRedirection extends JFrame {
 		container.add(banner_bbva);
 		
 		container_central = new RoundedPanel();
-		container_central.setSize(440, 280);
 		container_central.setLocation(230, 209);
+		container_central.setSize(440, 280);
 		container_central.setBackground(background.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
 		((RoundedPanel) container_central ).setCornerRadius(40);
 		container_central.setOpaque(false);
@@ -135,10 +142,28 @@ public class ClientRedirection extends JFrame {
 		container_central.add(content_central);
 		
 		content_buttons_redirection = new JPanel(); 
-		content_buttons_redirection.setBackground(background.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
 		content_buttons_redirection.setBounds(0,0,410,256);
+		content_buttons_redirection.setBackground(background.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
 		content_buttons_redirection.setLayout(null);
 		content_central.add(content_buttons_redirection);
+		
+		content_version_card = new JPanel(); 
+		content_version_card.setLocation(230, 490);
+		content_version_card.setSize(440, 30);
+		content_version_card.setBackground(background.BACKGROUND_COLOR_BBVA_OFFICIAL);
+		content_version_card.setLayout(null);
+		container.add(content_version_card);
+		
+		footer = new JPanel();
+		footer.setLocation(230, 595);
+		footer.setSize(440, 60);
+		footer.setBackground(background.BACKGROUND_COLOR_BBVA_OFFICIAL);
+		footer.setLayout(null);
+		container.add(footer);
+		
+		/**
+		 * ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+		 */
 		
 		button_login_application = new RoundedPanel();
 		button_login_application.addMouseListener(new MouseAdapter() {
@@ -200,7 +225,7 @@ public class ClientRedirection extends JFrame {
 
 		lbl_register_account = new JLabel();
 		lbl_register_account.setBounds(5,5,255,50);
-		lbl_register_account.setText("Crear una cuenta");
+		lbl_register_account.setText("Crearme una cuenta");
 		lbl_register_account.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 19));
 		lbl_register_account.setForeground(foreground.FOREGROUND_COLOR_BBVA_DEFAULT_COLOR);
 		lbl_register_account.setHorizontalAlignment(SwingConstants.CENTER);
@@ -246,18 +271,18 @@ public class ClientRedirection extends JFrame {
 		lbl_redirection_web_site = new JLabel();
 		lbl_redirection_web_site.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_redirection_web_site.setBounds(5,5,255,50);
-		lbl_redirection_web_site.setText("Necesitas ayuda con algo?");
+		lbl_redirection_web_site.setText("Necesitas ayuda ?");
 		lbl_redirection_web_site.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 19));
 		lbl_redirection_web_site.setForeground(foreground.FOREGROUND_COLOR_BBVA_DEFAULT_COLOR);
 		lbl_redirection_web_site.setVerticalAlignment(SwingConstants.CENTER);
 		button_redirection_website.add(lbl_redirection_web_site);
 		
 		lbl_icon_open_wb_st = new JLabel();
-		lbl_icon_open_wb_st.setBounds(335, 178, 20, 50);
-		content_buttons_redirection.add(lbl_icon_open_wb_st);
+		lbl_icon_open_wb_st.setBounds(225, 10, 20, 45);
+		lbl_icon_open_wb_st.setIcon(icon.OPEN_EXTERNAL_WEB_SITE_ABOUT_BBVA_EXITED);
 		lbl_icon_open_wb_st.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_icon_open_wb_st.setVerticalAlignment(SwingConstants.CENTER);
-		lbl_icon_open_wb_st.setIcon(icon.OPEN_EXTERNAL_WEB_SITE_ABOUT_BBVA_EXITED);
+		button_redirection_website.add(lbl_icon_open_wb_st);
 		
 		lbl_version_info = new JLabel();
 		lbl_version_info.addMouseListener(new MouseAdapter() {
@@ -276,22 +301,22 @@ public class ClientRedirection extends JFrame {
 				informationCardAboutApplication();
 			}
 		});
-		lbl_version_info.setBounds(550, 501, 120, 22);
+		lbl_version_info.setBounds(320, 0, 120, 30);
 		lbl_version_info.setText("Versión 1.1.001");
-		lbl_version_info.setFont(new Font("Consolas", Font.PLAIN, 14));
+		lbl_version_info.setFont(new Font("Consolas", Font.PLAIN, 13));
 		lbl_version_info.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
 		lbl_version_info.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_version_info.setVerticalAlignment(SwingConstants.BOTTOM);
 		lbl_version_info.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		container.add(lbl_version_info);
+		content_version_card.add(lbl_version_info);
 		
 		lbl_privacy_illustration = new JLabel();
 		lbl_privacy_illustration.setSize(25, 25);
-		lbl_privacy_illustration.setLocation(571, 597);
+		lbl_privacy_illustration.setLocation(350, 5);
 		lbl_privacy_illustration.setIcon(icon.PRIVACY_POLICY_EXITED);
 		lbl_privacy_illustration.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_privacy_illustration.setVerticalAlignment(SwingConstants.CENTER);
-		container.add(lbl_privacy_illustration);
+		footer.add(lbl_privacy_illustration);
 		
 		lbl_privacy_policies = new JLabel();
 		lbl_privacy_policies.addMouseListener(new MouseAdapter() {
@@ -312,27 +337,31 @@ public class ClientRedirection extends JFrame {
 				corporateInformation();
 			}
 		});
-		lbl_privacy_policies.setSize(272, 30);
-		lbl_privacy_policies.setLocation(328, 593);
+		lbl_privacy_policies.setSize(footer.getWidth(), 30);
+		lbl_privacy_policies.setLocation(0, 0);
 		lbl_privacy_policies.setText("Políticas de seguridad y privacidad");
 		lbl_privacy_policies.setFont(new Font("Nirmala UI", Font.PLAIN, 15));
 		lbl_privacy_policies.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
-		lbl_privacy_policies.setHorizontalAlignment(SwingConstants.LEFT);
+		lbl_privacy_policies.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_privacy_policies.setVerticalAlignment(SwingConstants.CENTER);
 		lbl_privacy_policies.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		container.add(lbl_privacy_policies);
+		footer.add(lbl_privacy_policies);
 		
 		lbl_copyright_product = new JLabel();
-		lbl_copyright_product.setSize(container.getWidth(), 30);
-		lbl_copyright_product.setLocation(0, 625);
+		lbl_copyright_product.setSize(footer.getWidth(), 30);
+		lbl_copyright_product.setLocation(0, 30);
 		lbl_copyright_product.setText("Copyright © 2025 Grupo BBVA. Todos los derechos reservados");
 		lbl_copyright_product.setFont(new Font("Segoe UI Semilight", Font.PLAIN, 14));
 		lbl_copyright_product.setForeground(new Color(255,255,255));
 		lbl_copyright_product.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_copyright_product.setVerticalAlignment(SwingConstants.CENTER);
-		container.add(lbl_copyright_product);
+		footer.add(lbl_copyright_product);
 		
 	}
+	
+	/**
+	 * ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	 */
 	
 	private void informationCardAboutApplication() {
 		//JOptionPane.showMessageDialog(null, "Estamos trabajando en ello...\n\n", "Mensaje del desarrollador", JOptionPane.INFORMATION_MESSAGE);
