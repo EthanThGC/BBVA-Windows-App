@@ -103,9 +103,7 @@ public abstract class ControlSpecialCases {
 	 * </p>
 	 */
 	protected boolean isPhoneNumberDigitsCorrect(String phoneNumber) {
-		if ((phoneNumber.length() < 10) 
-				|| (phoneNumber.length() > 10)) return false;
-		return true;
+		return (phoneNumber.length() < 10) || (phoneNumber.length() > 10);
 	}
 	
 	/**
@@ -143,7 +141,7 @@ public abstract class ControlSpecialCases {
 	 */
 	protected boolean isCurpValidate(String curp) {
 		final int SIZE_CHARACTERES = 18;
-		return ((curp.length() < SIZE_CHARACTERES) || (curp.length() > SIZE_CHARACTERES));
+		return (curp.length() < SIZE_CHARACTERES) || (curp.length() > SIZE_CHARACTERES);
 	}
 	
 	/**
@@ -245,37 +243,6 @@ public abstract class ControlSpecialCases {
 				}
 			}
 		}
-
-		/*for (int i = 0; i < ALL_MONTHS_OF_YEAR.length; i++) 
-		{
-			if (ALL_MONTHS_OF_YEAR[i].equals(month)) 
-			{
-				for (int k = 0; k < MONTHS_OF_THE_YEAR_CATEGORY1.length; k++) 
-				{
-					if (MONTHS_OF_THE_YEAR_CATEGORY1[k].equals(month)) 
-					{
-						if (day > 0 && day <= 31) existingDate = true;
-					} 
-					else 
-					{
-						for (int j = 0; j < MONTHS_OF_THE_YEAR_CATEGORY2.length; j++) 
-						{
-							if (MONTHS_OF_THE_YEAR_CATEGORY2[j].equals(month)) 
-							{
-								if (day > 0 && day <= 30) existingDate = true;
-							}
-							else
-							{
-								if (month.equals(MONTHS_OF_THE_YEAR_CATEGORY3)) 
-								{
-									if (day > 0 && day <= 28) existingDate = true;
-								}
-							}
-						}
-					}
-				}
-			}
-		}*/
 		
 		//print popup message
 		if (!existingDate) {
