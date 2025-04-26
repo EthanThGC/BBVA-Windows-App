@@ -40,7 +40,7 @@ public class ClientRedirection extends JFrame {
 	private AboutProduct aboutPR;
 
 	//web site
-	private final String LINK_TO_OFFICIAL_WEB_SITE = "https://www.bbva.mx/";
+	private final String OFFICIAL_WEB_SITE = "https://www.bbva.mx/personas/centro-de-ayuda/ayuda-urgente.html";
 	private Link link;
 	
 	//Visual resources
@@ -248,7 +248,7 @@ public class ClientRedirection extends JFrame {
 			public void mouseClicked(MouseEvent e1) {
 				try 
 				{
-					link = new Link(LINK_TO_OFFICIAL_WEB_SITE);
+					link = new Link(OFFICIAL_WEB_SITE);
 					link.openWebSite();
 				}
 				catch(URISyntaxException e)
