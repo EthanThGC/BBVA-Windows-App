@@ -1,6 +1,12 @@
 package main.java.com.visual.legal;
 
+/**
+ * @author BBVA Group 
+ * Copyright 2025 - All rights reserved
+ */
+
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -9,29 +15,91 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import main.resources.visual.manager.classes.ColorManager;
 import main.resources.visual.manager.classes.IconImageManager;
-import main.resources.visual.swingcomponents.RoundedPanel;
 
 public class AboutProduct extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-	private final JPanel contentPanel = new JPanel();
 	
-	/**/
-	private JPanel button_close_dialog;
-	private JLabel text_button_close_dialog;
-	
-	/**/
+	/*visual resources*/
 	private IconImageManager icon = new IconImageManager();	
 	private ColorManager background = new ColorManager();
 	private ColorManager foreground = new ColorManager();
+	
+	/*
+	  User interface organization's map    ::::     Swing components 
+  =================================================================
+ 
+  Container                                ::::     JDialog
+ 
+   1) header                               ::::     JPanel
+   
+     1.1 company_illustration              ::::     JLabel -> icon
+ 
+   2) center                               ::::     JPanel
+ 
+     2.1 software_presentation             ::::     JLabel
+   
+     2.2 software_version                  ::::     JLabel
+         
+   3) footer                               ::::     JPanel
+   
+     3.1 terms_conditions                  ::::     JLabel
+     
+       3.1.1 external_resource             ::::     JLabel -> icon
+     
+     3.2 privacy_policies                  ::::     JLabel
+     
+       3.2.1 external_resource             ::::     JLabel -> icon
+     
+     3.3 copyright_rights                  ::::     JLabel
+ 
+  =================================================================
+  */
 
+private final JPanel Container = new JPanel();
+	
+	// 1)
+	private JPanel header;
+	
+	    // 1.1)
+		private static JLabel company_illustration;
+			
+    // 2)
+	private JPanel center;
+	
+	    // 2.1)
+		private JLabel software_presentation;
+		
+		// 2.2)
+	    private JLabel software_version;
+		
+	// 3)
+	private JPanel footer;
+	
+	        // 3.1)
+			private JLabel terms_conditions;
+			
+			  // 3.1.1)
+			  private JLabel external_resource1;
+			
+			// 3.2)
+		    private JLabel privacy_policies;
+		    
+		      // 3.2.1)
+			  private JLabel external_resource2;
+			    
+		    // 3.3)
+			private JLabel copyright_rights;
+				
 	/**
 	 * Launch the application.
 	 */
@@ -57,61 +125,167 @@ public class AboutProduct extends JDialog {
 		setUndecorated(false);
 		setType(Type.POPUP);
 		setResizable(false);
-		setBounds(435, 200, 500, 400);
+		setBounds(435, 200, 560, 420);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBackground(background.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(null);
+		Container.setBackground(background.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
+		Container.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(Container, BorderLayout.CENTER);
+		Container.setLayout(null);
 		
-		JLabel lbl = new JLabel();
-		lbl.setIcon(icon.PREVIEW_DATA_BBVA_LOGO_LIGHT_BACKGROUND);
-		lbl.setLocation(0, 70);
-		lbl.setSize(484, 30);
-		lbl.setFont(new Font("Yu Gothic UI", Font.PLAIN, 25));
-		lbl.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl.setVerticalAlignment(SwingConstants.CENTER);
-		contentPanel.add(lbl);
+		final int MAX_WIDTH = 544;
 		
-		JLabel lblComingSoon = new JLabel();
-		lblComingSoon.setVerticalAlignment(SwingConstants.CENTER);
-		lblComingSoon.setText("Information about this software");
-		lblComingSoon.setHorizontalAlignment(SwingConstants.CENTER);
-		lblComingSoon.setFont(new Font("Yu Gothic UI", Font.PLAIN, 22));
-		lblComingSoon.setBounds(0, 165, 484, 30);
-		contentPanel.add(lblComingSoon);
+		/**
+		 *  ::: Main Containers :::
+		 */
 		
-		JLabel lblComingSoon_1 = new JLabel();
-		lblComingSoon_1.setVerticalAlignment(SwingConstants.CENTER);
-		lblComingSoon_1.setText("coming soon...");
-		lblComingSoon_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblComingSoon_1.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 19));
-		lblComingSoon_1.setBounds(0, 206, 484, 30);
-		contentPanel.add(lblComingSoon_1);
+		header = new JPanel();
+		header.setBounds(0, 0, MAX_WIDTH, 100);
+		header.setBackground(background.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
+		header.setLayout(null);
+		Container.add(header);
 		
-		button_close_dialog = new RoundedPanel();
-		button_close_dialog.addMouseListener(new MouseAdapter() {
+		center = new JPanel();
+		center.setBounds(0, header.getHeight(), MAX_WIDTH, 150);
+		center.setBackground(background.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
+		center.setLayout(null);
+		Container.add(center);
+		
+		footer = new JPanel();
+		footer.setBounds(0, center.getHeight() + center.getY(), MAX_WIDTH, 130);
+		footer.setBackground(background.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
+		footer.setLayout(null);
+		Container.add(footer);
+		
+		/**
+		 *  ::: Messages for user :::
+		 */
+		
+		JSeparator jsp = new JSeparator();
+		jsp.setSize(400, 1);
+		jsp.setLocation((center.getWidth() / 2) - jsp.getWidth() / 2, 1);
+		jsp.setBackground(background.PRIMARY_COLOR_FONT_TEXT_BLACK);
+		jsp.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_BLACK);
+		center.add(jsp);
+		
+		software_presentation = new JLabel();
+		software_presentation.setBounds(0, 20, center.getWidth(), center.getHeight() / 3);
+		software_presentation.setText("BBVA Digital for Windows");
+		software_presentation.setFont(new Font("Segoe UI Light", Font.PLAIN, 25));
+		software_presentation.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_BLACK);
+		software_presentation.setHorizontalAlignment(SwingConstants.CENTER);
+		software_presentation.setVerticalAlignment(SwingConstants.CENTER);
+		center.add(software_presentation);
+		
+		software_version = new JLabel();
+		software_version.setBounds(0, software_presentation.getHeight() + software_presentation.getY(), center.getWidth(), software_presentation.getHeight());
+		software_version.setText("Versión 1.1.001");
+		software_version.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+		software_version.setForeground(foreground.FOREGROUND_COLOR_BBVA_DEFAULT_COLOR);
+		software_version.setHorizontalAlignment(SwingConstants.CENTER);
+		software_version.setVerticalAlignment(SwingConstants.CENTER);
+		center.add(software_version);
+		
+		external_resource1 = new JLabel();
+		external_resource2 = new JLabel();
+		
+		terms_conditions = new JLabel();
+		terms_conditions.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				terms_conditions.setForeground(new Color(46, 134, 193));
+				external_resource1.setIcon(icon.OPEN_EXTERNAL_WEB_SITE_ABOUT_BBVA_ENTERED);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				terms_conditions.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_BLACK);
+				external_resource1.setIcon(icon.OPEN_EXTERNAL_WEB_SITE_ABOUT_BBVA_EXITED);
+			}
+			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				dispose();
+				openExternalResource();
 			}
 		});
-		button_close_dialog.setSize(170, 40);
-		button_close_dialog.setLocation((getWidth() / 2) - button_close_dialog.getWidth() / 2, 300);
-		((RoundedPanel) button_close_dialog).setCornerRadius(10);
-		button_close_dialog.setBackground(background.BACKGROUND_COLOR_BBVA_OFFICIAL);
-		button_close_dialog.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		button_close_dialog.setLayout(null);
-		contentPanel.add(button_close_dialog);
+		terms_conditions.setSize(footer.getWidth() / 3, footer.getHeight() / 4);
+		terms_conditions.setLocation(((footer.getWidth() / 2) - terms_conditions.getWidth() / 2) - 10, 0);
+		terms_conditions.setText("Términos y condiciones");
+		terms_conditions.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 17));
+		terms_conditions.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_BLACK);
+		terms_conditions.setHorizontalAlignment(SwingConstants.CENTER);
+		terms_conditions.setVerticalAlignment(SwingConstants.CENTER);
+		terms_conditions.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		footer.add(terms_conditions);
 		
-		text_button_close_dialog = new JLabel();
-		text_button_close_dialog.setSize(button_close_dialog.getWidth() - 5, button_close_dialog.getHeight() -  5);
-		text_button_close_dialog.setLocation(5, 5);
-		text_button_close_dialog.setText("Entendido");
-		text_button_close_dialog.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 18));
-		text_button_close_dialog.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
-		text_button_close_dialog.setHorizontalAlignment(SwingConstants.CENTER);
-		text_button_close_dialog.setVerticalAlignment(SwingConstants.CENTER);
-		button_close_dialog.add(text_button_close_dialog);
+		privacy_policies = new JLabel();
+		privacy_policies.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				privacy_policies.setForeground(new Color(46, 134, 193));
+				external_resource2.setIcon(icon.OPEN_EXTERNAL_WEB_SITE_ABOUT_BBVA_ENTERED);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				privacy_policies.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_BLACK);
+				external_resource2.setIcon(icon.OPEN_EXTERNAL_WEB_SITE_ABOUT_BBVA_EXITED);
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				openExternalResource();
+			}
+		});
+		privacy_policies.setSize(footer.getWidth() / 3, footer.getHeight() / 4);
+		privacy_policies.setLocation(((footer.getWidth() / 2) - privacy_policies.getWidth() / 2) - 10, (terms_conditions.getHeight() + terms_conditions.getY()) + 10);
+		privacy_policies.setText("Políticas de privacidad");
+		privacy_policies.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 17));
+		privacy_policies.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_BLACK);
+		privacy_policies.setHorizontalAlignment(SwingConstants.CENTER);
+		privacy_policies.setVerticalAlignment(SwingConstants.CENTER);
+		privacy_policies.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		footer.add(privacy_policies);
+		
+		copyright_rights = new JLabel();
+		copyright_rights.setBounds(0, 95, footer.getWidth(), footer.getHeight() / 4);
+		copyright_rights.setText("Copyright © 2025 Grupo BBVA. Todos los derechos reservados");
+		copyright_rights.setFont(new Font("Segoe UI Semilight", Font.PLAIN, 13));
+		copyright_rights.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_BLACK);
+		copyright_rights.setHorizontalAlignment(SwingConstants.CENTER);
+		copyright_rights.setVerticalAlignment(SwingConstants.CENTER);
+		copyright_rights.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		footer.add(copyright_rights);
+		
+		/**
+		 *  ::: Illustrations -> icon
+		 */
+		
+		company_illustration = new JLabel();
+		company_illustration.setBounds(0, 0, header.getWidth(), header.getHeight());
+		company_illustration.setIcon(icon.PREVIEW_DATA_BBVA_LOGO_LIGHT_BACKGROUND);
+		company_illustration.setForeground(null);
+		company_illustration.setHorizontalAlignment(SwingConstants.CENTER);
+		company_illustration.setVerticalAlignment(SwingConstants.CENTER);
+		header.add(company_illustration);
+		
+		external_resource1.setSize(35, 35);
+		external_resource1.setLocation((terms_conditions.getWidth() + terms_conditions.getX()) + 10, terms_conditions.getY());
+		external_resource1.setIcon(icon.OPEN_EXTERNAL_WEB_SITE_ABOUT_BBVA_EXITED);
+		external_resource1.setForeground(null);
+		external_resource1.setHorizontalAlignment(SwingConstants.CENTER);
+		external_resource1.setVerticalAlignment(SwingConstants.CENTER);
+		footer.add(external_resource1);
+		
+		external_resource2.setSize(35, 35);
+		external_resource2.setLocation((privacy_policies.getWidth() + privacy_policies.getX()) + 10, privacy_policies.getY());
+		external_resource2.setIcon(icon.OPEN_EXTERNAL_WEB_SITE_ABOUT_BBVA_EXITED);
+		external_resource2.setForeground(null);
+		external_resource2.setHorizontalAlignment(SwingConstants.CENTER);
+		external_resource2.setVerticalAlignment(SwingConstants.CENTER);
+		footer.add(external_resource2);
+	}
+	
+	private static void openExternalResource() {
+		JOptionPane.showMessageDialog(null, "Estamos trabajando en ello...\n\n", "Mensaje del desarrollador", JOptionPane.INFORMATION_MESSAGE);
 	}
 }
