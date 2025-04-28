@@ -365,6 +365,7 @@ public class ClientRedirection extends JFrame {
 	
 	private void informationCardAboutApplication() {
 		//JOptionPane.showMessageDialog(null, "Estamos trabajando en ello...\n\n", "Mensaje del desarrollador", JOptionPane.INFORMATION_MESSAGE);
+		dispose();
 		aboutPR = new AboutProduct();
 		aboutPR.setVisible(true);
 	}

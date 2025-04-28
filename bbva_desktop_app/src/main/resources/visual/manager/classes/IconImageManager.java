@@ -10,8 +10,7 @@ public class IconImageManager {
 	public final Icon BBVA_LOGO_OFFICIAL_INITIALIZING_APP = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/bbva_logo/bbva_logo_startapp.png"));
 	public final Icon BBVA_LOGO_OFFICIAL = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/bbva_logo/bbva_logo_startapp.png"));
 	public final Icon BBVA_APP_FOR_WINDOWS_BANNER = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/user_redirection/bannerBETA1.png"));
-	//public final Icon BBVA_DIGITAL_OFFICIAL_LG_399WIDTH = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/bbva_logo/BBVA_digital_official_logo_399width_V2.png"));
-	//public final Icon BBVA_DIGITAL_OFFICIAL_LG_399WIDTH = new ImageIcon(IconImageManager.class.getResource("/Resources/Visual/Icons/V2/LogoBBVA/BBVA_digital_official_logo_399width.png"));
+	public final Icon BBVA_ILLUSTRATION_26X26 = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/bbva_logo/bbva_illustration26x26.png"));
 	
 	/*
 	 * REDIRECTION WINDOW 
@@ -25,6 +24,9 @@ public class IconImageManager {
 	
 	public final Icon OPEN_EXTERNAL_WEB_SITE_ABOUT_BBVA_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/user_redirection/icon_open_web_site_entered.png"));
 	public final Icon OPEN_EXTERNAL_WEB_SITE_ABOUT_BBVA_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/user_redirection/icon_open_web_site_exited.png"));
+	
+	public final Icon OPEN_EXTERNAL_WINDOW_APP_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/user_redirection/external_resource_entered.png"));
+	public final Icon OPEN_EXTERNAL_WINDOW_APP_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/user_redirection/external_resource_exited.png"));
 	
 	/*
 	 * BENEFITS ABOUT APPLICATION - ICONS
