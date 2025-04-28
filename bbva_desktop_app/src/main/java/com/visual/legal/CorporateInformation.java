@@ -144,7 +144,7 @@ public class CorporateInformation extends JFrame {
 		});
 		
 		setIconImage(null);
-		setTitle("SaspraGames, Inc | Privacidad - 2023");
+		setTitle("BBVA for Windows");
 		setType(Type.POPUP);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -199,7 +199,7 @@ public class CorporateInformation extends JFrame {
 		ContentFrame.add(ContainerArrowBottom);
 		
 		lblNameCo = new JLabel();
-		lblNameCo.setText("SaspraGames,Inc - LLC");
+		lblNameCo.setText("[Nombre de la empresa]");
 		lblNameCo.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 22));
 		lblNameCo.setForeground(new Color(174, 182, 191));
 		lblNameCo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -209,7 +209,7 @@ public class CorporateInformation extends JFrame {
 		
 		lbltitle = new JLabel();
 		lbltitle.setIcon((null));
-		lbltitle.setText("Política de privacidad");
+		lbltitle.setText("Políticas de privacidad");
 		lbltitle.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 25));
 		//lbltitle.setForeground(new Color(242, 243, 244));
 		lbltitle.setForeground(new Color(0, 0, 0));
@@ -255,12 +255,12 @@ public class CorporateInformation extends JFrame {
 						+ "\n\nBy SaspraGames, Inc - LLC | © All rights reserved - 2023\n\n", "Privacy update", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		lblLastUpdate.setText("  Actualización");
+		lblLastUpdate.setText("Actualizaciones de software");
 		lblLastUpdate.setIcon((null));
 		lblLastUpdate.setForeground(Color.WHITE);
 		lblLastUpdate.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
 		lblLastUpdate.setHorizontalAlignment(SwingConstants.LEFT);
-		lblLastUpdate.setBounds(20, 11, 133, 30);
+		lblLastUpdate.setBounds(20, 11, 204, 30);
 		ContentPositionLeft.add(lblLastUpdate);
 	}
 		lblTerms = new JLabel();
@@ -320,7 +320,7 @@ public class CorporateInformation extends JFrame {
 						JOptionPane.INFORMATION_MESSAGE, JOptionPane.YES_OPTION, null, new Object[] {"Entendido"}, "Entendido");
 			}
 		});
-		lblOpinions.setText("¿Opiniones o sugerencias?");
+		lblOpinions.setText("Opiniones o sugerencias?");
 		lblOpinions.setFont(new Font("Gill Sans MT", Font.PLAIN, 19));
 		lblOpinions.setForeground(Color.WHITE);
 		lblOpinions.setHorizontalAlignment(SwingConstants.LEFT);
@@ -358,7 +358,7 @@ public class CorporateInformation extends JFrame {
 				
 			}
 		});
-		lblAboutGame.setText("Sobre TicTacToe-Game");
+		lblAboutGame.setText("Centro de ayuda");
 		lblAboutGame.setFont(new Font("Gill Sans MT", Font.PLAIN, 19));
 		lblAboutGame.setForeground(Color.WHITE);
 		lblAboutGame.setHorizontalAlignment(SwingConstants.LEFT);
@@ -389,7 +389,7 @@ public class CorporateInformation extends JFrame {
 						JOptionPane.INFORMATION_MESSAGE, JOptionPane.YES_OPTION, null, new Object[] {"Entendido"}, "Entendido");
 			}
 		});
-		lblAboutCo.setText("Acerca de");
+		lblAboutCo.setText("Sobre BBVA Digital");
 		lblAboutCo.setFont(new Font("Gill Sans MT", Font.PLAIN, 19));
 		lblAboutCo.setForeground(Color.WHITE);
 		lblAboutCo.setHorizontalAlignment(SwingConstants.LEFT);
@@ -485,6 +485,7 @@ public class CorporateInformation extends JFrame {
 		txtarea.setFont(new Font("Yu Gothic UI", Font.PLAIN, 16));
 		txtarea.setBounds(30, 135, 467, 367);
 		txtarea.setBackground(new Color(232, 232, 232));
+		txtarea.setText("Este es un demo, la versión final aún está en desarrollo...");
 		//txtarea.setBackground(new Color(56,56,56));
 		ContainerPositionRight.add(txtarea);
 		

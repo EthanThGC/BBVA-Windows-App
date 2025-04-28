@@ -17,7 +17,6 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -29,7 +28,7 @@ import main.resources.visual.manager.classes.ColorManager;
 import main.resources.visual.manager.classes.IconImageManager;
 import main.resources.visual.swingcomponents.RoundedPanel;
 
-public class AboutProduct extends JDialog {
+public class AboutBBVASoftware extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -40,7 +39,7 @@ public class AboutProduct extends JDialog {
 	
 	/*external windows*/
 	private ClientRedirection redirection;
-	private CorporateInformation infoCo;
+	private static CorporateInformation infoCo;
 	
 	/*
 	  User interface organization's map    ::::     Swing components 
@@ -113,7 +112,7 @@ private final JPanel Container = new JPanel();
 	 */
 	public static void main(String[] args) {
 		try {
-			AboutProduct dialog = new AboutProduct();
+			AboutBBVASoftware dialog = new AboutBBVASoftware();
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 			dialog.setVisible(true);
 		} 
@@ -126,8 +125,8 @@ private final JPanel Container = new JPanel();
 	/**
 	 * Create the dialog.
 	 */
-	public AboutProduct() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(AboutProduct.class.getResource("/main/resources/visual/icons/V2/bbva_logo/favicon.png")));
+	public AboutBBVASoftware() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(AboutBBVASoftware.class.getResource("/main/resources/visual/icons/V2/bbva_logo/favicon.png")));
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setModalityType(ModalityType.DOCUMENT_MODAL);
 		setTitle("BBVA for Windows");
@@ -319,8 +318,11 @@ private final JPanel Container = new JPanel();
 		footer.add(external_resource2);
 	}
 	
-	private static void openExternalResource() {
-		JOptionPane.showMessageDialog(null, "Estamos trabajando en ello...\n\n", "Mensaje del desarrollador", JOptionPane.INFORMATION_MESSAGE);
+	private void openExternalResource() {
+		//JOptionPane.showMessageDialog(null, "Estamos trabajando en ello...\n\n", "Mensaje del desarrollador", JOptionPane.INFORMATION_MESSAGE);
+		infoCo = new CorporateInformation();
+		infoCo.setVisible(true);
+		dispose();
 	}
 	
 	private void returnToRedirectionWindow() {
