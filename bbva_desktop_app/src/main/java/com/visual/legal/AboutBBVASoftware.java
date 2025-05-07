@@ -316,13 +316,25 @@ private final JPanel Container = new JPanel();
 		external_resource2.setHorizontalAlignment(SwingConstants.CENTER);
 		external_resource2.setVerticalAlignment(SwingConstants.CENTER);
 		footer.add(external_resource2);
+		
+		JLabel lblNewLabel = new JLabel("( BETA )");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(388, 7, 60, 20);
+		footer.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("( BETA )");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_1.setBounds(388, 48, 60, 20);
+		footer.add(lblNewLabel_1);
 	}
 	
 	private void openExternalResource() {
 		//JOptionPane.showMessageDialog(null, "Estamos trabajando en ello...\n\n", "Mensaje del desarrollador", JOptionPane.INFORMATION_MESSAGE);
+		dispose();
 		infoCo = new CorporateInformation();
 		infoCo.setVisible(true);
-		dispose();
 	}
 	
 	private void returnToRedirectionWindow() {

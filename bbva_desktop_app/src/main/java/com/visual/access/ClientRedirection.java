@@ -38,6 +38,7 @@ public class ClientRedirection extends JFrame {
 	private LoginApplication login;
 	private BenefitsBBVA showBenefits; 
 	private AboutBBVASoftware aboutPR;
+	private CorporateInformation infoCorp;
 
 	//web site
 	private final String OFFICIAL_WEB_SITE = "https://www.bbva.mx/personas/centro-de-ayuda/ayuda-urgente.html";
@@ -71,6 +72,7 @@ public class ClientRedirection extends JFrame {
 	private JLabel lbl_version_info;
 	private JLabel lbl_privacy_policies, lbl_privacy_illustration; 
 	private JLabel lbl_copyright_product;
+	private JLabel lblNewLabel;
 	
 	//private Color BackgroundColorFrame = new Color(7, 33, 70); //0, 66, 132
 	
@@ -356,6 +358,13 @@ public class ClientRedirection extends JFrame {
 		lbl_copyright_product.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_copyright_product.setVerticalAlignment(SwingConstants.CENTER);
 		footer.add(lbl_copyright_product);
+		
+		lblNewLabel = new JLabel("( BETA )");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel.setBounds(680, 605, 46, 14);
+		container.add(lblNewLabel);
 		
 	}
 	
