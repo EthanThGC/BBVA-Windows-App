@@ -363,7 +363,7 @@ public class ClientRedirection extends JFrame {
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel.setBounds(680, 605, 46, 14);
+		lblNewLabel.setBounds(680, 605, 60, 14);
 		container.add(lblNewLabel);
 		
 	}
