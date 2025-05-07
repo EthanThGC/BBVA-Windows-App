@@ -22,7 +22,8 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import main.resources.visual.manager.classes.*;
+import main.java.com.visual.access.ClientRedirection;
+import main.resources.visual.manager.classes.ColorManager;
 import main.resources.visual.swingcomponents.RoundedPanel;
 
 public class CorporateInformation extends JDialog {
@@ -124,7 +125,7 @@ public class CorporateInformation extends JDialog {
 		setUndecorated(false);
 		setType(Type.POPUP);
 		setResizable(false);
-		setBounds(400, 160, 868, 638);
+		setBounds(250, 50, 868, 638);
 		getContentPane().setLayout(new BorderLayout());
 		Container.setBackground(new Color(240, 242, 245));
 		Container.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -162,7 +163,7 @@ public class CorporateInformation extends JDialog {
 		header.setLayout(null);
 		containerRightLateral.add(header);
 		
-		lblNewLabel_1 = new JLabel("Políticas de privacidad");
+		lblNewLabel_1 = new JLabel("Esto es un bosquejo - NO OFFICIAL");
 		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\ithan\\eclipse-workspace\\SaspraGames,Inc\\prototype_beta\\src\\ico\\privacy_ico_default.png"));
 		lblNewLabel_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 23));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -270,6 +271,8 @@ public class CorporateInformation extends JDialog {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
+				ClientRedirection home = new ClientRedirection();
+				home.setVisible(true);
 			}
 		});
 		lblNewLabel_4.setVerticalAlignment(SwingConstants.TOP);
