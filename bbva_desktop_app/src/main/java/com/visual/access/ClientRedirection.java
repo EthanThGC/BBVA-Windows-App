@@ -38,7 +38,7 @@ public class ClientRedirection extends JFrame {
 	private LoginApplication login;
 	private BenefitsBBVA showBenefits; 
 	private AboutBBVASoftware aboutPR;
-	private CorporateInformation infoCorp;
+	private CorporateInformation1 infoCorp;
 
 	//web site
 	private final String OFFICIAL_WEB_SITE = "https://www.bbva.mx/personas/centro-de-ayuda/ayuda-urgente.html";
@@ -382,7 +382,7 @@ public class ClientRedirection extends JFrame {
 	private void corporateInformation() {
 		//JOptionPane.showMessageDialog(null, "Estamos trabajando en ello...\n\n", "Mensaje del desarrollador", JOptionPane.INFORMATION_MESSAGE);
 		dispose();
-		infoCorp = new CorporateInformation();
+		infoCorp = new CorporateInformation1();
 		infoCorp.setVisible(true);
 	}
 }

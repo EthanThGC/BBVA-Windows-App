@@ -39,7 +39,7 @@ public class AboutBBVASoftware extends JDialog {
 	
 	/*external windows*/
 	private ClientRedirection redirection;
-	private static CorporateInformation infoCo;
+	private static CorporateInformation1 infoCo;
 	
 	/*
 	  User interface organization's map    ::::     Swing components 
@@ -333,7 +333,7 @@ private final JPanel Container = new JPanel();
 	private void openExternalResource() {
 		//JOptionPane.showMessageDialog(null, "Estamos trabajando en ello...\n\n", "Mensaje del desarrollador", JOptionPane.INFORMATION_MESSAGE);
 		dispose();
-		infoCo = new CorporateInformation();
+		infoCo = new CorporateInformation1();
 		infoCo.setVisible(true);
 	}
 	

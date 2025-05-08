@@ -8,15 +8,15 @@ public class ColorManager {
 	
 	public final Color PRIMARY_COLOR_FONT_TEXT_WHITE = new Color(255,255,255);
 	public final Color PRIMARY_COLOR_FONT_TEXT_BLACK = new Color(0,0,0);
-	
-	public final Color PLACEHOLDER_COLOR_FONT_TEXT_GRAY = Color.GRAY;
-	
+		
 	public final Color BACKGROUND_COLOR_BBVA_OFFICIAL = new Color(7,33,70);
+	public final Color BACKGROUND_COLOR_BBVA_DEFAULT_COLOR = new Color(5,51,101);
 	public final Color BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL = new Color(245,249,255);
 	
+	public final Color PLACEHOLDER_COLOR_FONT_TEXT_GRAY = Color.GRAY;
 	public final Color FOREGROUND_COLOR_BBVA_LIGHT_COLOR = new Color(0, 156, 165);
 	public final Color FOREGROUND_COLOR_BBVA_DEFAULT_COLOR = new Color(5,51,101);
-	public final Color BACKGROUND_COLOR_BBVA_DEFAULT_COLOR = new Color(5,51,101);
+	public final Color FOREGROUND_COLOR_LIGHT_BLUE = new Color(91, 190, 255);
 	
 	public ColorManager() {
 		this.clr = null;

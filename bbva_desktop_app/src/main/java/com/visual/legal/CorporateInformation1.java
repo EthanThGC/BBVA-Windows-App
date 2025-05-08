@@ -1,10 +1,5 @@
 package main.java.com.visual.legal;
 
-/**
- * @author BBVA Group 
- * Copyright 2025 - All rights reserved
- */
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -26,12 +21,15 @@ import main.java.com.visual.access.ClientRedirection;
 import main.resources.visual.manager.classes.ColorManager;
 import main.resources.visual.swingcomponents.RoundedPanel;
 
-public class CorporateInformation extends JDialog {
+public class CorporateInformation1 extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel Container = new JPanel();
 	
+	private static ClientRedirection home;
+	
 	private static ColorManager background = new ColorManager();
+	private static ColorManager foreground = new ColorManager();
 
 	private static JPanel containerLeftLateral, containerRightLateral;
 	private static JPanel header, content_center;
@@ -106,7 +104,7 @@ public class CorporateInformation extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			CorporateInformation dialog = new CorporateInformation();
+			CorporateInformation1 dialog = new CorporateInformation1();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -117,14 +115,14 @@ public class CorporateInformation extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public CorporateInformation() {
+	public CorporateInformation1() {
+		setUndecorated(true);
+		setResizable(false);
+		setModalityType(ModalityType.APPLICATION_MODAL);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ithan\\eclipse-workspace\\bbva-desktop-app\\bbva_app_runnable\\bin\\main\\resources\\visual\\icons\\V2\\bbva_logo\\favicon.png"));
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setModalityType(ModalityType.APPLICATION_MODAL);
 		setTitle("BBVA for Windows");
-		setUndecorated(false);
 		setType(Type.POPUP);
-		setResizable(false);
 		setBounds(250, 50, 868, 638);
 		getContentPane().setLayout(new BorderLayout());
 		Container.setBackground(new Color(240, 242, 245));
@@ -133,20 +131,20 @@ public class CorporateInformation extends JDialog {
 		Container.setLayout(null);
 		
 		containerLeftLateral = new JPanel();
-		containerLeftLateral.setBounds(0, 0, 300, 599);
+		containerLeftLateral.setBounds(12, 0, 300, 627);
 		containerLeftLateral.setBackground(new Color(240, 242, 245));
 		containerLeftLateral.setLayout(null);
 		Container.add(containerLeftLateral);
 		
 		container_menu_lateral = new RoundedPanel();
-		container_menu_lateral.setBounds(3, 10, 295, 534);
+		container_menu_lateral.setBounds(0, 20, 295, 552);
 		container_menu_lateral.setBackground(new Color(7, 33, 70));	
 		((RoundedPanel) container_menu_lateral).setCornerRadius(20);
 		container_menu_lateral.setLayout(null);
 		containerLeftLateral.add(container_menu_lateral);
 		
 		containerRightLateral = new JPanel();
-		containerRightLateral.setBounds(300, 11, 484, 588);
+		containerRightLateral.setBounds(310, 11, 484, 616);
 		containerRightLateral.setBackground(new Color(240, 242, 245));
 		containerRightLateral.setLayout(null);
 		Container.add(containerRightLateral);
@@ -163,15 +161,15 @@ public class CorporateInformation extends JDialog {
 		header.setLayout(null);
 		containerRightLateral.add(header);
 		
-		lblNewLabel_1 = new JLabel("Esto es un bosquejo - NO OFFICIAL");
+		lblNewLabel_1 = new JLabel("Políticas de privacidad");
 		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\ithan\\eclipse-workspace\\SaspraGames,Inc\\prototype_beta\\src\\ico\\privacy_ico_default.png"));
 		lblNewLabel_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 23));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(10, 11, 464, 53);
+		lblNewLabel_1.setBounds(0, 11, 484, 53);
 		header.add(lblNewLabel_1);
 		
 		content_center = new JPanel();
-		content_center.setBounds(0, 75, 484, 513);
+		content_center.setBounds(0, 75, 484, 530);
 		content_center.setBackground(new Color(240, 242, 245));
 		content_center.setLayout(null);
 		containerRightLateral.add(content_center);
@@ -182,81 +180,171 @@ public class CorporateInformation extends JDialog {
 		txtarea.setLineWrap(true);
 		txtarea.setForeground(new Color(0, 0, 0));
 		txtarea.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 15));
-		txtarea.setBounds(28, 11, 430, 448);
+		txtarea.setBounds(28, 11, 446, 465);
 		txtarea.setBackground(new Color(240, 242, 245));
 		//txtarea.setBackground(new Color(56,56,56));
 		txtarea.setText(STRING_LAYER1);
 		content_center.add(txtarea);
 		
 		content_illustration = new RoundedPanel();
-		content_illustration.setBounds(0, 0, 295, 83);
+		content_illustration.setBounds(0, 0, 295, 100);
 		content_illustration.setBackground(background.BACKGROUND_COLOR_BBVA_OFFICIAL);
 		((RoundedPanel) content_illustration).setCornerRadius(20);
 		content_illustration.setLayout(null);
 		container_menu_lateral.add(content_illustration);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\ithan\\eclipse-workspace\\bbva-desktop-app\\bbva_app_runnable\\bin\\main\\resources\\visual\\icons\\V2\\popup_dialogs\\bbva_logo_header.png"));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(5, 5, 290, 75);
+		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\ithan\\git\\BBVARepository\\bbva_desktop_app\\src\\main\\resources\\visual\\icons\\V2\\bbva_logo\\bbva_illustration26x26.png"));
+		lblNewLabel.setBounds(5, 5, 280, 95);
 		content_illustration.add(lblNewLabel);
 		
 		content_menu_item = new JPanel();
-		content_menu_item.setBounds(12, 100, 275, 423);
+		content_menu_item.setBounds(12, 100, 275, 441);
 		content_menu_item.setBackground(new Color(7, 33, 70));
 		content_menu_item.setLayout(null);
 		container_menu_lateral.add(content_menu_item);
 		
 		lblNewLabel_2 = new JLabel("Términos y condiciones");
+		lblNewLabel_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_2.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_2.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+			}
+		});
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 15));
-		lblNewLabel_2.setBounds(10, 21, 230, 30);
+		lblNewLabel_2.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 14));
+		lblNewLabel_2.setBounds(10, 40, 210, 30);
+		lblNewLabel_2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		content_menu_item.add(lblNewLabel_2);
 		
 		lblNewLabel_3 = new JLabel("Políticas de privacidad");
+		lblNewLabel_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_3.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_3.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+			}
+		});
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
-		lblNewLabel_3.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 15));
-		lblNewLabel_3.setBounds(10, 68, 230, 30);
+		lblNewLabel_3.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 14));
+		lblNewLabel_3.setBounds(10, 82, 210, 30);
+		lblNewLabel_3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		content_menu_item.add(lblNewLabel_3);
 		
-		lblNewLabel_5 = new JLabel("Reportar un fallo de la aplicación");
+		lblNewLabel_5 = new JLabel("Reportar un fallo de la app");
+		lblNewLabel_5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_5.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_5.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+			}
+		});
 		lblNewLabel_5.setForeground(new Color(255, 255, 255));
-		lblNewLabel_5.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 15));
-		lblNewLabel_5.setBounds(10, 152, 230, 30);
+		lblNewLabel_5.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 14));
+		lblNewLabel_5.setBounds(10, 162, 210, 30);
+		lblNewLabel_5.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		content_menu_item.add(lblNewLabel_5);
 		
 		lblNewLabel_6 = new JLabel("Necesitas ayuda con algo?");
+		lblNewLabel_6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_6.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_6.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+			}
+		});
 		lblNewLabel_6.setForeground(new Color(255, 255, 255));
-		lblNewLabel_6.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 15));
-		lblNewLabel_6.setBounds(10, 111, 230, 30);
+		lblNewLabel_6.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 14));
+		lblNewLabel_6.setBounds(10, 122, 210, 30);
+		lblNewLabel_6.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		content_menu_item.add(lblNewLabel_6);
 		
-		lblNewLabel_7 = new JLabel("Historial de actualizaciones");
+		lblNewLabel_7 = new JLabel("  Historial de actualizaciones");
+		lblNewLabel_7.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_7.setForeground(new Color(91, 190, 255));
+				lblNewLabel_7.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\published_with_changes_25dp_5BBEFF_FILL0_wght200_GRAD-25_opsz24.png"));
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_7.setForeground(Color.WHITE);
+				lblNewLabel_7.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\published_with_changes_25dp_FFFFFF_FILL0_wght200_GRAD-25_opsz24.png"));
+			}
+		});
+		lblNewLabel_7.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\published_with_changes_25dp_FFFFFF_FILL0_wght200_GRAD-25_opsz24.png"));
 		lblNewLabel_7.setForeground(Color.WHITE);
-		lblNewLabel_7.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 15));
-		lblNewLabel_7.setBounds(10, 373, 230, 30);
+		lblNewLabel_7.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 14));
+		lblNewLabel_7.setBounds(10, 400, 225, 30);
+		lblNewLabel_7.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		content_menu_item.add(lblNewLabel_7);
 		
-		lblNewLabel_8 = new JLabel("Licencias de software");
+		lblNewLabel_8 = new JLabel("  Licencias de software");
+		lblNewLabel_8.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_8.setForeground(new Color(91, 190, 255));
+				lblNewLabel_8.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\code_25dp_5BBEFF_FILL0_wght200_GRAD-25_opsz24.png"));
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_8.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\code_25dp_FFFFFF_FILL0_wght200_GRAD0_opsz24.png"));
+				lblNewLabel_8.setForeground(Color.WHITE);
+			}
+		});
+		lblNewLabel_8.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\code_25dp_FFFFFF_FILL0_wght200_GRAD0_opsz24.png"));
 		lblNewLabel_8.setForeground(Color.WHITE);
-		lblNewLabel_8.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 15));
-		lblNewLabel_8.setBounds(10, 335, 230, 30);
+		lblNewLabel_8.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 14));
+		lblNewLabel_8.setBounds(10, 355, 210, 30);
+		lblNewLabel_8.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		content_menu_item.add(lblNewLabel_8);
 		
 		lblNewLabel_9 = new JLabel("Acerca de BBVA Digital");
+		lblNewLabel_9.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_9.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_9.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+			}
+		});
 		lblNewLabel_9.setForeground(Color.WHITE);
-		lblNewLabel_9.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 15));
-		lblNewLabel_9.setBounds(10, 193, 230, 30);
+		lblNewLabel_9.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 14));
+		lblNewLabel_9.setBounds(10, 202, 210, 30);
+		lblNewLabel_9.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		content_menu_item.add(lblNewLabel_9);
 		
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(255, 255, 255));
-		separator.setBounds(10, 320, 255, 1);
+		separator.setBounds(10, 330, 255, 1);
 		content_menu_item.add(separator);
 		
-		JLabel lblNewLabel_4 = new JLabel("  Regresar a inicio");
-		lblNewLabel_4.setBounds(5, 555, 290, 29);
-		containerLeftLateral.add(lblNewLabel_4);
+		JLabel lblNewLabel_4 = new JLabel("  Volver a inicio");
+		lblNewLabel_4.setBounds(0, 587, 298, 29);
 		lblNewLabel_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -271,7 +359,7 @@ public class CorporateInformation extends JDialog {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				ClientRedirection home = new ClientRedirection();
+				home = new ClientRedirection();
 				home.setVisible(true);
 			}
 		});
@@ -281,9 +369,10 @@ public class CorporateInformation extends JDialog {
 		lblNewLabel_4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 20));
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		containerLeftLateral.add(lblNewLabel_4);
 		
 		JPanel container_lateral_arrow_control = new JPanel();
-		container_lateral_arrow_control.setBounds(784, 0, 68, 599);
+		container_lateral_arrow_control.setBounds(794, 0, 68, 627);
 		container_lateral_arrow_control.setBackground(new Color(240, 242, 245));
 		container_lateral_arrow_control.setLayout(null);
 		Container.add(container_lateral_arrow_control);
