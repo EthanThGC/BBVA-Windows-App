@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.LayoutManager;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -12,100 +13,153 @@ import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import main.java.com.visual.access.ClientRedirection;
 import main.resources.visual.manager.classes.ColorManager;
+import main.resources.visual.manager.classes.IconImageManager;
 import main.resources.visual.swingcomponents.RoundedPanel;
 
 public class CorporateInformation1 extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-	private final JPanel Container = new JPanel();
-	
-	private static ClientRedirection home;
-	
-	private static ColorManager background = new ColorManager();
-	private static ColorManager foreground = new ColorManager();
-
-	private static JPanel containerLeftLateral, containerRightLateral;
-	private static JPanel header, content_center;
-	private JPanel content_illustration;
-	protected JPanel container_menu_lateral;
-	private JLabel lblNewLabel_1;
-	
-	private JTextArea txtarea;
-	
-	/*layer of text for the out message of user*/
-	static final String 
-	        STRING_LAYER1="En cumplimiento de la normativa de protección de datos personales, presentamos este Aviso de Privacidad para informarle sobre "
-	        		+ "cómo se recopila, utiliza y protege su información personal cuando utiliza nuestros servicios. Por favor, tómese un momento para leer "
-	        		+ "detenidamente la siguiente información."
-	        		+ "\n\n1. Responsable del tratamiento de datos personales: El responsable del tratamiento de sus datos personales es SaspraGames,Inc - LLC. "
-	        		+ "Nuestra dirección física se encuentra en  651 Brannan Street. San Francisco, CA y puede contactarnos a través de technicalteam@saspragames.com"
-	        		+ "\n\n2. Información que recopilamos: Recopilamos información personal que usted proporciona voluntariamente al utilizar nuestros servicios. "
-	        		+ "Esto puede incluir, entre otros, su nombre, dirección, número de teléfono, dirección de correo electrónico y cualquier otra información que "
-	        		+ "nos proporcione al completar formularios o al comunicarse con nosotros." 
-			        + "y cualquier otra información que nos proporcione al completar formularios o al comunicarse con nosotros.\"\r\n"
-			        + "3. Uso de la información recopilada: Utilizamos la información personal recopilada para los siguientes fines:\"\r\n"
-			        + "	        		+ \"\\n- Procesar y gestionar sus solicitudes, consultas o pedidos.\"\r\n"
-			        + "	        		+ \"\\n- Proporcionarle los productos o servicios solicitados.\"\r\n"
-			        + "	        		+ \"\\n- Mejorar nuestros servicios y personalizar su experiencia como usuario.\"\r\n"
-			        + "	        		+ \"\\n- Enviarle comunicaciones relacionadas con nuestros servicios, como actualizaciones, notificaciones o cambios en los mismos.\"\r\n"
-			        + "	        		+ \"\\n- Cumplir con nuestras obligaciones legales y resolver cualquier disputa que pueda surgir.\"\r\n"
-			        + "	        		+ \"\\n\\n4. Compartir información con terceros:",
-	        STRING_LAYER2="y cualquier otra información que nos proporcione al completar formularios o al comunicarse con nosotros."
-	        		+ "\n\n3. Uso de la información recopilada: Utilizamos la información personal recopilada para los siguientes fines:"
-	        		+ "\n- Procesar y gestionar sus solicitudes, consultas o pedidos."
-	        		+ "\n- Proporcionarle los productos o servicios solicitados."
-	        		+ "\n- Mejorar nuestros servicios y personalizar su experiencia como usuario."
-	        		+ "\n- Enviarle comunicaciones relacionadas con nuestros servicios, como actualizaciones, notificaciones o cambios en los mismos."
-	        		+ "\n- Cumplir con nuestras obligaciones legales y resolver cualquier disputa que pueda surgir."
-	        		+ "\n\n4. Compartir información con terceros:", 
-	        
-			STRING_LAYER3="4. Compartir información con terceros: En ciertos casos, podemos compartir su información personal con terceros únicamente cuando sea"
-					+ " necesario para brindarle los servicios solicitados. Estos terceros pueden incluir proveedores de servicios, socios comerciales o entidades "
-					+ "legales autorizadas. Nos comprometemos a no vender, alquilar ni compartir su información personal con terceros para fines de marketing o "
-					+ "publicidad sin su consentimiento expreso."
-					+ "\n\n5. Protección de datos personales: Tomamos las medidas necesarias para proteger su información personal y garantizar su confidencialidad. "
-					+ "Implementamos medidas de seguridad físicas, técnicas y organizativas para proteger sus datos contra accesos no autorizados, divulgación, alteración o destrucción."
-					+ "\n\n6. Derechos del titular de los datos: Como titular de los datos personales, usted tiene los siguientes derechos", 
-			
-			STRING_LAYER4="6. Derechos del titular de los datos: Como titular de los datos personales, usted tiene los siguientes derechos:"
-					+ "\n- Acceder, rectificar o eliminar sus datos personales."
-					+ "\n- Limitar o oponerse al procesamiento de sus datos personales."
-					+ "\n- Solicitar la portabilidad de sus datos personales."
-					+ "\n- Revocar el consentimiento otorgado para el tratamiento de sus datos personales."
-					+ "\n\nPara ejercer estos derechos, puede comunicarse con nosotros a través de los medios de contacto proporcionados en este aviso."
-					+ "\n\n7. Actualizaciones al aviso de privacidad: Nos reservamos el derecho de actualizar o modificar este Aviso de Privacidad en cualquier momento. Cualquier"
-					+ "cambio significativo se comunicará de manera oportuna a través de nuestros canales de comunicación habituales."
-					+ "\n\nLe recomendamos revisar periódicamente este aviso para mantenerse informado sobre cómo protegemos su información personal.",
-					
-			STRING_LAYER5="Agradecemos su confianza al proporcionarnos su información personal y nos comprometemos a utilizarla de manera responsable y segura. Si tiene alguna pregunta o"
-					+ "inquietud sobre nuestro Aviso de Privacidad, no dude en ponerse en contacto con nosotros."
-					+ "\n\n\nAtentamente."
-					+ "\n\n\nEquipo legal de SaspraSoftware. Inc - LLC"
-					+ "\n\n651 Brannan Street, San Francisco, CA, 94107"
-					+ "\n\nCopyright © All rights reserved 2010 - 2023";
-	private JPanel content_menu_item;
-	private JLabel lblNewLabel_2;
-	private JLabel lblNewLabel_3;
-	private JLabel lblNewLabel_5;
-	private JLabel lblNewLabel_6;
-	private JLabel lblNewLabel_7;
-	private JLabel lblNewLabel_8;
-	private JLabel lblNewLabel_9;
+	private final JPanel FrameContainer = new JPanel();
 	
 	/**
-	 * Launch the application.
+	 * @see for redirection to another windows
+	 */
+	private static ClientRedirection ToHome;
+	
+	/**
+	 * @see for visual resources
+	 */
+	private static IconImageManager icon = new IconImageManager();
+	private static ColorManager foreground = new ColorManager();
+	private static ColorManager background = new ColorManager();
+	
+	/*
+	 *  +::::::::::::::::::::::::::::::::::::+
+	 *         GUI ORGANIZATION MAP  
+	 *  +::::::::::::::::::::::::::::::::::::+
+	 *  
+	 *  MainFrame (JFrame)
+	 *  |
+	 *  └── MainContainer (RoundedPanel)       
+	 *      |
+	 *      ├── MenuLateralContainer (JPanel)
+	 *      |   |
+	 *      │   ├── MenuLateralContent (RoundedPanel)
+	 *      |   |   |
+	 *      │   │   ├── BBVAIllustration (JLabel [Icon])
+	 *      |   |   |
+	 *      │   │   ├── MenuItemPrivacyPolicie (JLabel)
+	 *      │   │   ├── MenuItemUseTerms (JLabel)
+	 *      │   │   ├── MenuItemDataManagement (JLabel)
+	 *      │   │   ├── MenuItemHelpCenter (JLabel)
+	 *      │   │   ├── MenuItemAbout (JLabel)
+	 *      │   │   ├── MenuItemUpdateHistory (JLabel)
+	 *      │   │   └── MenuItemSoftwareLicenses (JLabel)
+	 *      │   │
+	 *      │   └── ArticleContainer (JPanel)
+	 *      |       |
+	 *      │       ├── Header (JPanel)
+	 *      |       |   |
+	 *      │       │   └── Title (JLabel)
+	 *      |       |
+	 *      │       └── ArticleContent (JPanel)
+	 *      |           |
+	 *      │           └── Article (JTextArea)
+	 *      │
+	 *      ├── DirectionLateralContainer (JPanel)
+	 *      |   | 
+	 *      │   └── DirectionArrowContent (JPanel)
+	 *      |       |
+	 *      │       ├── ArrowUp (JLabel [Icon])
+	 *      │       └── ArrowDown (JLabel [Icon])
+	 *      │
+	 *      └── Footer (JPanel)
+	 *          |
+	 *          └── CloseFrameContainer (JPanel)
+	 *              |
+	 *              └── DisposeDialog (JLabel [Close Icon])
+	 *  
+	 *  ----------------------------------------------------------------------------------------------------------------------
+	 *  NOTE:
+	 *   => RoundedPanel is a custom class that extends JPanel with rounded borders.
+	 *   => The menu items have been renamed for better semantic clarity.
+	 *   => Consider documenting the LayoutManagers used in each container if it is relevant for maintenance.
+	 *   
+	 */
+
+	/**
+	 * +::::::::::::::::::::::::::::::::::::+
+	 *         VARIABLE DECLARATIONS 
+	 * +::::::::::::::::::::::::::::::::::::+
+	 */
+	
+	// Main GUI Containers
+	private RoundedPanel mainContainer;           // The main container with rounded corners
+
+	// Side Menu
+	private JPanel menuLateralContainer;          // Side menu container
+	private RoundedPanel menuLateralContent;      // Container for the side menu items
+
+	// Variables for the side menu items
+	private JLabel bbvaIllustration;              // Logo or image in the side menu
+	private JLabel MenuItemPrivacyPolicie;
+	private JLabel MenuItemUseTerms;
+	private JLabel MenuItemDataManagement;
+	private JLabel MenuItemHelpCenter;
+	private JLabel MenuItemAbout;
+	private JLabel MenuItemUpdateHistory;
+	private JLabel MenuItemSoftwareLicenses;
+
+	// Article container (main content)
+	private JPanel articleContainer;              // Container holding the article
+	private JPanel header;                        // Article header
+	private JLabel titleArticle;                  // Article title
+	private JPanel articleContent;                // Article content container
+	private JTextArea article;                    // Text area for displaying the article
+
+	// Directional arrow container (for example, for lateral scrolling)
+	private JPanel directionLateralContainer;     // Container for directional arrows
+	private JPanel directionArrowContent;         // Container for the up and down arrows
+
+	// Direction arrows
+	private JLabel arrowUp;                       // Up arrow
+	private JLabel arrowDown;                     // Down arrow
+
+	// Footer
+	private JPanel footer;                        // Footer container
+	private JPanel closeFrameContainer;           // Container for the close icon
+	private JLabel disposeDialog;                 // Close icon or label to close the frame
+
+	// ==========================================================================
+	// Global State Variables For Window
+	// ==========================================================================
+	private int frameWidth = 870;                 // Width of the main window
+	private int frameHeight = 640;                // Height of the main window
+	private int frameLocationX = 250;             // Position coordinate X of the main window
+	private int frameLocationY = 50;              // Position coordinate Y of the main window
+	private String titleWindow = "BBVA for Windows";
+	private boolean isMenuVisible = true;         // State of the side menu visibility
+	private JLabel currentMenuItem;               // Currently selected menu item
+
+	// ==========================================================================
+	// Other
+	// ==========================================================================
+	private LayoutManager mainLayout;             // Main layout for the JFrame
+	
+	/**
+	 * @see Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
 			CorporateInformation1 dialog = new CorporateInformation1();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -113,340 +167,288 @@ public class CorporateInformation1 extends JDialog {
 	}
 
 	/**
-	 * Create the dialog.
+	 * @see Create the dialog.
 	 */
 	public CorporateInformation1() {
-		setUndecorated(true);
-		setResizable(false);
-		setModalityType(ModalityType.APPLICATION_MODAL);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ithan\\eclipse-workspace\\bbva-desktop-app\\bbva_app_runnable\\bin\\main\\resources\\visual\\icons\\V2\\bbva_logo\\favicon.png"));
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setTitle("BBVA for Windows");
+		setModalityType(ModalityType.APPLICATION_MODAL);
+		setTitle(titleWindow);
 		setType(Type.POPUP);
-		setBounds(250, 50, 868, 638);
+		setUndecorated(true);
+		setResizable(false);
+		setBounds(frameLocationX, frameLocationY, frameWidth, frameHeight);
 		getContentPane().setLayout(new BorderLayout());
-		Container.setBackground(new Color(240, 242, 245));
-		Container.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(Container, BorderLayout.CENTER);
-		Container.setLayout(null);
-		
-		containerLeftLateral = new JPanel();
-		containerLeftLateral.setBounds(12, 0, 300, 627);
-		containerLeftLateral.setBackground(new Color(240, 242, 245));
-		containerLeftLateral.setLayout(null);
-		Container.add(containerLeftLateral);
-		
-		container_menu_lateral = new RoundedPanel();
-		container_menu_lateral.setBounds(0, 20, 295, 552);
-		container_menu_lateral.setBackground(new Color(7, 33, 70));	
-		((RoundedPanel) container_menu_lateral).setCornerRadius(20);
-		container_menu_lateral.setLayout(null);
-		containerLeftLateral.add(container_menu_lateral);
-		
-		containerRightLateral = new JPanel();
-		containerRightLateral.setBounds(310, 11, 484, 616);
-		containerRightLateral.setBackground(new Color(240, 242, 245));
-		containerRightLateral.setLayout(null);
-		Container.add(containerRightLateral);
+		FrameContainer.setBackground(new Color(240, 242, 245));
+		FrameContainer.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(FrameContainer, BorderLayout.CENTER);
+		FrameContainer.setLayout(null);
 		
 		/**
-		 * +----------------------------------------+
-		 *               RIGHT LATERAL
-		 * +----------------------------------------+
+		 * +::::::::::::::::::::::::::::::::::::::::::::+
+		 *        Main Containers For Menu Lateral
+		 * +::::::::::::::::::::::::::::::::::::::::::::+
 		 */
 		
-	    header = new JPanel();
-		header.setBounds(0, 0, 484, 75);
-		header.setBackground(new Color(240, 242, 245));
-		header.setLayout(null);
-		containerRightLateral.add(header);
+		mainContainer = new RoundedPanel();
+		mainContainer.setLocation(15, 15);
+		mainContainer.setSize(getWidth() - 70, getHeight() - 70);
+		mainContainer.setBackground(background.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		((RoundedPanel) mainContainer).setCornerRadius(15);
+		mainContainer.setLayout(null);
+		FrameContainer.add(mainContainer);
 		
-		lblNewLabel_1 = new JLabel("Políticas de privacidad");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\ithan\\eclipse-workspace\\SaspraGames,Inc\\prototype_beta\\src\\ico\\privacy_ico_default.png"));
-		lblNewLabel_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 23));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(0, 11, 484, 53);
-		header.add(lblNewLabel_1);
+		menuLateralContainer = new JPanel();
+		menuLateralContainer.setLocation(10, 10);
+		menuLateralContainer.setSize(mainContainer.getWidth() / 3, mainContainer.getHeight() - 20);
+		menuLateralContainer.setBackground(background.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		menuLateralContainer.setLayout(null);
+		mainContainer.add(menuLateralContainer);
 		
-		content_center = new JPanel();
-		content_center.setBounds(0, 75, 484, 530);
-		content_center.setBackground(new Color(240, 242, 245));
-		content_center.setLayout(null);
-		containerRightLateral.add(content_center);
-		
-		txtarea = new JTextArea();
-		txtarea.setWrapStyleWord(true);
-		txtarea.setEditable(false);
-		txtarea.setLineWrap(true);
-		txtarea.setForeground(new Color(0, 0, 0));
-		txtarea.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 15));
-		txtarea.setBounds(28, 11, 446, 465);
-		txtarea.setBackground(new Color(240, 242, 245));
-		//txtarea.setBackground(new Color(56,56,56));
-		txtarea.setText(STRING_LAYER1);
-		content_center.add(txtarea);
-		
-		content_illustration = new RoundedPanel();
-		content_illustration.setBounds(0, 0, 295, 100);
-		content_illustration.setBackground(background.BACKGROUND_COLOR_BBVA_OFFICIAL);
-		((RoundedPanel) content_illustration).setCornerRadius(20);
-		content_illustration.setLayout(null);
-		container_menu_lateral.add(content_illustration);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\ithan\\git\\BBVARepository\\bbva_desktop_app\\src\\main\\resources\\visual\\icons\\V2\\bbva_logo\\bbva_illustration26x26.png"));
-		lblNewLabel.setBounds(5, 5, 280, 95);
-		content_illustration.add(lblNewLabel);
-		
-		content_menu_item = new JPanel();
-		content_menu_item.setBounds(12, 100, 275, 441);
-		content_menu_item.setBackground(new Color(7, 33, 70));
-		content_menu_item.setLayout(null);
-		container_menu_lateral.add(content_menu_item);
-		
-		ItemMenuLateral[] items = new ItemMenuLateral[5];
-		
-		String[] textContent = {
-				"Política de privacidad",
-				"Términos de uso",
-				"Como usamos tus datos?",
-				"Centro de ayuda",
-				"Acerca de BBVA Digital"
-		};
-		
-		int f = 40;
-		
-		for (int i = 0; i < items.length; i++) {
-			items[i] = new ItemMenuLateral();
-			
-			if (i != 0)
-				f = f + 80;
-			
-			items[i].buildItem(textContent[i]);
-			//((ItemMenuLateral) items[i]).setLocationYX(10, f);
-			items[1].setLocationYX(10, f);
-			//items[i].setSizeWH(210, 30);
-			
-			content_menu_item.add(items[i].paintComponent());
-		}
-		
-		/*lblNewLabel_2 = new JLabel("Términos y condiciones");
-		lblNewLabel_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lblNewLabel_2.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lblNewLabel_2.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
-			}
-		});
-		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 14));
-		lblNewLabel_2.setBounds(10, 40, 210, 30);
-		lblNewLabel_2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		content_menu_item.add(lblNewLabel_2);
-		
-		lblNewLabel_3 = new JLabel("Políticas de privacidad");
-		lblNewLabel_3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lblNewLabel_3.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lblNewLabel_3.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
-			}
-		});
-		lblNewLabel_3.setForeground(new Color(255, 255, 255));
-		lblNewLabel_3.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 14));
-		lblNewLabel_3.setBounds(10, 82, 210, 30);
-		lblNewLabel_3.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		content_menu_item.add(lblNewLabel_3);
-		
-		/*ItemMenuLateral item1 = new ItemMenuLateral();
-		item1.buildItem("Políticas de privacidad");
-		content_menu_item.add(item1.getItem());
-		
-		lblNewLabel_5 = new JLabel("Reportar un fallo de la app");
-		lblNewLabel_5.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lblNewLabel_5.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lblNewLabel_5.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
-			}
-		});
-		lblNewLabel_5.setForeground(new Color(255, 255, 255));
-		lblNewLabel_5.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 14));
-		lblNewLabel_5.setBounds(10, 162, 210, 30);
-		lblNewLabel_5.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		content_menu_item.add(lblNewLabel_5);
-		
-		lblNewLabel_6 = new JLabel("Necesitas ayuda con algo?");
-		lblNewLabel_6.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lblNewLabel_6.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lblNewLabel_6.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
-			}
-		});
-		lblNewLabel_6.setForeground(new Color(255, 255, 255));
-		lblNewLabel_6.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 14));
-		lblNewLabel_6.setBounds(10, 122, 210, 30);
-		lblNewLabel_6.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		content_menu_item.add(lblNewLabel_6);
-		
-		lblNewLabel_7 = new JLabel("  Historial de actualizaciones");
-		lblNewLabel_7.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lblNewLabel_7.setForeground(new Color(91, 190, 255));
-				lblNewLabel_7.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\published_with_changes_25dp_5BBEFF_FILL0_wght200_GRAD-25_opsz24.png"));
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lblNewLabel_7.setForeground(Color.WHITE);
-				lblNewLabel_7.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\published_with_changes_25dp_FFFFFF_FILL0_wght200_GRAD-25_opsz24.png"));
-			}
-		});
-		lblNewLabel_7.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\published_with_changes_25dp_FFFFFF_FILL0_wght200_GRAD-25_opsz24.png"));
-		lblNewLabel_7.setForeground(Color.WHITE);
-		lblNewLabel_7.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 14));
-		lblNewLabel_7.setBounds(10, 400, 225, 30);
-		lblNewLabel_7.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		content_menu_item.add(lblNewLabel_7);
-		
-		lblNewLabel_8 = new JLabel("  Licencias de software");
-		lblNewLabel_8.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lblNewLabel_8.setForeground(new Color(91, 190, 255));
-				lblNewLabel_8.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\code_25dp_5BBEFF_FILL0_wght200_GRAD-25_opsz24.png"));
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lblNewLabel_8.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\code_25dp_FFFFFF_FILL0_wght200_GRAD0_opsz24.png"));
-				lblNewLabel_8.setForeground(Color.WHITE);
-			}
-		});
-		lblNewLabel_8.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\code_25dp_FFFFFF_FILL0_wght200_GRAD0_opsz24.png"));
-		lblNewLabel_8.setForeground(Color.WHITE);
-		lblNewLabel_8.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 14));
-		lblNewLabel_8.setBounds(10, 355, 210, 30);
-		lblNewLabel_8.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		content_menu_item.add(lblNewLabel_8);
-		
-		lblNewLabel_9 = new JLabel("Acerca de BBVA Digital");
-		lblNewLabel_9.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lblNewLabel_9.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lblNewLabel_9.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
-			}
-		});
-		lblNewLabel_9.setForeground(Color.WHITE);
-		lblNewLabel_9.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 14));
-		lblNewLabel_9.setBounds(10, 202, 210, 30);
-		lblNewLabel_9.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		content_menu_item.add(lblNewLabel_9);*/
-		
-		JSeparator separator = new JSeparator();
-		separator.setForeground(new Color(255, 255, 255));
-		separator.setBounds(10, 330, 255, 1);
-		content_menu_item.add(separator);
-		
-		JLabel lblNewLabel_4 = new JLabel("  Volver a inicio");
-		lblNewLabel_4.setBounds(0, 587, 298, 29);
-		lblNewLabel_4.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\close_window_entered.png"));
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\close_window_exited.png"));
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-				home = new ClientRedirection();
-				home.setVisible(true);
-			}
-		});
-		lblNewLabel_4.setVerticalAlignment(SwingConstants.TOP);
-		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\close_window_exited.png"));
-		lblNewLabel_4.setForeground(new Color(0, 0, 0));
-		lblNewLabel_4.setFont(new Font("Yu Gothic UI", Font.PLAIN, 20));
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		containerLeftLateral.add(lblNewLabel_4);
-		
-		JPanel container_lateral_arrow_control = new JPanel();
-		container_lateral_arrow_control.setBounds(794, 0, 68, 627);
-		container_lateral_arrow_control.setBackground(new Color(240, 242, 245));
-		container_lateral_arrow_control.setLayout(null);
-		Container.add(container_lateral_arrow_control);
-		
-		JLabel arrow_up_control = new JLabel();
-		arrow_up_control.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				arrow_up_control.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_up_control_entered.png"));
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				arrow_up_control.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_up_control_exited.png"));
-			}
-		});
-		arrow_up_control.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_up_control_exited.png"));
-		arrow_up_control.setHorizontalAlignment(SwingConstants.CENTER);
-		arrow_up_control.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		arrow_up_control.setBounds(15, 250, 35, 35);
-		container_lateral_arrow_control.add(arrow_up_control);
-		
-		JLabel arrow_down_control = new JLabel();
-		arrow_down_control.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				arrow_down_control.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_down_control_entered.png"));
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				arrow_down_control.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_down_control_exited.png"));
-			}
-		});
-		arrow_down_control.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_down_control_exited.png"));
-		arrow_down_control.setHorizontalAlignment(SwingConstants.CENTER);
-		arrow_down_control.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		arrow_down_control.setBounds(15, 310, 35, 35);
-		container_lateral_arrow_control.add(arrow_down_control);
+		menuLateralContent = new RoundedPanel();
+		menuLateralContent.setLocation(0, 0);
+		menuLateralContent.setSize(menuLateralContainer.getWidth(), menuLateralContainer.getHeight());
+		menuLateralContent.setBackground(background.BACKGROUND_COLOR_BBVA_OFFICIAL);
+		((RoundedPanel) menuLateralContent).setCornerRadius(15);
+		menuLateralContent.setLayout(null);
+		menuLateralContainer.add(menuLateralContent);
 		
 		/**
-		 * +----------------------------------------+
-		 *               LEFT LATERAL
-		 * +----------------------------------------+
+		 * +::::::::::::::::::::::::::::::::::::::::::::+
+		 *        Main Containers For Articles
+		 * +::::::::::::::::::::::::::::::::::::::::::::+
+		 */
+		
+		articleContainer = new JPanel();
+		articleContainer.setLocation(menuLateralContainer.getWidth() + 10, 10);
+		articleContainer.setSize((mainContainer.getWidth() - menuLateralContainer.getWidth()) - 15, mainContainer.getHeight() - 5);
+		articleContainer.setBackground(background.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		articleContainer.setLayout(null);
+		mainContainer.add(articleContainer);
+		
+		header = new JPanel();
+		header.setLocation(0, 0);
+		header.setSize(articleContainer.getWidth(), 60);
+		header.setBackground(background.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		header.setLayout(null);
+		articleContainer.add(header);
+		
+		articleContent = new JPanel();
+		articleContent.setLocation(10, header.getHeight() + 10);
+		articleContent.setSize(articleContainer.getWidth() - 20, (menuLateralContent.getHeight() - header.getHeight()) - 10);
+		articleContent.setBackground(background.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		articleContent.setLayout(null);
+		articleContainer.add(articleContent);
+		
+		/**
+		 * +:::::::::::::::::::::::::::::::::::::::::::::::::::+
+		 *        Main Containers For Direction Arrows
+		 * +:::::::::::::::::::::::::::::::::::::::::::::::::::+
+		 */
+		
+		directionLateralContainer = new JPanel();
+		directionLateralContainer.setLocation(mainContainer.getWidth(), articleContainer.getY());
+		directionLateralContainer.setSize((getWidth() - mainContainer.getWidth()) - 20, articleContainer.getHeight());
+		directionLateralContainer.setBackground(background.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		directionLateralContainer.setLayout(null);
+		mainContainer.add(directionLateralContainer);
+		
+		directionArrowContent = new JPanel();
+		directionArrowContent.setSize(directionLateralContainer.getWidth(), 200);
+		directionArrowContent.setLocation(0, (directionLateralContainer.getHeight() / 2) - directionArrowContent.getHeight() / 2);
+		directionArrowContent.setBackground(background.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		directionArrowContent.setLayout(null);
+		directionLateralContainer.add(directionArrowContent);
+		
+		/**
+		 * +::::::::::::::::::::::::::::::::::::::::::::::::+
+		 *        Main Elements For Menu Lateral 
+		 * +::::::::::::::::::::::::::::::::::::::::::::::::+
+		 */
+		bbvaIllustration = new JLabel();
+		bbvaIllustration.setLocation(0, 5);
+		bbvaIllustration.setSize(menuLateralContent.getWidth(), 100);
+		bbvaIllustration.setText(null);
+		bbvaIllustration.setForeground(null);
+		bbvaIllustration.setIcon(icon.BBVA_ILLUSTRATION_26X26);
+		bbvaIllustration.setHorizontalAlignment(SwingConstants.CENTER);
+		bbvaIllustration.setVerticalAlignment(SwingConstants.CENTER);
+		menuLateralContent.add(bbvaIllustration);
+		
+		MenuItemPrivacyPolicie = new JLabel();
+		MenuItemPrivacyPolicie.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				MenuItemPrivacyPolicie.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				MenuItemPrivacyPolicie.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+			}
+		});
+		MenuItemPrivacyPolicie.setLocation(20, 150);
+		MenuItemPrivacyPolicie.setSize(200, 30);
+		MenuItemPrivacyPolicie.setText("Políticas de privacidad");
+		MenuItemPrivacyPolicie.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 17));
+		MenuItemPrivacyPolicie.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		MenuItemPrivacyPolicie.setHorizontalAlignment(SwingConstants.LEFT);
+		MenuItemPrivacyPolicie.setVerticalAlignment(SwingConstants.CENTER);
+		MenuItemPrivacyPolicie.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menuLateralContent.add(MenuItemPrivacyPolicie);
+		
+		MenuItemUseTerms = new JLabel();
+		MenuItemUseTerms.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				MenuItemUseTerms.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				MenuItemUseTerms.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+			}
+		});
+		MenuItemUseTerms.setLocation(20, 190);
+		MenuItemUseTerms.setSize(200, 30);
+		MenuItemUseTerms.setText("Términos de uso");
+		MenuItemUseTerms.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 17));
+		MenuItemUseTerms.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		MenuItemUseTerms.setHorizontalAlignment(SwingConstants.LEFT);
+		MenuItemUseTerms.setVerticalAlignment(SwingConstants.CENTER);
+		MenuItemUseTerms.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menuLateralContent.add(MenuItemUseTerms);
+		
+		MenuItemDataManagement = new JLabel();
+		MenuItemDataManagement.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				MenuItemDataManagement.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				MenuItemDataManagement.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+			}
+		});
+		MenuItemDataManagement.setLocation(20, 230);
+		MenuItemDataManagement.setSize(200, 30);
+		MenuItemDataManagement.setText("Como usamos tus datos?");
+		MenuItemDataManagement.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 17));
+		MenuItemDataManagement.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		MenuItemDataManagement.setHorizontalAlignment(SwingConstants.LEFT);
+		MenuItemDataManagement.setVerticalAlignment(SwingConstants.CENTER);
+		MenuItemDataManagement.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menuLateralContent.add(MenuItemDataManagement);
+		
+		MenuItemHelpCenter = new JLabel();
+		MenuItemHelpCenter.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				MenuItemHelpCenter.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				MenuItemHelpCenter.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+			}
+		});
+		MenuItemHelpCenter.setLocation(20, 270);
+		MenuItemHelpCenter.setSize(200, 30);
+		MenuItemHelpCenter.setText("Centro de ayuda");
+		MenuItemHelpCenter.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 17));
+		MenuItemHelpCenter.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		MenuItemHelpCenter.setHorizontalAlignment(SwingConstants.LEFT);
+		MenuItemHelpCenter.setVerticalAlignment(SwingConstants.CENTER);
+		MenuItemHelpCenter.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menuLateralContent.add(MenuItemHelpCenter);
+		
+		MenuItemAbout = new JLabel();
+		MenuItemAbout.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				MenuItemAbout.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				MenuItemAbout.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+			}
+		});
+		MenuItemAbout.setLocation(20, 310);
+		MenuItemAbout.setSize(200, 30);
+		MenuItemAbout.setText("Acerca de BBVA Digital");
+		MenuItemAbout.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 17));
+		MenuItemAbout.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		MenuItemAbout.setHorizontalAlignment(SwingConstants.LEFT);
+		MenuItemAbout.setVerticalAlignment(SwingConstants.CENTER);
+		MenuItemAbout.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menuLateralContent.add(MenuItemAbout);
+		
+		MenuItemSoftwareLicenses = new JLabel();
+		MenuItemSoftwareLicenses.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				MenuItemSoftwareLicenses.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\licenceSoftwareEntered.png"));
+				MenuItemSoftwareLicenses.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				MenuItemSoftwareLicenses.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\licenceSoftwareExited.png"));
+				MenuItemSoftwareLicenses.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+			}
+		});
+		MenuItemSoftwareLicenses.setLocation(20, 442);
+		MenuItemSoftwareLicenses.setSize(200, 30);
+		MenuItemSoftwareLicenses.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\licenceSoftwareExited.png"));
+		MenuItemSoftwareLicenses.setText("Licencias de software");
+		MenuItemSoftwareLicenses.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
+		MenuItemSoftwareLicenses.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		MenuItemSoftwareLicenses.setHorizontalAlignment(SwingConstants.LEFT);
+		MenuItemSoftwareLicenses.setVerticalAlignment(SwingConstants.CENTER);
+		MenuItemSoftwareLicenses.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menuLateralContent.add(MenuItemSoftwareLicenses);
+		
+		MenuItemUpdateHistory = new JLabel();
+		MenuItemUpdateHistory.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				MenuItemUpdateHistory.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\updateHistoryEntered.png"));
+				MenuItemUpdateHistory.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				MenuItemUpdateHistory.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\updateHistoryExited.png"));
+				MenuItemUpdateHistory.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+			}
+		});
+		MenuItemUpdateHistory.setLocation(20, 487);
+		MenuItemUpdateHistory.setSize(236, 30);
+		MenuItemUpdateHistory.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\updateHistoryExited.png"));
+		MenuItemUpdateHistory.setText("Historial de actualizaciones");
+		MenuItemUpdateHistory.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
+		MenuItemUpdateHistory.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		MenuItemUpdateHistory.setHorizontalAlignment(SwingConstants.LEFT);
+		MenuItemUpdateHistory.setVerticalAlignment(SwingConstants.CENTER);
+		MenuItemUpdateHistory.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		menuLateralContent.add(MenuItemUpdateHistory);
+		
+		titleArticle = new JLabel();
+		titleArticle.setLocation(0, 0);
+		titleArticle.setSize(header.getWidth(), header.getHeight());
+		titleArticle.setText("Políticas de privacidad");
+		titleArticle.setFont(new Font("Yu Gothic UI", 30, Font.PLAIN));
+		titleArticle.setForeground(new Color(0, 0, 0));
+		titleArticle.setHorizontalAlignment(SwingConstants.CENTER);
+		titleArticle.setVerticalAlignment(SwingConstants.CENTER);
+		header.add(titleArticle);
+		
+		/**
+		 * +::::::::::::::::::::::::::::::::::::::::::::::::+
+		 *        Main Elements For Articles Content
+		 * +::::::::::::::::::::::::::::::::::::::::::::::::+
 		 */
 	}
 }
