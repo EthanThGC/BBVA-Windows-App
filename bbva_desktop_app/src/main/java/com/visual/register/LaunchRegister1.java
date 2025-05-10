@@ -371,11 +371,11 @@ public class LaunchRegister1 extends JFrame {
 				txt_client_name.setForeground(colorFont.PRIMARY_COLOR_FONT_TEXT_BLACK);
 				txt_client_name.setFont(fontStyle.getFont(fontStyle.TEXTFIELD_STANDARD));
 				
-				if(txt_client_name.getText().equals(getPlaceHolder().get(0).toString())) {
+				if (txt_client_name.getText().equals(getPlaceHolder().get(0).toString()))		
 					txt_client_name.setText("");
-				}else {
-					txt_client_name.setText(txt_client_name.getText()+"");
-				}
+				else
+					txt_client_name.setText(txt_client_name.getText() + "");
+				
 			}
 		});
 		txt_client_name.setBounds(27,72,247,37);
@@ -395,11 +395,11 @@ public class LaunchRegister1 extends JFrame {
 				txt_last_name_p.setForeground(colorFont.PRIMARY_COLOR_FONT_TEXT_BLACK);
 				txt_last_name_p.setFont(fontStyle.getFont(fontStyle.TEXTFIELD_STANDARD));
 
-				if(txt_last_name_p.getText().equals(getPlaceHolder().get(1).toString())) {
+				if (txt_last_name_p.getText().equals(getPlaceHolder().get(1).toString()))		
 					txt_last_name_p.setText("");
-				}else {
-					txt_last_name_p.setText(txt_last_name_p.getText()+"");
-				}
+				else
+					txt_last_name_p.setText(txt_last_name_p.getText() + "");
+				
 			}
 		});
 		txt_last_name_p.setBounds(27,173,247,37);
@@ -419,11 +419,11 @@ public class LaunchRegister1 extends JFrame {
 				txt_last_name_m.setForeground(colorFont.PRIMARY_COLOR_FONT_TEXT_BLACK);
 				txt_last_name_m.setFont(fontStyle.getFont(fontStyle.TEXTFIELD_STANDARD));
 				
-				if(txt_last_name_m.getText().equals(getPlaceHolder().get(2).toString())) {
+				if (txt_last_name_m.getText().equals(getPlaceHolder().get(2).toString()))		
 					txt_last_name_m.setText("");
-				}else {
-					txt_last_name_m.setText(txt_last_name_m.getText()+"");
-				}
+				else
+					txt_last_name_m.setText(txt_last_name_m.getText() + "");
+				
 			}
 		});
 		txt_last_name_m.setBounds(27,278,247,37);		
@@ -456,9 +456,13 @@ public class LaunchRegister1 extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e1) {
 				lbl_consult_curp.setCursor(new Cursor(Cursor.WAIT_CURSOR));
-				try {
+				
+				try 
+				{
 					CONSULT_MY_CURP.openWebSite();
-				}catch(URISyntaxException e) {
+				}
+				catch(URISyntaxException e) 
+				{
 					JOptionPane.showMessageDialog(null,
 							"Lo sentimos.\nOcurrio un error al abrir el sitio web.\n\nProblema: "+e.getReason()+"\n\n",
 							"Error de software",
@@ -482,11 +486,11 @@ public class LaunchRegister1 extends JFrame {
 				txt_curp_client.setForeground(colorFont.PRIMARY_COLOR_FONT_TEXT_BLACK);
 				txt_curp_client.setFont(fontStyle.getFont(fontStyle.TEXTFIELD_STANDARD));
 				
-				if(txt_curp_client.getText().equals(getPlaceHolder().get(3).toString())) {
+				if (txt_curp_client.getText().equals(getPlaceHolder().get(3).toString()))		
 					txt_curp_client.setText("");
-				}else {
-					txt_curp_client.setText(txt_curp_client.getText()+"");
-				}
+				else
+					txt_curp_client.setText(txt_curp_client.getText() + "");
+				
 			}
 		});
 		txt_curp_client.setBounds(307,278,270,37);
@@ -562,11 +566,11 @@ public class LaunchRegister1 extends JFrame {
 				txt_state_residence.setForeground(colorFont.PRIMARY_COLOR_FONT_TEXT_BLACK);
 				txt_state_residence.setFont(fontStyle.getFont(fontStyle.TEXTFIELD_STANDARD));
 				
-				if(txt_state_residence.getText().equals(getPlaceHolder().get(4).toString())) {
+				if (txt_state_residence.getText().equals(getPlaceHolder().get(4).toString()))		
 					txt_state_residence.setText("");
-				}else {
-					txt_state_residence.setText(txt_state_residence.getText()+"");
-				}
+				else
+					txt_state_residence.setText(txt_state_residence.getText() + "");
+				
 			}
 		});
 		txt_state_residence.setBounds(27,72,247,37);
@@ -586,11 +590,11 @@ public class LaunchRegister1 extends JFrame {
 				txt_city_residence.setForeground(colorFont.PRIMARY_COLOR_FONT_TEXT_BLACK);
 				txt_city_residence.setFont(fontStyle.getFont(fontStyle.TEXTFIELD_STANDARD));
 				
-				if(txt_city_residence.getText().equals(getPlaceHolder().get(5).toString())) {
+				if (txt_city_residence.getText().equals(getPlaceHolder().get(5).toString()))		
 					txt_city_residence.setText("");
-				}else {
-					txt_city_residence.setText(txt_city_residence.getText()+"");
-				}
+				else
+					txt_city_residence.setText(txt_city_residence.getText() + "");
+				
 			}
 		});
 		txt_city_residence.setBounds(27,173,247,37);
@@ -619,14 +623,11 @@ public class LaunchRegister1 extends JFrame {
 				txt_street_residence.setForeground(colorFont.PRIMARY_COLOR_FONT_TEXT_BLACK);
 				txt_street_residence.setFont(fontStyle.getFont(fontStyle.TEXTFIELD_STANDARD));
 				
-				if (txt_street_residence.getText().equals(getPlaceHolder().get(6).toString())) 
-				{
+				if (txt_street_residence.getText().equals(getPlaceHolder().get(6).toString()))		
 					txt_street_residence.setText("");
-				}
-				else 
-				{
-					txt_street_residence.setText(txt_street_residence.getText()+"");
-				}
+				else
+					txt_street_residence.setText(txt_street_residence.getText() + "");
+				
 			}
 		});
 		txt_street_residence.setBounds(27,278,247,37);//x:290 y: 72
@@ -659,9 +660,13 @@ public class LaunchRegister1 extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e1) {
 				lbl_consult_cp.setCursor(new Cursor(Cursor.WAIT_CURSOR));
-				try {
+			
+				try 
+				{
 					CONSULT_MY_CP.openWebSite();
-				}catch(URISyntaxException e) {
+				}
+				catch(URISyntaxException e) 
+				{
 					JOptionPane.showMessageDialog(null,
 							"Lo sentimos.\nOcurrio un error al abrir el sitio web.\n\nProblema: "+e.getReason()+"\n\n",
 							"Error de software",
@@ -685,14 +690,11 @@ public class LaunchRegister1 extends JFrame {
 				txt_cp_residence.setForeground(colorFont.PRIMARY_COLOR_FONT_TEXT_BLACK);
 				txt_cp_residence.setFont(fontStyle.getFont(fontStyle.TEXTFIELD_STANDARD));
 				
-				if (txt_cp_residence.getText().equals(getPlaceHolder().get(7).toString())) 
-				{
+				if (txt_cp_residence.getText().equals(getPlaceHolder().get(7).toString()))		
 					txt_cp_residence.setText("");
-				}
-				else 
-				{
-					txt_cp_residence.setText(txt_cp_residence.getText()+"");
-				}
+				else
+					txt_cp_residence.setText(txt_cp_residence.getText() + "");
+				
 			}
 		});
 		txt_cp_residence.setBounds(307,72,270,33);//y: 153
@@ -730,14 +732,11 @@ public class LaunchRegister1 extends JFrame {
 				txt_num_exterior.setForeground(new Color(0,0,0));
 				txt_num_exterior.setFont(fontStyle.getFont(fontStyle.TEXTFIELD_STANDARD));
 				
-				if (txt_num_exterior.getText().equals(getPlaceHolder().get(8).toString())) 
-				{
+				if (txt_num_exterior.getText().equals(getPlaceHolder().get(8).toString()))		
 					txt_num_exterior.setText("");
-				}
-				else 
-				{
-					txt_num_exterior.setText(txt_num_exterior.getText()+"");
-				}
+				else
+					txt_num_exterior.setText(txt_num_exterior.getText() + "");
+				
 			}
 		});
 		txt_num_exterior.setBounds(307,173,126,37);//y: 235
@@ -757,14 +756,11 @@ public class LaunchRegister1 extends JFrame {
 				txt_num_interior.setForeground(new Color(0,0,0));
 				txt_num_interior.setFont(fontStyle.getFont(fontStyle.TEXTFIELD_STANDARD));
 				
-				if (txt_num_interior.getText().equals(getPlaceHolder().get(9).toString())) 
-				{
+				if (txt_num_interior.getText().equals(getPlaceHolder().get(9).toString()))		
 					txt_num_interior.setText("");
-				}
-				else 
-				{
-					txt_num_interior.setText(txt_num_interior.getText()+"");
-				}
+				else
+					txt_num_interior.setText(txt_num_interior.getText() + "");
+				
 			}
 		});
 		txt_num_interior.setBounds(453,173,126,37);//y: 235
@@ -798,14 +794,11 @@ public class LaunchRegister1 extends JFrame {
 				txt_email_address.setForeground(colorFont.PRIMARY_COLOR_FONT_TEXT_BLACK);
 				txt_email_address.setFont(fontStyle.getFont(fontStyle.TEXTFIELD_STANDARD));
 				
-				if (txt_email_address.getText().equals(getPlaceHolder().get(10).toString())) 
-				{
+				if (txt_email_address.getText().equals(getPlaceHolder().get(10).toString()))		
 					txt_email_address.setText("");
-				}
-				else 
-				{
-					txt_email_address.setText(txt_email_address.getText()+"");
-				}
+				else
+					txt_email_address.setText(txt_email_address.getText() + "");
+				
 			}
 		});
 		txt_email_address.setBounds(27,72,320,37);
@@ -829,16 +822,16 @@ public class LaunchRegister1 extends JFrame {
 				lbl_input_second_email_address.setIcon(icon.ADDITIONAL_EMAIL_EXITED);
 			}
 			@Override
-			public void mouseClicked(MouseEvent e) 
-			{
-				if (additionalEmail.getAdditionalEmail() == null) additionalEmail.setVisible(true);
+			public void mouseClicked(MouseEvent e) {
+				if (additionalEmail.getAdditionalEmail() == null) 
+					additionalEmail.setVisible(true);
 
                 //get update email
 				additionalEmail.addWindowListener(new WindowAdapter() {
 					@Override
-					public void windowClosed(WindowEvent e) 
-					{
-						if (additionalEmail.getAdditionalEmail() != null) updateAdditionalEmail();
+					public void windowClosed(WindowEvent e) {
+						if (additionalEmail.getAdditionalEmail() != null) 
+							updateAdditionalEmail();
 					}
 				});
 			}
@@ -905,14 +898,11 @@ public class LaunchRegister1 extends JFrame {
 				txt_phone_number_principal.setForeground(colorFont.PRIMARY_COLOR_FONT_TEXT_BLACK);
 				txt_phone_number_principal.setFont(fontStyle.getFont(fontStyle.TEXTFIELD_STANDARD));
 				
-				if (txt_phone_number_principal.getText().equals(getPlaceHolder().get(11).toString())) 
-				{
+				if (txt_phone_number_principal.getText().equals(getPlaceHolder().get(11).toString()))
 					txt_phone_number_principal.setText("");
-				}
-				else 
-				{
-					txt_phone_number_principal.setText(txt_phone_number_principal.getText()+"");
-				}
+				else
+					txt_phone_number_principal.setText(txt_phone_number_principal.getText() + "");
+			
 			}
 		});
 		txt_phone_number_principal.setBounds(27,170,320,37);
@@ -932,14 +922,11 @@ public class LaunchRegister1 extends JFrame {
 				txt_phone_number_secundary.setForeground(colorFont.PRIMARY_COLOR_FONT_TEXT_BLACK);
 				txt_phone_number_secundary.setFont(fontStyle.getFont(fontStyle.TEXTFIELD_STANDARD));
 				
-				if (txt_phone_number_secundary.getText().equals(getPlaceHolder().get(12).toString())) 
-				{
+				if (txt_phone_number_secundary.getText().equals(getPlaceHolder().get(12).toString()))
 					txt_phone_number_secundary.setText("");
-				}
-				else 
-				{
-					txt_phone_number_secundary.setText(txt_phone_number_secundary.getText()+"");
-				}
+				else
+					txt_phone_number_secundary.setText(txt_phone_number_secundary.getText() + "");
+			
 			}
 		});
 		txt_phone_number_secundary.setBounds(27,271,320,37);
@@ -1096,16 +1083,11 @@ public class LaunchRegister1 extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				if (terms_conditions_licenses.isSelected())
-				{
 					System.out.print("Next step: create account\n");
-				}
 				else
-				{
 					if (showUserLicencePopupMessage() == JOptionPane.NO_OPTION)
-					{
 						showCancelRegisterWarningMessage();
-					}
-				}
+				
 			}
 		});
 		button_create_account.setBounds(173,130,235,55);

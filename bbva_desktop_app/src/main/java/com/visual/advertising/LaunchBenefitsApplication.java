@@ -375,17 +375,15 @@ public class LaunchBenefitsApplication extends JFrame {
 			@Override
 			public void mouseEntered(MouseEvent e) 
 			{
-				if (isEventEqualsLaunch()) {
+				if (isEventEqualsLaunch()) 
 					LeftDirectionArrow.setIcon(ICON.LEFT_ARROW_LAYER_BENEFIT_ENTERED);
-				}
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) 
 			{
-				if (isEventEqualsLaunch()) {
+				if (isEventEqualsLaunch()) 
 					LeftDirectionArrow.setIcon(ICON.LEFT_ARROW_LAYER_BENEFIT_EXITED);
-				}
 			}
 		});
 		LeftDirectionArrow.setBounds(145, 20, 20, 30);
@@ -399,8 +397,7 @@ public class LaunchBenefitsApplication extends JFrame {
 		RightDirectionArrow = new JLabel();
 		RightDirectionArrow.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) 
-			{
+			public void mouseClicked(MouseEvent e) {
 				if (isEventEqualsLaunch()) 
 				{
 					setMoveToRight(true);
@@ -410,16 +407,14 @@ public class LaunchBenefitsApplication extends JFrame {
 			}
 			
 			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
+			public void mouseEntered(MouseEvent e) {
 				if (isEventEqualsLaunch()) {
 					RightDirectionArrow.setIcon(ICON.RIGHT_ARROW_LAYER_BENEFIT_ENTERED);
 				}
 			}
 			
 			@Override
-			public void mouseExited(MouseEvent e) 
-			{
+			public void mouseExited(MouseEvent e) {
 				if (isEventEqualsLaunch()) {
 					RightDirectionArrow.setIcon(ICON.RIGHT_ARROW_LAYER_BENEFIT_EXITED);
 				}
@@ -438,9 +433,9 @@ public class LaunchBenefitsApplication extends JFrame {
 		LeavePage.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				dispose();
 				registerAccount = new LaunchRegister1();
 				registerAccount.setVisible(true);
-				dispose();
 			}
 			
 			@Override
@@ -610,14 +605,10 @@ public class LaunchBenefitsApplication extends JFrame {
 		}
 		
 		if (getLayer() == 0)
-		{
 			LeftDirectionArrow.setVisible(false);
-		}
 		
 		if (getLayer() == 4)
-		{
 			RightDirectionArrow.setVisible(false);
-		}
 	}
 	
 	/**
@@ -698,7 +689,7 @@ public class LaunchBenefitsApplication extends JFrame {
 	}*/
 	
 	private void layerButtonEvents() {
-		
+	
 		switch(getLayer())
 		{
     		case 0:

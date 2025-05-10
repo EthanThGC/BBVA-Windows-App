@@ -14,16 +14,14 @@ public class FontManager {
     public final Font TEXTFIELD_STANDARD = new Font("Yu Gothic UI Semilight", Font.PLAIN, 17);
 	
     public FontManager() {
-    	this.font = null;
+    	this.font = null; 
     }
     
     public void setFont(Font font) {
-    	if (font.toString().equals(YU_GOTHIC_UI_SEMILIGHT_PLAIN_SZ18.toString()))
-    	{
+    	if (font.toString().equals(YU_GOTHIC_UI_SEMILIGHT_PLAIN_SZ18.toString())) {
     		this.font = YU_GOTHIC_UI_SEMILIGHT_PLAIN_SZ18;
-    	}
-    	else if (font.toString().equals(NIRMALA_UI_BOLD_SZ26.toString()))
-    	{
+    	} 
+    	else if (font.toString().equals(NIRMALA_UI_BOLD_SZ26.toString())){
     		this.font = NIRMALA_UI_BOLD_SZ26;
     	}
     }

@@ -34,7 +34,7 @@ public class CorporateInformation1 extends JDialog {
 	private static JPanel containerLeftLateral, containerRightLateral;
 	private static JPanel header, content_center;
 	private JPanel content_illustration;
-	private JPanel container_menu_lateral;
+	protected JPanel container_menu_lateral;
 	private JLabel lblNewLabel_1;
 	
 	private JTextArea txtarea;
@@ -206,7 +206,33 @@ public class CorporateInformation1 extends JDialog {
 		content_menu_item.setLayout(null);
 		container_menu_lateral.add(content_menu_item);
 		
-		lblNewLabel_2 = new JLabel("Términos y condiciones");
+		ItemMenuLateral[] items = new ItemMenuLateral[5];
+		
+		String[] textContent = {
+				"Política de privacidad",
+				"Términos de uso",
+				"Como usamos tus datos?",
+				"Centro de ayuda",
+				"Acerca de BBVA Digital"
+		};
+		
+		int f = 40;
+		
+		for (int i = 0; i < items.length; i++) {
+			items[i] = new ItemMenuLateral();
+			
+			if (i != 0)
+				f = f + 80;
+			
+			items[i].buildItem(textContent[i]);
+			//((ItemMenuLateral) items[i]).setLocationYX(10, f);
+			items[1].setLocationYX(10, f);
+			//items[i].setSizeWH(210, 30);
+			
+			content_menu_item.add(items[i].paintComponent());
+		}
+		
+		/*lblNewLabel_2 = new JLabel("Términos y condiciones");
 		lblNewLabel_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -241,6 +267,10 @@ public class CorporateInformation1 extends JDialog {
 		lblNewLabel_3.setBounds(10, 82, 210, 30);
 		lblNewLabel_3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		content_menu_item.add(lblNewLabel_3);
+		
+		/*ItemMenuLateral item1 = new ItemMenuLateral();
+		item1.buildItem("Políticas de privacidad");
+		content_menu_item.add(item1.getItem());
 		
 		lblNewLabel_5 = new JLabel("Reportar un fallo de la app");
 		lblNewLabel_5.addMouseListener(new MouseAdapter() {
@@ -336,7 +366,7 @@ public class CorporateInformation1 extends JDialog {
 		lblNewLabel_9.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 14));
 		lblNewLabel_9.setBounds(10, 202, 210, 30);
 		lblNewLabel_9.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		content_menu_item.add(lblNewLabel_9);
+		content_menu_item.add(lblNewLabel_9);*/
 		
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(255, 255, 255));
