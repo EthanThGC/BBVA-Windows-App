@@ -79,7 +79,6 @@ public class ClientRedirection extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	
 	public static void main(String[] args) throws IOException {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

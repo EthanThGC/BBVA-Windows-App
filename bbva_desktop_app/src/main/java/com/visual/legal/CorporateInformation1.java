@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
-import java.awt.LayoutManager;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -39,6 +38,27 @@ public class CorporateInformation1 extends JDialog {
 	private static IconImageManager icon = new IconImageManager();
 	private static ColorManager foreground = new ColorManager();
 	private static ColorManager background = new ColorManager();
+	
+	private static final String LAYER = "Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba"
+			+ " Texto de prueba Texto de prueba Texto de prueba Texto de prueba";
 	
 	/*
 	 *  +::::::::::::::::::::::::::::::::::::+
@@ -133,8 +153,8 @@ public class CorporateInformation1 extends JDialog {
 	private JLabel arrowDown;                     // Down arrow
 
 	// Footer
-	private JPanel footer;                        // Footer container
-	private JPanel closeFrameContainer;           // Container for the close icon
+	private JPanel footerContainer;                        // Footer container
+	private JPanel footerContent;
 	private JLabel disposeDialog;                 // Close icon or label to close the frame
 
 	// ==========================================================================
@@ -148,11 +168,6 @@ public class CorporateInformation1 extends JDialog {
 	private boolean isMenuVisible = true;         // State of the side menu visibility
 	private JLabel currentMenuItem;               // Currently selected menu item
 
-	// ==========================================================================
-	// Other
-	// ==========================================================================
-	private LayoutManager mainLayout;             // Main layout for the JFrame
-	
 	/**
 	 * @see Launch the application.
 	 */
@@ -247,18 +262,37 @@ public class CorporateInformation1 extends JDialog {
 		 */
 		
 		directionLateralContainer = new JPanel();
-		directionLateralContainer.setLocation(mainContainer.getWidth(), articleContainer.getY());
+		directionLateralContainer.setLocation(mainContainer.getWidth() + mainContainer.getX(), articleContainer.getY());
 		directionLateralContainer.setSize((getWidth() - mainContainer.getWidth()) - 20, articleContainer.getHeight());
-		directionLateralContainer.setBackground(background.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		directionLateralContainer.setBackground(background.BACKGROUND_WHITE_LIGHT);
 		directionLateralContainer.setLayout(null);
-		mainContainer.add(directionLateralContainer);
+		FrameContainer.add(directionLateralContainer);
 		
 		directionArrowContent = new JPanel();
 		directionArrowContent.setSize(directionLateralContainer.getWidth(), 200);
 		directionArrowContent.setLocation(0, (directionLateralContainer.getHeight() / 2) - directionArrowContent.getHeight() / 2);
-		directionArrowContent.setBackground(background.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		directionArrowContent.setBackground(background.BACKGROUND_WHITE_LIGHT);
 		directionArrowContent.setLayout(null);
 		directionLateralContainer.add(directionArrowContent);
+		
+		/**
+		 * +:::::::::::::::::::::::::::::::::::::::::::::::::::+
+		 *        Main Containers For Footer Section
+		 * +:::::::::::::::::::::::::::::::::::::::::::::::::::+
+		 */
+		footerContainer = new JPanel();
+		footerContainer.setLocation(0,  mainContainer.getHeight() + mainContainer.getY());
+		footerContainer.setSize(getWidth(), getHeight() - (mainContainer.getHeight() + mainContainer.getY()));
+		footerContainer.setBackground(background.BACKGROUND_WHITE_LIGHT);
+		footerContainer.setLayout(null);
+		FrameContainer.add(footerContainer);
+		
+		footerContent = new JPanel();
+		footerContent.setLocation(20, 10);
+		footerContent.setSize(footerContainer.getWidth() - 40, footerContainer.getHeight() - 20);
+		footerContent.setBackground(background.BACKGROUND_WHITE_LIGHT);
+		footerContent.setLayout(null);
+		footerContainer.add(footerContent);
 		
 		/**
 		 * +::::::::::::::::::::::::::::::::::::::::::::::::+
@@ -435,20 +469,119 @@ public class CorporateInformation1 extends JDialog {
 		MenuItemUpdateHistory.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuLateralContent.add(MenuItemUpdateHistory);
 		
-		titleArticle = new JLabel();
-		titleArticle.setLocation(0, 0);
-		titleArticle.setSize(header.getWidth(), header.getHeight());
-		titleArticle.setText("Políticas de privacidad");
-		titleArticle.setFont(new Font("Yu Gothic UI", 30, Font.PLAIN));
-		titleArticle.setForeground(new Color(0, 0, 0));
-		titleArticle.setHorizontalAlignment(SwingConstants.CENTER);
-		titleArticle.setVerticalAlignment(SwingConstants.CENTER);
-		header.add(titleArticle);
-		
 		/**
 		 * +::::::::::::::::::::::::::::::::::::::::::::::::+
 		 *        Main Elements For Articles Content
 		 * +::::::::::::::::::::::::::::::::::::::::::::::::+
 		 */
+		
+		titleArticle = new JLabel();
+		titleArticle.setLocation(0, 0);
+		titleArticle.setSize(header.getWidth(), header.getHeight());
+		titleArticle.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\privacy_ico_default.png"));
+		titleArticle.setText("En desarrollo, NO OFICIAL");
+		titleArticle.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 23));
+		titleArticle.setForeground(new Color(0, 0, 0));
+		titleArticle.setHorizontalAlignment(SwingConstants.CENTER);
+		titleArticle.setVerticalAlignment(SwingConstants.CENTER);
+		header.add(titleArticle);
+		
+		article = new JTextArea();
+		article.setLocation(10, 10);
+		article.setSize(articleContent.getWidth() - 20, articleContent.getHeight() - 20);
+		article.setWrapStyleWord(true);
+		article.setEditable(false);
+		article.setLineWrap(true);
+		article.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_BLACK);
+		article.setBackground(background.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		article.setFont(new Font("Yu Gothic UI", Font.PLAIN, 16));
+		article.setText(LAYER);
+		articleContent.add(article);
+		
+		/**
+		 * +::::::::::::::::::::::::::::::::::::::::::::::::+
+		 *        Main Elements For Arrow Direction
+		 * +::::::::::::::::::::::::::::::::::::::::::::::::+
+		 */
+		arrowUp = new JLabel();
+		arrowUp.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				arrowUp.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_up_control_entered.png"));
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				arrowUp.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_up_control_exited.png"));
+			}
+		});
+		arrowUp.setLocation(0, 58);
+		arrowUp.setSize(directionArrowContent.getWidth(), 30);
+		arrowUp.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_up_control_exited.png"));
+		arrowUp.setText(null);
+		arrowUp.setForeground(null);
+		arrowUp.setHorizontalAlignment(SwingConstants.CENTER);
+		arrowUp.setVerticalAlignment(SwingConstants.CENTER);
+		arrowUp.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		directionArrowContent.add(arrowUp);
+		
+		arrowDown = new JLabel();
+		arrowDown.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				arrowDown.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_down_control_entered.png"));
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				arrowDown.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_down_control_exited.png"));
+			}
+		});
+		arrowDown.setLocation(0, 118);
+		arrowDown.setSize(directionArrowContent.getWidth(), 30);
+		arrowDown.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_down_control_exited.png"));
+		arrowDown.setText(null);
+		arrowDown.setForeground(null);
+		arrowDown.setHorizontalAlignment(SwingConstants.CENTER);
+		arrowDown.setVerticalAlignment(SwingConstants.CENTER);
+		arrowDown.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		directionArrowContent.add(arrowDown);
+		
+		/**
+		 * +::::::::::::::::::::::::::::::::::::::::::::::::+
+		 *        Main Elements For Footer Content
+		 * +::::::::::::::::::::::::::::::::::::::::::::::::+
+		 */
+		disposeDialog = new JLabel();
+		disposeDialog.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				disposeDialog.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\close_window_entered.png"));
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				disposeDialog.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\close_window_exited.png"));
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				ToHome = new  ClientRedirection();
+				ToHome.setVisible(true);
+			}
+		});
+		disposeDialog.setSize(menuLateralContent.getWidth() + 5, 40);
+		disposeDialog.setLocation(menuLateralContent.getX(), footerContent.getHeight() / 2 - (disposeDialog.getHeight() / 2));
+		disposeDialog.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\close_window_exited.png"));
+		disposeDialog.setText("Volver a inicio");
+		disposeDialog.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+		disposeDialog.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_BLACK);
+		disposeDialog.setHorizontalAlignment(SwingConstants.CENTER);
+		disposeDialog.setVerticalAlignment(SwingConstants.CENTER);
+		disposeDialog.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		footerContent.add(disposeDialog);
+		
+
 	}
 }
