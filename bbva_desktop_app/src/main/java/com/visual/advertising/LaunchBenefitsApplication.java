@@ -58,52 +58,38 @@ public class LaunchBenefitsApplication extends JFrame {
 	private BenefitsBBVA benefitsPage;
 	
 	/*
-	        GUI ORGANIZATION'S MAP         ::::     Swing components 
-	         
-    =================================================================
-      
-    MainFrame
-    
-     1) Header                             ::::     JPanel
-        
-       1.1 IllustrationContainer           ::::     JPanel
-          
-           1.2 Illustration                ::::     JLabel [Icon]
-     
-     2) Content
-       
-       2.1 BenefitsDescriptionContent      ::::     JPanel
-       
-           2.1.2 ParagraphRowTop           ::::     JLabel   
-           
-           2.1.3 ParagraphRowCenter        ::::     JLabel   
-         
-           2.1.4 ParagraphRowBottom        ::::     JLabel        
-     
-     3) Footer
-     
-       3.1 FooterContainer                 ::::     JPanel
-       
-           3.1.2 LayerRedirectionPanel     ::::     JPanel
-           
-               3.2.3 LeftDirectionArrow    ::::     JLabel [Icon]
-               
-               3.2.4 FirstPositionLayer    ::::     JButton [RoundedPanel]
-              
-               3.2.5 SecondPositionLayer   ::::     JButton [RoundedPanel]
-               
-               3.2.6 ThirdPositionLayer    ::::     JButton [RoundedPanel]
-               
-               3.2.7 FourthPositionLayer   ::::     JButton [RoundedPanel]
-               
-               3.2.8 FifthPositionLayer    ::::     JButton [RoundedPanel]
-               
-               3.2.9 RightDirectionArrow   ::::     JLabel [Icon]
-   
-           3.1.3 LeavePage                 ::::     JLabel
-            
-    =================================================================
-    */
+	 *  GUI ORGANIZATION MAP  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	 *  
+	 *  MainFrame (JPanel)
+	 *  ├── Header (JPanel)
+	 *  │   └── IllustrationContainer (JPanel)
+	 *  │       └── Illustration (JLabel) => icon
+	 *  │
+	 *  ├── Content (JPanel)
+	 *  │   └── BenefitsDescriptionContent (JPanel)
+	 *  │       ├── ParagraphRowTop (JLabel)
+	 *  │       ├── ParagraphRowCenter (JLabel)
+	 *  │       └── ParagraphRowBottom (JLabel)
+	 *  │
+	 *  └── Footer (JPanel)
+	 *      └── FooterContainer (JPanel)
+	 *          ├── LayerRedirectionPanel (JPanel)
+	 *          │   ├── LeftDirectionArrow (JLabel) => icon
+	 *          │   ├── FirstPositionButton (JPanel)     
+	 *          │   ├── SecondPositionButton (JPanel)
+	 *          │   ├── ThirdPositionButton (JPanel)
+	 *          │   ├── FourthPositionLayer (JPanel)
+	 *          │   ├── FifthPositionLayer (JPanel)
+	 *          │   └── RightDirectionArrow (JLabel) => icon
+	 *          │
+	 *          ├── LeavePageIcon (JLabel) => icon
+	 *          └── LeavePage (JLabel)
+	 *  
+	 *  ----------------------------------------------------------------------------------------------------------------------
+	 *  NOTE: This diagram matches the current component tree defined in code.
+	 *        Components marked as (JPanel) may contain custom render logic (e.g., rounded buttons).
+	 *        Update this structure if layout or naming conventions change in the code.
+	 */
 	
 	private JPanel MainFrame;
 	
