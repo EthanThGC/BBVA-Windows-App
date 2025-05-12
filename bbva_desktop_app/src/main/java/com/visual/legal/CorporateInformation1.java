@@ -1,5 +1,10 @@
 package main.java.com.visual.legal;
 
+/**
+ * @author BBVA Group 
+ * Copyright 2025 - All rights reserved
+ */
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -17,10 +22,10 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-import main.java.com.visual.access.ClientRedirection;
-import main.resources.visual.manager.classes.ColorManager;
-import main.resources.visual.manager.classes.IconImageManager;
+import main.resources.visual.manager.classes.*;
 import main.resources.visual.swingcomponents.RoundedPanel;
+
+import main.java.com.visual.access.ClientRedirection;
 
 public class CorporateInformation1 extends JDialog {
 
@@ -97,6 +102,7 @@ public class CorporateInformation1 extends JDialog {
 	 *      |   | 
 	 *      │   └── DirectionArrowContent (JPanel)
 	 *      |       |
+	 *      |       ├── disposeDialog2 (JLabel [Icon])
 	 *      │       ├── ArrowUp (JLabel [Icon])
 	 *      │       └── ArrowDown (JLabel [Icon])
 	 *      │
@@ -149,6 +155,7 @@ public class CorporateInformation1 extends JDialog {
 	private JPanel directionArrowContent;         // Container for the up and down arrows
 
 	// Direction arrows
+	private JLabel disposeDialog2;
 	private JLabel arrowUp;                       // Up arrow
 	private JLabel arrowDown;                     // Down arrow
 
@@ -503,6 +510,33 @@ public class CorporateInformation1 extends JDialog {
 		 *        Main Elements For Arrow Direction
 		 * +::::::::::::::::::::::::::::::::::::::::::::::::+
 		 */
+		disposeDialog2 = new JLabel();
+		disposeDialog2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				disposeDialog2.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\close_dialog_entered.png"));
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				disposeDialog2.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\close_dialog_exited.png"));
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				closeDialog();
+			}
+		});
+		disposeDialog2.setLocation(0, mainContainer.getY() - 5);
+		disposeDialog2.setSize(directionLateralContainer.getWidth(), 40);
+		disposeDialog2.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\close_dialog_exited.png"));
+		disposeDialog2.setText(null);
+		disposeDialog2.setForeground(null);
+		disposeDialog2.setHorizontalAlignment(SwingConstants.CENTER);
+		disposeDialog2.setVerticalAlignment(SwingConstants.CENTER);
+		disposeDialog2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		directionLateralContainer.add(disposeDialog2);
+		
 		arrowUp = new JLabel();
 		arrowUp.addMouseListener(new MouseAdapter() {
 			@Override
@@ -566,9 +600,7 @@ public class CorporateInformation1 extends JDialog {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				dispose();
-				ToHome = new  ClientRedirection();
-				ToHome.setVisible(true);
+				closeDialog();
 			}
 		});
 		disposeDialog.setSize(menuLateralContent.getWidth() + 5, 40);
@@ -582,6 +614,11 @@ public class CorporateInformation1 extends JDialog {
 		disposeDialog.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		footerContent.add(disposeDialog);
 		
-
+	}
+	
+	private void closeDialog() {
+		dispose();
+		ToHome = new ClientRedirection();
+		ToHome.setVisible(true);
 	}
 }
