@@ -12,6 +12,9 @@ public class IconImageManager {
 	public final Icon BBVA_APP_FOR_WINDOWS_BANNER = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/user_redirection/bannerBETA1.png"));
 	public final Icon BBVA_ILLUSTRATION_26X26 = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/bbva_logo/bbva_illustration26x26.png"));
 	
+	//first GIF of the program
+	public final Icon ANIMATED_LOADING_SOFTWARE = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V2/initializing_app/animated_loading_program.gif"));
+	
 	/*
 	 * REDIRECTION WINDOW 
 	 * 
