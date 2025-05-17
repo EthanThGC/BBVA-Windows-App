@@ -139,8 +139,7 @@ public class IconImageManager {
 
 	/*
 	 * LOGIN APPLICATION - ICONS
-	 * 
-     */
+     * */
 	public final Icon BANNER_PRESENTATION_LOGIN_APP = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/banner_presentation_login_app_op1.png"));
 	
 	public final Icon LOGIN_USER = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_user.png"));
@@ -159,6 +158,26 @@ public class IconImageManager {
 	public final Icon PASSWORD_VISIBILITY_VISIBLE_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/visibility_visible_exited_ico.png"));
 	public final Icon PASSWORD_VISIBILITY_HIDDEN_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/visibility_hidden_entered_ico.png"));
 	public final Icon PASSWORD_VISIBILITY_HIDDEN_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/visibility_hidden_exited_ico.png"));
+	
+	/*
+	 * CORPORATE DECLARATION - ICONS
+	 * */
+	public final Icon CLOSE_CORPORATION_DECLARATION_DIALOG_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/close_dialog_exited.png"));
+	public final Icon CLOSE_CORPORATION_DECLARATION_DIALOG_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/close_dialog_entered.png"));
+	
+	public final Icon UP_DIRECTION_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/arrow_up_control_exited.png"));
+	public final Icon UP_DIRECTION_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/arrow_up_control_entered.png"));
+	public final Icon DOWN_DIRECTION_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/arrow_down_control_exited.png"));
+	public final Icon DOWN_DIRECTION_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/arrow_down_control_entered.png"));
+	
+	public final Icon DISPOSE_CORPORATION_DECLARATION_DIALOG_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/close_window_exited.png"));
+	public final Icon DISPOSE_CORPORATION_DECLARATION_DIALOG_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/close_window_entered.png"));
+	
+	public final Icon SOFTWARE_LICENCES_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/licenceSoftwareExited.png"));
+	public final Icon SOFTWARE_LICENCES_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/licenceSoftwareEntered.png"));
+	
+	public final Icon SOFTWARE_UPDATES_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/updateHistoryExited.png"));
+	public final Icon SOFTWARE_UPDATES_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/updateHistoryEntered.png"));
 	
 	/*
 	 * POPUP WINDOW -> ADDITIONAL EMAIL WINDOW ICONS -> ICONS DARK VERSION

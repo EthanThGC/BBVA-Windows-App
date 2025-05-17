@@ -1,6 +1,7 @@
 package main.java.com.visual.legal;
 
-/*
+/**
+ *
  * <strong>MIT License</strong>
  * 
  * <p>Copyright (c) 2025 [BBVA Group].</p>
@@ -27,6 +28,7 @@ package main.java.com.visual.legal;
  * IN CONTRACT, TORT OR OTHERWISE, ARISING OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OF OR * DEALINGS IN THE 
  * SOFTWARE. OR OTHER DEALINGS IN THE SOFTWARE.
  * </p>
+ * 
  */
 
 import java.awt.BorderLayout;
@@ -37,7 +39,6 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -454,19 +455,19 @@ public class CorporateInformation1 extends JDialog {
 		MenuItemSoftwareLicenses.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				MenuItemSoftwareLicenses.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\licenceSoftwareEntered.png"));
+				MenuItemSoftwareLicenses.setIcon(icon.SOFTWARE_LICENCES_ENTERED);
 				MenuItemSoftwareLicenses.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				MenuItemSoftwareLicenses.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\licenceSoftwareExited.png"));
+				MenuItemSoftwareLicenses.setIcon(icon.SOFTWARE_LICENCES_EXITED);
 				MenuItemSoftwareLicenses.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
 			}
 		});
 		MenuItemSoftwareLicenses.setLocation(20, 442);
 		MenuItemSoftwareLicenses.setSize(200, 30);
-		MenuItemSoftwareLicenses.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\licenceSoftwareExited.png"));
+		MenuItemSoftwareLicenses.setIcon(icon.SOFTWARE_LICENCES_EXITED);
 		MenuItemSoftwareLicenses.setText("Licencias de software");
 		MenuItemSoftwareLicenses.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
 		MenuItemSoftwareLicenses.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
@@ -479,19 +480,19 @@ public class CorporateInformation1 extends JDialog {
 		MenuItemUpdateHistory.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				MenuItemUpdateHistory.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\updateHistoryEntered.png"));
+				MenuItemUpdateHistory.setIcon(icon.UPDATE_ADDITIONAL_EMAIL_ENTERED);
 				MenuItemUpdateHistory.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				MenuItemUpdateHistory.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\updateHistoryExited.png"));
+				MenuItemUpdateHistory.setIcon(icon.UPDATE_ADDITIONAL_EMAIL_EXITED);
 				MenuItemUpdateHistory.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
 			}
 		});
 		MenuItemUpdateHistory.setLocation(20, 487);
 		MenuItemUpdateHistory.setSize(236, 30);
-		MenuItemUpdateHistory.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\updateHistoryExited.png"));
+		MenuItemUpdateHistory.setIcon(icon.UPDATE_ADDITIONAL_EMAIL_EXITED);
 		MenuItemUpdateHistory.setText("Historial de actualizaciones");
 		MenuItemUpdateHistory.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
 		MenuItemUpdateHistory.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
@@ -509,7 +510,7 @@ public class CorporateInformation1 extends JDialog {
 		titleArticle = new JLabel();
 		titleArticle.setLocation(0, 0);
 		titleArticle.setSize(header.getWidth(), header.getHeight());
-		titleArticle.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\privacy_ico_default.png"));
+		titleArticle.setIcon(null);
 		titleArticle.setText("En desarrollo, NO OFICIAL");
 		titleArticle.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 23));
 		titleArticle.setForeground(new Color(0, 0, 0));
@@ -538,12 +539,12 @@ public class CorporateInformation1 extends JDialog {
 		disposeDialog2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				disposeDialog2.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\close_dialog_entered.png"));
+				disposeDialog2.setIcon(icon.CLOSE_CORPORATION_DECLARATION_DIALOG_ENTERED);
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				disposeDialog2.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\close_dialog_exited.png"));
+				disposeDialog2.setIcon(icon.CLOSE_CORPORATION_DECLARATION_DIALOG_EXITED);
 			}
 			
 			@Override
@@ -553,7 +554,7 @@ public class CorporateInformation1 extends JDialog {
 		});
 		disposeDialog2.setLocation(0, mainContainer.getY() - 5);
 		disposeDialog2.setSize(directionLateralContainer.getWidth(), 40);
-		disposeDialog2.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\close_dialog_exited.png"));
+		disposeDialog2.setIcon(icon.CLOSE_CORPORATION_DECLARATION_DIALOG_EXITED);
 		disposeDialog2.setText(null);
 		disposeDialog2.setForeground(null);
 		disposeDialog2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -565,17 +566,17 @@ public class CorporateInformation1 extends JDialog {
 		arrowUp.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				arrowUp.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_up_control_entered.png"));
+				arrowUp.setIcon(icon.UP_DIRECTION_ENTERED);
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				arrowUp.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_up_control_exited.png"));
+				arrowUp.setIcon(icon.UP_DIRECTION_EXITED);
 			}
 		});
 		arrowUp.setLocation(0, 58);
 		arrowUp.setSize(directionArrowContent.getWidth(), 30);
-		arrowUp.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_up_control_exited.png"));
+		arrowUp.setIcon(icon.UP_DIRECTION_ENTERED);
 		arrowUp.setText(null);
 		arrowUp.setForeground(null);
 		arrowUp.setHorizontalAlignment(SwingConstants.CENTER);
@@ -587,17 +588,17 @@ public class CorporateInformation1 extends JDialog {
 		arrowDown.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				arrowDown.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_down_control_entered.png"));
+				arrowDown.setIcon(icon.DOWN_DIRECTION_ENTERED);
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				arrowDown.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_down_control_exited.png"));
+				arrowDown.setIcon(icon.DOWN_DIRECTION_EXITED);
 			}
 		});
 		arrowDown.setLocation(0, 118);
 		arrowDown.setSize(directionArrowContent.getWidth(), 30);
-		arrowDown.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\arrow_down_control_exited.png"));
+		arrowDown.setIcon(icon.DOWN_DIRECTION_EXITED);
 		arrowDown.setText(null);
 		arrowDown.setForeground(null);
 		arrowDown.setHorizontalAlignment(SwingConstants.CENTER);
@@ -614,12 +615,12 @@ public class CorporateInformation1 extends JDialog {
 		disposeDialog.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				disposeDialog.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\close_window_entered.png"));
+				disposeDialog.setIcon(icon.DISPOSE_CORPORATION_DECLARATION_DIALOG_ENTERED);
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				disposeDialog.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\close_window_exited.png"));
+				disposeDialog.setIcon(icon.DISPOSE_CORPORATION_DECLARATION_DIALOG_EXITED);
 			}
 			
 			@Override
@@ -629,7 +630,7 @@ public class CorporateInformation1 extends JDialog {
 		});
 		disposeDialog.setSize(menuLateralContent.getWidth() + 5, 40);
 		disposeDialog.setLocation(menuLateralContent.getX(), footerContent.getHeight() / 2 - (disposeDialog.getHeight() / 2));
-		disposeDialog.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\close_window_exited.png"));
+		disposeDialog.setIcon(icon.DISPOSE_CORPORATION_DECLARATION_DIALOG_EXITED);
 		disposeDialog.setText("Volver a inicio");
 		disposeDialog.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
 		disposeDialog.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_BLACK);
