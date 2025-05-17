@@ -1,8 +1,32 @@
 package main.java.com.visual.access;
 
-/**
- * @author BBVA Group 
- * Copyright 2025 - All rights reserved
+/*
+ * <strong>MIT License</strong>
+ * 
+ * <p>Copyright (c) 2025 [BBVA Group].</p>
+ * 
+ * <p>
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+ * documentation files (the “Software”), to use this software and the associated documentation files (the “Software”).
+ * of this software and associated documentation files (the “Software”), to use * the Software without restriction, 
+ * including without limitation the Software without restriction, including without limitation the rights to use, copy,
+ * modify, merge, publish, distribute, sublicense and/or sell copies of the Software, and to permit persons to whom 
+ * the Software is furnished to do so, subject to. the following conditions:
+ * </p>
+ * 
+ * <p>
+ * The above copyright notice and this permission notice shall be included in all * copies or substantial * portions of 
+ * the Software. Copies or substantial portions of the Software.
+ * </p>
+ * 
+ + <p>
+ * THE SOFTWARE IS PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ * INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR * PURPOSE AND NON-INFRINGEMENT.
+ * AND NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE * LIABLE FOR ANY CLAIM, DAMAGE OR * LIABILITY.
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION IN * CONTRACT, TORT OR OTHERWISE.
+ * IN CONTRACT, TORT OR OTHERWISE, ARISING OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OF OR * DEALINGS IN THE 
+ * SOFTWARE. OR OTHER DEALINGS IN THE SOFTWARE.
+ * </p>
  */
 
 import java.awt.BasicStroke;
@@ -15,6 +39,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+//for operations with the database
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -28,12 +59,20 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import main.java.com.visual.advertising.BenefitsBBVA;
-import main.resources.visual.manager.classes.*;
-import main.resources.visual.swingcomponents.*;
+import main.resources.visual.manager.classes.ColorManager;
+import main.resources.visual.manager.classes.IconImageManager;
+import main.resources.visual.swingcomponents.RoundedJPasswordField;
+import main.resources.visual.swingcomponents.RoundedJTextField;
+import main.resources.visual.swingcomponents.RoundedPanel;
 
 public class LoginApplication extends JFrame {
 	
 	private static final long serialVersionUID = 3981617515189931114L;
+	
+	//attributes for database operation
+	private static Connection conn;
+	private static PreparedStatement preparedStatement;
+	private static Statement stmt;
 
 	/*attributes for GUI*/
 	private String placeholder = "not available";
@@ -128,10 +167,12 @@ public class LoginApplication extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				closeLoginPage();
+				closeConnection();
 			}
 			
 			public void windowOpened(WindowEvent e) {
 				applyLoginMode(LAUNCHED);
+				establishConnection();
 			}
 		});
 		
@@ -282,21 +323,17 @@ public class LoginApplication extends JFrame {
 				
 				applyLoginMode(NOT_LAUNCH);
 				
-				if (loginModeUser()) {
+				if (loginModeUser()) 
 					lbl_change_login_mode_icon.setIcon(icon.LOGIN_MODE_USER_ENTERED);
-				}else {
+				else 
 					lbl_change_login_mode_icon.setIcon(icon.LOGIN_MODE_EMAIL_ENTERED);
-				}
+				
 				
 				if (loginModeUser())
-				{
 					setLoginMode(login_with_username = true, login_with_email = false);
-					return;
-				}
+				
 				else if (loginModeEmail())
-				{
 					setLoginMode(login_with_username = false, login_with_email = true);
-				}				
 			}
 		});
 		lbl_change_login_mode_icon.setBounds(305, 40, 45, 25);
@@ -447,41 +484,29 @@ public class LoginApplication extends JFrame {
 				boolean state = getPasswordVisibility();
 				
 				if (state == IS_VISIBLE) 
-				{
 					setPasswordVisibility(false);
-				}
 				else 
-				{
 					setPasswordVisibility(true);
-				}
 				
 				applyIconVisibilityEvents(state);
 			}
 			
 			@Override
-			public void mouseEntered(MouseEvent e) 
-			{
+			public void mouseEntered(MouseEvent e) {
+				
 				if (getPasswordVisibility() == IS_VISIBLE) 
-				{
 					lbl_visibility_password.setIcon(icon.PASSWORD_VISIBILITY_HIDDEN_ENTERED);
-				}
 				else 
-				{
 					lbl_visibility_password.setIcon(icon.PASSWORD_VISIBILITY_VISIBLE_ENTERED);
-				}
 			}
 			
 			@Override
-			public void mouseExited(MouseEvent e) 
-			{
+			public void mouseExited(MouseEvent e) {
+				
 				if (getPasswordVisibility() == IS_VISIBLE) 
-				{
 					lbl_visibility_password.setIcon(icon.PASSWORD_VISIBILITY_HIDDEN_EXITED);
-				}
 				else 
-				{
 					lbl_visibility_password.setIcon(icon.PASSWORD_VISIBILITY_VISIBLE_EXITED);
-				}
 			}
 		});
 		lbl_visibility_password.setBounds(374, 228, 35, 35);
@@ -550,7 +575,7 @@ public class LoginApplication extends JFrame {
 					setUser(text_box_credential);
 					setLoginMode(login_with_username = true, login_with_email = false);
 				}
-				else if (!loginModeUser() || loginModeEmail())
+				else
 				{
 					/*The user wants login with the email address*/
 					setEmail(text_box_credential);
@@ -561,28 +586,29 @@ public class LoginApplication extends JFrame {
 				 * <p>Is the password visible or not?</p>
 				 */
 				if (getPasswordVisibility() == NOT_VISIBLE)
-				{
 					setPassword(jps_input_password); // -> is not visible
-				}
+				
 				else if (getPasswordVisibility() == IS_VISIBLE)
-				{
 					setPassword(txt_input_password); // -> is visible
-				}
-				
+
 				//There is any null or empty data?
-				
 				if (isLoginModeEmpty() || isPasswordEmpty())
-				{
 					applyErrorLoginEvents(); // -> error detected, deny access
-				}
 				else
 				{
-					JOptionPane.showMessageDialog(null, "Todo ok, ahora el siguiente proceso\n"
+					if (login()) {
+						System.out.print("welcome");
+					}else {
+						System.out.print("denied");
+					}
+					
+					/*JOptionPane.showMessageDialog(null, "Todo ok, ahora el siguiente proceso\n"
 							+ "es establecer conexión con la BD y validar las credenciales\n"
 							+ "del usuario y permiterle el acceso o denegarle.\n\n"
 							+ "Este último proceso para ingresar a la aplicación aún esta\n"
-							+ "en desarrollo...");
+							+ "en desarrollo...");*/	
 				}
+							
 			}
 		});
 		button_login_app.setLocation(144, 345);
@@ -713,6 +739,81 @@ public class LoginApplication extends JFrame {
 	}
 	
 	/*
+	 * +===============================+
+	 *  CONTROLLER METHODS TO DATABASE
+	 * +===============================+
+	 * */
+	private void establishConnection() {
+		
+        try {
+        	// Load the JDBC driver
+        	Class.forName("com.mysql.cj.jdbc.Driver");
+
+        	// establish a connection to the database
+        	conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bbva", "root", "");
+        	
+        	if (conn != null)
+        		System.out.print("ALL OK!!");
+        	
+        }catch(SQLException | ClassNotFoundException e) {
+        	e.printStackTrace();
+        	
+        }
+	}
+	
+	private static boolean login() {		
+		String username_txt = text_box_credential.getText();
+		String password_txt = txt_input_password.getText();			
+			
+		try {
+			
+			stmt = conn.createStatement();
+			boolean findedUser = stmt.execute("SELECT username FROM user WHERE username = '" + username_txt + "'");
+			
+			if (findedUser) {
+				boolean findedPassword = stmt.execute("SELECT * FROM user WHERE password = '" + password_txt + "'");
+				
+				if (findedPassword) 
+					return true;
+			}
+			
+		} catch (SQLException exeptionsql) {
+			JOptionPane.showMessageDialog(null,exeptionsql.getMessage(),
+					"Error en la base de datos",JOptionPane.ERROR_MESSAGE);
+
+		} 
+
+		return false;
+	}
+	
+	private static void handleSQLException(SQLException e) {
+		// handle the SQL exception
+        int errorCode = ((SQLException) e).getErrorCode();
+        String sqlState = ((SQLException) e).getSQLState();
+        String errorMessage = e.getMessage();
+
+        System.out.println("SQL Error Code: " + errorCode);
+        System.out.println("SQL State: " + sqlState);
+        System.out.println("Error Message: " + errorMessage);
+
+        e.printStackTrace();
+	}
+	
+	private static void closeConnection() {
+		
+		try {
+			if (preparedStatement != null)
+				preparedStatement.close();
+			
+			if (conn != null)
+				conn.close();
+			
+		}catch(SQLException e) {
+			handleSQLException(e);
+		}
+	}
+	
+	/*
 	 * =========================
 	 * CONTROLLER METHODS
 	 * =========================
@@ -756,16 +857,13 @@ public class LoginApplication extends JFrame {
 			return;
 		}
 		
-		if (loginModeEmail() && event.equals(NOT_LAUNCH))
-		{
-			lbl_login_mode.setText("Correo electrónico");
-			lbl_login_mode_illustration.setIcon(icon.LOGIN_EMAIL);
-			
-			setPlaceHolder("Escribe tu dirección de email");
-			text_box_credential.setText(getPlaceHolder());
-			
-			setLoginMode(login_with_username = true, login_with_email = false);
-		}
+		lbl_login_mode.setText("Correo electrónico");
+		lbl_login_mode_illustration.setIcon(icon.LOGIN_EMAIL);
+		
+		setPlaceHolder("Escribe tu dirección de email");
+		text_box_credential.setText(getPlaceHolder());
+		
+		setLoginMode(login_with_username = true, login_with_email = false);
 	}
 	
 	private boolean isLoginModeEmpty() {			

@@ -11,4 +11,6 @@ module bbva_desktop_app {
 	requires java.desktop;
 	requires java.xml.crypto;
 	requires jdk.xml.dom;
+	requires java.sql;
+	requires java.rmi;
 }

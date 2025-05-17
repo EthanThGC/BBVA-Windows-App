@@ -1,5 +1,26 @@
 package main.resources.visual.manager.classes;
 
+/*
+* Copyright (c) 2025 BBVA Group. All rights reserved.
+*
+* This file is part of the official icon bank of the software system
+* developed by and for the BBVA Group. All icons, images, graphics, illustrations
+* and any other visual content contained in this file are the exclusive property
+* of the BBVA Group and are protected by national and international copyright, intellectual property, and trademark laws.
+*
+* It is prohibited to copy, modify, redistribute, use for commercial purposes, or
+* incorporate these elements into software, applications, or services without the express written
+* authorization of the BBVA Group.
+*
+* These resources are intended solely for internal use within BBVA-authorized systems,
+* platforms, or products. Any unauthorized use may
+* result in legal liability, including civil and/or criminal penalties in accordance
+* with applicable law.
+*
+* For license requests, external use, reproduction, or questions related to the ownership of these graphic resources, 
+* please contact the legal or intellectual property department of the BBVA Group.
+*/
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
