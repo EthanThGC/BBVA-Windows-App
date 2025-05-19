@@ -46,7 +46,6 @@ import javax.swing.UIManager;
 
 import main.java.com.visual.access.ClientRedirection;
 import main.resources.visual.manager.classes.IconImageManager;
-import javax.swing.ImageIcon;
 
 public class InitializingApplication extends JDialog {
 
