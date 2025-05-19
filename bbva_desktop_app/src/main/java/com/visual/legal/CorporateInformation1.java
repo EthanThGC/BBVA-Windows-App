@@ -39,7 +39,6 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -372,12 +371,12 @@ public class CorporateInformation1 extends JDialog {
 		lbl_action_lateral_menu.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseEntered(MouseEvent e) {
-			lbl_action_lateral_menu.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\burgerMenuEntered.png"));
+			lbl_action_lateral_menu.setIcon(icon.BURGER_LATERAL_MENU_ENTERED);
 		    }
 		    
 		    @Override
 		    public void mouseExited(MouseEvent e) {
-			lbl_action_lateral_menu.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\burgerMenuExited.png"));
+			lbl_action_lateral_menu.setIcon(icon.BURGER_LATERAL_MENU_EXITED);
 		    }
 		    
 		    @Override
@@ -386,7 +385,7 @@ public class CorporateInformation1 extends JDialog {
 		    }
 		});
 		lbl_action_lateral_menu.setBounds(15, 15, 20, 20);
-		lbl_action_lateral_menu.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\burgerMenuExited.png"));
+		lbl_action_lateral_menu.setIcon(icon.BURGER_LATERAL_MENU_EXITED);
 		lbl_action_lateral_menu.setText(null);
 		lbl_action_lateral_menu.setForeground(null);
 		lbl_action_lateral_menu.setVerticalAlignment(SwingConstants.CENTER);
@@ -399,11 +398,17 @@ public class CorporateInformation1 extends JDialog {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				MenuItemPrivacyPolicie.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+				
+				if (isMenuRetractable)
+				    MenuItemPrivacyPolicie.setIcon(icon.PRIVACY_SLIDE_LATERAL_MENU_ENTERED);
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
 				MenuItemPrivacyPolicie.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+				
+				if (isMenuRetractable)
+				    MenuItemPrivacyPolicie.setIcon(icon.PRIVACY_SLIDE_LATERAL_MENU_EXITED);
 			}
 		});
 		MenuItemPrivacyPolicie.setLocation(5, 150);
@@ -421,11 +426,17 @@ public class CorporateInformation1 extends JDialog {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				MenuItemUseTerms.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+				
+				if (isMenuRetractable)
+				    MenuItemUseTerms.setIcon(icon.USER_TERMS_SLIDE_LATERAL_MENU_ENTERED);
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
 				MenuItemUseTerms.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+				
+				if (isMenuRetractable)
+				    MenuItemUseTerms.setIcon(icon.USER_TERMS_SLIDE_LATERAL_MENU_EXITED);
 			}
 		});
 		MenuItemUseTerms.setLocation(5, 190);
@@ -443,11 +454,17 @@ public class CorporateInformation1 extends JDialog {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				MenuItemDataManagement.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+				
+				if (isMenuRetractable)
+				    MenuItemDataManagement.setIcon(icon.DATE_SLIDE_LATERAL_MENU_ENTERED);
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
 				MenuItemDataManagement.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+				
+				if (isMenuRetractable)
+				    MenuItemDataManagement.setIcon(icon.DATE_SLIDE_LATERAL_MENU_EXITED);
 			}
 		});
 		MenuItemDataManagement.setLocation(5, 230);
@@ -465,11 +482,17 @@ public class CorporateInformation1 extends JDialog {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				MenuItemHelpCenter.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+				
+				if (isMenuRetractable)
+				    MenuItemHelpCenter.setIcon(icon.QUESTIONS_SLIDE_LATERAL_MENU_ENTERED);
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
 				MenuItemHelpCenter.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+				
+				if (isMenuRetractable)
+				    MenuItemHelpCenter.setIcon(icon.QUESTIONS_SLIDE_LATERAL_MENU_EXITED);
 			}
 		});
 		MenuItemHelpCenter.setLocation(5, 270);
@@ -487,11 +510,17 @@ public class CorporateInformation1 extends JDialog {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				MenuItemAbout.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+				
+				if (isMenuRetractable)
+				    MenuItemAbout.setIcon(icon.ABOUT_SLIDE_LATERAL_MENU_ENTERED);
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
 				MenuItemAbout.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+				
+				if (isMenuRetractable)
+				    MenuItemAbout.setIcon(icon.ABOUT_SLIDE_LATERAL_MENU_EXITED);
 			}
 		});
 		MenuItemAbout.setLocation(5, 310);
@@ -506,17 +535,20 @@ public class CorporateInformation1 extends JDialog {
 		
 		MenuItemSoftwareLicenses = new JLabel();
 		MenuItemSoftwareLicenses.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				MenuItemSoftwareLicenses.setIcon(icon.SOFTWARE_LICENCES_ENTERED);
-				MenuItemSoftwareLicenses.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
-			}
+		    @Override
+		    public void mouseEntered(MouseEvent e) {
+			MenuItemSoftwareLicenses.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
 			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				MenuItemSoftwareLicenses.setIcon(icon.SOFTWARE_LICENCES_EXITED);
-				MenuItemSoftwareLicenses.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
-			}
+			if (isMenuRetractable)
+			    MenuItemSoftwareLicenses.setIcon(icon.SOFTWARE_LICENCES_ENTERED);
+		    }
+			
+		    public void mouseExited(MouseEvent e) {
+			MenuItemSoftwareLicenses.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		        
+			if (isMenuRetractable)
+			    MenuItemSoftwareLicenses.setIcon(icon.SOFTWARE_LICENCES_EXITED);
+		    }
 		});
 		MenuItemSoftwareLicenses.setLocation(5, 442);
 		MenuItemSoftwareLicenses.setSize(menuLateralContent.getWidth() - 5, 30);
@@ -529,17 +561,20 @@ public class CorporateInformation1 extends JDialog {
 		
 		MenuItemUpdateHistory = new JLabel();
 		MenuItemUpdateHistory.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				MenuItemUpdateHistory.setIcon(icon.SOFTWARE_UPDATES_ENTERED);
-				MenuItemUpdateHistory.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
-			}
+		    @Override
+		    public void mouseEntered(MouseEvent e) {
+			MenuItemUpdateHistory.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
 			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				MenuItemUpdateHistory.setIcon(icon.SOFTWARE_UPDATES_EXITED);
-				MenuItemUpdateHistory.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
-			}
+			if (isMenuRetractable)
+			    MenuItemUpdateHistory.setIcon(icon.SOFTWARE_UPDATES_ENTERED);
+		    }
+			
+		    public void mouseExited(MouseEvent e) {
+			MenuItemUpdateHistory.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+			
+			if (isMenuRetractable)
+			    MenuItemUpdateHistory.setIcon(icon.SOFTWARE_UPDATES_EXITED);
+		    }
 		});
 		MenuItemUpdateHistory.setLocation(5, 487);
 		MenuItemUpdateHistory.setSize(menuLateralContent.getWidth() - 5, 30);
@@ -566,7 +601,7 @@ public class CorporateInformation1 extends JDialog {
 		titleArticle = new JLabel();
 		titleArticle.setLocation(0, 0);
 		titleArticle.setSize(header.getWidth(), header.getHeight());
-		titleArticle.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\privacy_ico_default.png"));
+		titleArticle.setIcon(icon.PRIVACY_POLICY_EXITED);
 		titleArticle.setText("En desarrollo, NO OFICIAL");
 		titleArticle.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 23));
 		titleArticle.setForeground(new Color(0, 0, 0));
@@ -705,12 +740,12 @@ public class CorporateInformation1 extends JDialog {
 	}
 	
 	private static void applySlideMenu() {
-	    if (!isMenuRetractable) {
-		retractMenu();
+	    if (isMenuRetractable) {
+		expandMenu();
 		return;
 	    }
 	    
-	    expandMenu();
+	    retractMenu();
 	}
 	
 	private static void retractMenu() {	    
@@ -736,39 +771,39 @@ public class CorporateInformation1 extends JDialog {
 	    MenuItemPrivacyPolicie.setSize(menuLateralContent.getWidth(), 30);
 	    MenuItemPrivacyPolicie.setText("");
 	    MenuItemPrivacyPolicie.setHorizontalAlignment(SwingConstants.CENTER);
-	    MenuItemPrivacyPolicie.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\privacy.png"));
+	    MenuItemPrivacyPolicie.setIcon(icon.PRIVACY_SLIDE_LATERAL_MENU_EXITED);
 	    
 	    MenuItemUseTerms.setSize(menuLateralContent.getWidth(), 30);
 	    MenuItemUseTerms.setText("");
 	    MenuItemUseTerms.setHorizontalAlignment(SwingConstants.CENTER);
-	    MenuItemUseTerms.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\terms_conditions.png"));
+	    MenuItemUseTerms.setIcon(icon.USER_TERMS_SLIDE_LATERAL_MENU_EXITED);
 	    
 	    MenuItemDataManagement.setSize(menuLateralContent.getWidth(), 30);
 	    MenuItemDataManagement.setText("");
 	    MenuItemDataManagement.setHorizontalAlignment(SwingConstants.CENTER);
-	    MenuItemDataManagement.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\data.png"));
+	    MenuItemDataManagement.setIcon(icon.DATE_SLIDE_LATERAL_MENU_EXITED);
 	       
 	    MenuItemHelpCenter.setSize(menuLateralContent.getWidth(), 30);
 	    MenuItemHelpCenter.setText("");	    
 	    MenuItemHelpCenter.setHorizontalAlignment(SwingConstants.CENTER);
-	    MenuItemHelpCenter.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\questions.png"));
+	    MenuItemHelpCenter.setIcon(icon.QUESTIONS_SLIDE_LATERAL_MENU_EXITED);
 	    
 	    MenuItemAbout.setSize(menuLateralContent.getWidth(), 30);
 	    MenuItemAbout.setText("");	    
 	    MenuItemAbout.setHorizontalAlignment(SwingConstants.CENTER);
-	    MenuItemAbout.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\about.png"));
+	    MenuItemAbout.setIcon(icon.ABOUT_SLIDE_LATERAL_MENU_EXITED);
 	   
 	    MenuItemSoftwareLicenses.setSize(menuLateralContent.getWidth(), 30);
 	    MenuItemSoftwareLicenses.setText("");	    
 	    MenuItemSoftwareLicenses.setHorizontalAlignment(SwingConstants.CENTER);
-	    MenuItemSoftwareLicenses.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\licences_software.png"));
+	    MenuItemSoftwareLicenses.setIcon(icon.SOFTWARE_LICENCES_EXITED);
 	    
 	    MenuItemUpdateHistory.setSize(menuLateralContent.getWidth(), 30);
 	    MenuItemUpdateHistory.setText("");	    
 	    MenuItemUpdateHistory.setHorizontalAlignment(SwingConstants.CENTER);
-	    MenuItemUpdateHistory.setIcon(new ImageIcon("C:\\Users\\ithan\\Downloads\\update_software.png"));
-	   
-	    // set control attribute
+	    MenuItemUpdateHistory.setIcon(icon.SOFTWARE_UPDATES_EXITED);
+	    
+	     // set control attribute
 	    isMenuRetractable = true;
 	}
 	

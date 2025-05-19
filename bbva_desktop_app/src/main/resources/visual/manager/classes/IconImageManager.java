@@ -143,13 +143,13 @@ public class IconImageManager {
 	public final Icon BANNER_PRESENTATION_LOGIN_APP = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/banner_presentation_login_app_op1.png"));
 	
 	public final Icon LOGIN_USER = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_user.png"));
-    public final Icon LOGIN_EMAIL = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_email.png"));
+        public final Icon LOGIN_EMAIL = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_email.png"));
 	
-    public final Icon LOGIN_MODE_USER_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_user_entered.png"));
-    public final Icon LOGIN_MODE_USER_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_user_exited.png"));
-    public final Icon LOGIN_MODE_EMAIL_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_email_entered.png"));
-    public final Icon LOGIN_MODE_EMAIL_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_email_exited.png"));
-    public final Icon CHANGE_LOGIN_MODE_ARROW = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/change_mode_login_arrow.png"));
+        public final Icon LOGIN_MODE_USER_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_user_entered.png"));
+        public final Icon LOGIN_MODE_USER_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_user_exited.png"));
+        public final Icon LOGIN_MODE_EMAIL_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_email_entered.png"));
+        public final Icon LOGIN_MODE_EMAIL_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_email_exited.png"));
+        public final Icon CHANGE_LOGIN_MODE_ARROW = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/change_mode_login_arrow.png"));
     
 	public final Icon BLOCKED_PASSWORD = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/blocked_password.png"));
 	public final Icon UNLOCKED_PASSWORD = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/unlocked_password.png"));
@@ -173,11 +173,30 @@ public class IconImageManager {
 	public final Icon DISPOSE_CORPORATION_DECLARATION_DIALOG_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/close_window_exited.png"));
 	public final Icon DISPOSE_CORPORATION_DECLARATION_DIALOG_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/close_window_entered.png"));
 	
-	public final Icon SOFTWARE_LICENCES_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/licenceSoftwareExited.png"));
-	public final Icon SOFTWARE_LICENCES_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/licenceSoftwareEntered.png"));
+	// slide lateral menu
+	public final Icon BURGER_LATERAL_MENU_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/burgerMenuExited.png"));
+	public final Icon BURGER_LATERAL_MENU_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/burgerMenuEntered.png"));
 	
-	public final Icon SOFTWARE_UPDATES_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/updateHistoryExited.png"));
-	public final Icon SOFTWARE_UPDATES_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/updateHistoryEntered.png"));
+	public final Icon PRIVACY_SLIDE_LATERAL_MENU_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/privacy_exited.png"));
+	public final Icon PRIVACY_SLIDE_LATERAL_MENU_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/privacy_entered.png"));
+	
+	public final Icon USER_TERMS_SLIDE_LATERAL_MENU_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/terms_conditions_exited.png"));
+	public final Icon USER_TERMS_SLIDE_LATERAL_MENU_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/terms_conditions_entered.png"));
+	
+	public final Icon DATE_SLIDE_LATERAL_MENU_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/data_exited.png"));
+	public final Icon DATE_SLIDE_LATERAL_MENU_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/data_entered.png"));
+	
+	public final Icon QUESTIONS_SLIDE_LATERAL_MENU_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/questions_exited.png"));
+	public final Icon QUESTIONS_SLIDE_LATERAL_MENU_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/questions_entered.png"));
+	
+	public final Icon ABOUT_SLIDE_LATERAL_MENU_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/about_exited.png"));
+	public final Icon ABOUT_SLIDE_LATERAL_MENU_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/about_entered.png"));
+	
+	public final Icon SOFTWARE_LICENCES_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/licences_software_exited.png"));
+	public final Icon SOFTWARE_LICENCES_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/licences_software_entered.png"));
+	
+	public final Icon SOFTWARE_UPDATES_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/update_software_exited.png"));
+	public final Icon SOFTWARE_UPDATES_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/slideLateralMenu/update_software_entered.png"));
 	
 	/*
 	 * POPUP WINDOW -> ADDITIONAL EMAIL WINDOW ICONS -> ICONS DARK VERSION
