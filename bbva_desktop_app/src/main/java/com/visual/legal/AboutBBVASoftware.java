@@ -131,12 +131,16 @@ private final JPanel Container = new JPanel();
 		    // 3.3)
 			private JLabel copyright_rights;
 				
+	private static String calledFrom = "fromThis";
+	private static final String FROM_HOME_PAGE = "ClientRedirection";
+	private static final String FROM_CORPORATE_PAGE = "CorporateInformation";
+	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			AboutBBVASoftware dialog = new AboutBBVASoftware();
+			AboutBBVASoftware dialog = new AboutBBVASoftware(calledFrom);
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 			dialog.setVisible(true);
 		} 
@@ -149,7 +153,7 @@ private final JPanel Container = new JPanel();
 	/**
 	 * Create the dialog.
 	 */
-	public AboutBBVASoftware() {
+	public AboutBBVASoftware(String calledFrom) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(AboutBBVASoftware.class.getResource("/main/resources/visual/icons/V2/bbva_logo/favicon.png")));
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setModalityType(ModalityType.DOCUMENT_MODAL);
@@ -157,12 +161,113 @@ private final JPanel Container = new JPanel();
 		setUndecorated(true);
 		setType(Type.POPUP);
 		setResizable(false);
-		setBounds(400, 160, 514, 380);
+		setBounds(420, 160, 514, 380);
 		getContentPane().setLayout(new BorderLayout());
-		Container.setBackground(background.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
+		Container.setBackground(background.PRIMARY_COLOR_FONT_TEXT_WHITE);
 		Container.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(Container, BorderLayout.CENTER);
 		Container.setLayout(null);
+		
+		JPanel MainContainer = new RoundedPanel();
+		MainContainer.setSize(getWidth() - 20, getHeight() - 20);
+		MainContainer.setLocation((getWidth() / 2) - MainContainer.getWidth() / 2 - 3, 10);
+		MainContainer.setBackground(new Color(240, 242, 245));
+		((RoundedPanel) MainContainer).setCornerRadius(20);
+		MainContainer.setLayout(null);
+		Container.add(MainContainer);
+		
+		JPanel HeaderContainer = new RoundedPanel();
+		HeaderContainer.setSize(MainContainer.getWidth(), MainContainer.getHeight() / 3);
+		HeaderContainer.setLocation(0, 0);
+		HeaderContainer.setBackground(background.BACKGROUND_COLOR_BBVA_OFFICIAL);
+		((RoundedPanel) HeaderContainer).setCornerRadius(20);
+		HeaderContainer.setLayout(null);
+		MainContainer.add(HeaderContainer);
+		
+		JLabel lblNewLabel_1 = new JLabel("   BBVA Digital for Windows");
+		lblNewLabel_1.setIcon(new ImageIcon(AboutBBVASoftware.class.getResource("/main/resources/visual/icons/V2/bbva_logo/favicon.png")));
+		lblNewLabel_1.setBounds(5, 5, 489, 115);
+		lblNewLabel_1.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 26));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setForeground(new Color(0, 202, 214));
+		HeaderContainer.add(lblNewLabel_1);
+		
+		JPanel panel = new RoundedPanel();
+		panel.setBounds(77, 141, 180, 45);
+		//panel.setBackground(background.BACKGROUND_COLOR_BBVA_OFFICIAL);
+		panel.setBackground(new Color(88, 214, 141));
+		((RoundedPanel) panel).setCornerRadius(10);
+		panel.setLayout(null);
+		MainContainer.add(panel);
+		
+		JLabel lblNewLabel_2 = new JLabel("2025 All rights reserved");
+		lblNewLabel_2.setForeground(new Color(20, 90, 50));
+		lblNewLabel_2.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setBounds(5, 5, 175, 40);
+		//lblNewLabel_2.setBackground(new Color(202, 111, 30));
+		panel.add(lblNewLabel_2);
+		
+		JPanel panel2 = new RoundedPanel();
+		panel2.setBounds(275, 141, 130, 45);
+		//panel2.setBackground(background.BACKGROUND_COLOR_BBVA_OFFICIAL);
+		panel2.setBackground(new Color(88, 214, 141));
+		((RoundedPanel) panel2).setCornerRadius(10);
+		panel2.setOpaque(false);
+		panel2.setLayout(null);
+		MainContainer.add(panel2);
+		
+		JLabel newJLabel = new JLabel();
+		newJLabel.setBounds(5, 5, 125, 40);
+		panel2.add(newJLabel);
+		newJLabel.setText("Versión 1.1.001");
+		newJLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
+		newJLabel.setForeground(new Color(20, 90, 50));
+		newJLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JLabel lblTerminosYCondiciones = new JLabel("Términos y condiciones de usuario");
+		lblTerminosYCondiciones.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		lblTerminosYCondiciones.setForeground(new Color(0, 64, 128));
+		lblTerminosYCondiciones.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+		lblTerminosYCondiciones.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTerminosYCondiciones.setBounds(82, 206, 323, 30);
+		MainContainer.add(lblTerminosYCondiciones);
+		
+		JLabel lblPrivacidadYSeguridad = new JLabel("Privacidad y seguridad");
+		lblPrivacidadYSeguridad.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		lblPrivacidadYSeguridad.setForeground(new Color(0, 64, 128));
+		lblPrivacidadYSeguridad.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+		lblPrivacidadYSeguridad.setHorizontalAlignment(SwingConstants.LEFT);
+		lblPrivacidadYSeguridad.setBounds(82, 240, 323, 30);
+		MainContainer.add(lblPrivacidadYSeguridad);
+		
+		JLabel lblLicenciasYActualizaciones = new JLabel("Licencias y actualizaciones de software");
+		lblLicenciasYActualizaciones.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		lblLicenciasYActualizaciones.setForeground(new Color(0, 64, 128));
+		lblLicenciasYActualizaciones.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+		lblLicenciasYActualizaciones.setHorizontalAlignment(SwingConstants.LEFT);
+		lblLicenciasYActualizaciones.setBounds(82, 273, 323, 30);
+		MainContainer.add(lblLicenciasYActualizaciones);
+		
+		JLabel lblBackToHome = new JLabel("Back to home");
+		lblBackToHome.addMouseListener(new MouseAdapter(){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			    if (calledFrom.equals(FROM_HOME_PAGE))
+				returnToHomePage();
+			    else
+				if (calledFrom.equals(FROM_CORPORATE_PAGE))
+				    returnToCorporatePage();
+			    
+			    dispose();
+			}
+		});
+		lblBackToHome.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		lblBackToHome.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBackToHome.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 15));
+		lblBackToHome.setIcon(new ImageIcon(AboutBBVASoftware.class.getResource("/main/resources/visual/icons/V3/corporate_declaration/close_window_entered.png")));
+		lblBackToHome.setBounds(10, 320, 125, 30);
+		MainContainer.add(lblBackToHome);
 		
 		final int MAX_WIDTH = 514;
 		
@@ -170,7 +275,7 @@ private final JPanel Container = new JPanel();
 		 *  ::: Main Containers :::
 		 */
 		
-		header = new RoundedPanel();
+		/*header = new RoundedPanel();
 		((RoundedPanel) header).setCornerRadius(30);
 		header.setBounds(-5, -15, MAX_WIDTH + 6, 105);
 		header.setBackground(background.BACKGROUND_COLOR_BBVA_OFFICIAL);
@@ -188,10 +293,6 @@ private final JPanel Container = new JPanel();
 		footer.setBackground(background.BACKGROUND_LIGHT_COLOR_BBVA_OFFICIAL);
 		footer.setLayout(null);
 		Container.add(footer);
-		
-		/**
-		 *  ::: Messages for user :::
-		 */
 		
 		JSeparator jsp = new JSeparator();
 		jsp.setSize(400, 1);
@@ -313,10 +414,6 @@ private final JPanel Container = new JPanel();
 		copyright_rights.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		footer.add(copyright_rights);
 		
-		/**
-		 *  ::: Illustrations -> icon
-		 */
-		
 		company_illustration = new JLabel();
 		company_illustration.setBounds(0, 0, header.getWidth(), header.getHeight());
 		company_illustration.setIcon(icon.BBVA_ILLUSTRATION_26X26);
@@ -351,17 +448,17 @@ private final JPanel Container = new JPanel();
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_1.setBounds(388, 48, 60, 20);
-		footer.add(lblNewLabel_1);
+		footer.add(lblNewLabel_1);*/
 	}
 	
-	private void openExternalResource() {
+	private void returnToCorporatePage() {
 		//JOptionPane.showMessageDialog(null, "Estamos trabajando en ello...\n\n", "Mensaje del desarrollador", JOptionPane.INFORMATION_MESSAGE);
 		dispose();
 		infoCo = new CorporateInformation1();
 		infoCo.setVisible(true);
 	}
 	
-	private void returnToRedirectionWindow() {
+	private void returnToHomePage() {
 		dispose();
 		redirection = new ClientRedirection();
 		redirection.setVisible(true);

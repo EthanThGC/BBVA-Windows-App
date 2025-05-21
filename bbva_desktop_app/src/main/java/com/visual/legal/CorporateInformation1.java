@@ -61,6 +61,7 @@ public class CorporateInformation1 extends JDialog {
 	 * @see for redirection to another windows
 	 */
 	private static ClientRedirection ToHome;
+	private static AboutBBVASoftware aboutsft;
 		
 	/**
 	 * @see for visual resources
@@ -521,6 +522,13 @@ public class CorporateInformation1 extends JDialog {
 				
 				if (isMenuRetractable)
 				    MenuItemAbout.setIcon(icon.ABOUT_SLIDE_LATERAL_MENU_EXITED);
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			    dispose();
+			    aboutsft = new AboutBBVASoftware("CorporateInformation");
+			    aboutsft.setVisible(true);
 			}
 		});
 		MenuItemAbout.setLocation(5, 310);
