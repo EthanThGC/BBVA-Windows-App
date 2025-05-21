@@ -96,7 +96,6 @@ public class ClientRedirection extends JFrame {
 	private JLabel lbl_version_info;
 	private JLabel lbl_privacy_policies, lbl_privacy_illustration; 
 	private JLabel lbl_copyright_product;
-	private JLabel lblNewLabel;
 	
 	//private Color BackgroundColorFrame = new Color(7, 33, 70); //0, 66, 132
 	
@@ -382,13 +381,21 @@ public class ClientRedirection extends JFrame {
 		lbl_copyright_product.setVerticalAlignment(SwingConstants.CENTER);
 		footer.add(lbl_copyright_product);
 		
-		lblNewLabel = new JLabel("( BETA )");
-		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel.setBounds(680, 605, 60, 14);
-		container.add(lblNewLabel);
+		JPanel panel = new RoundedPanel();
+		panel.setBounds(670, 595, 69, 30);
+		panel.setBackground(new Color(88, 214, 141));
+		((RoundedPanel) panel).setCornerRadius(10);
+		panel.setOpaque(false);
+		panel.setLayout(null);
+		container.add(panel);
 		
+		JLabel newJLabel = new JLabel();
+		newJLabel.setBounds(5, 5, 64, 22);
+		newJLabel.setText("BETA");
+		newJLabel.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 16));
+		newJLabel.setForeground(new Color(25, 111, 61));
+		newJLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(newJLabel);
 	}
 	
 	/**

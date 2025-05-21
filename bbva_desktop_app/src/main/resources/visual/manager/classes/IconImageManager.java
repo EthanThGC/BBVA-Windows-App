@@ -143,13 +143,13 @@ public class IconImageManager {
 	public final Icon BANNER_PRESENTATION_LOGIN_APP = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/banner_presentation_login_app_op1.png"));
 	
 	public final Icon LOGIN_USER = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_user.png"));
-        public final Icon LOGIN_EMAIL = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_email.png"));
+    public final Icon LOGIN_EMAIL = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_email.png"));
 	
-        public final Icon LOGIN_MODE_USER_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_user_entered.png"));
-        public final Icon LOGIN_MODE_USER_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_user_exited.png"));
-        public final Icon LOGIN_MODE_EMAIL_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_email_entered.png"));
-        public final Icon LOGIN_MODE_EMAIL_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_email_exited.png"));
-        public final Icon CHANGE_LOGIN_MODE_ARROW = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/change_mode_login_arrow.png"));
+    public final Icon LOGIN_MODE_USER_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_user_entered.png"));
+    public final Icon LOGIN_MODE_USER_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_user_exited.png"));
+    public final Icon LOGIN_MODE_EMAIL_ENTERED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_email_entered.png"));
+    public final Icon LOGIN_MODE_EMAIL_EXITED = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/login_mode_email_exited.png"));
+    public final Icon CHANGE_LOGIN_MODE_ARROW = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/change_mode_login_arrow.png"));
     
 	public final Icon BLOCKED_PASSWORD = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/blocked_password.png"));
 	public final Icon UNLOCKED_PASSWORD = new ImageIcon(IconImageManager.class.getResource("/main/resources/visual/icons/V1/login_app/unlocked_password.png"));

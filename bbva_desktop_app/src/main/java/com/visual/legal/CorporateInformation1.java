@@ -740,12 +740,12 @@ public class CorporateInformation1 extends JDialog {
 	}
 	
 	private static void applySlideMenu() {
-	    if (isMenuRetractable) {
-		expandMenu();
+	    if (!isMenuRetractable) {
+		retractMenu();
 		return;
 	    }
 	    
-	    retractMenu();
+	    expandMenu();
 	}
 	
 	private static void retractMenu() {	    
@@ -757,12 +757,12 @@ public class CorporateInformation1 extends JDialog {
 	    separator.setSize(menuLateralContent.getWidth() / 2, 2);
 	    
 	    //--------------------------------------------------------------//
-	    //                   FOR EACH OF MENU'S ITEM   
+	    //                   FOR EACH OF MENU'S ITEM:   
 	    //
-	    // reload width parameters
-	    // set text to empty
-	    // set Horizontal Alignment to center
-	    // set illustrative icon
+	    // - reload width parameters
+	    // - set text to empty
+	    // - set Horizontal Alignment to center
+	    // - set illustrative icon
 	    //------------------------------------------------------------- //
 	    
 	    bbvaIllustration.setSize(menuLateralContent.getWidth(), 100);
@@ -816,14 +816,14 @@ public class CorporateInformation1 extends JDialog {
 	    separator.setSize(menuLateralContent.getWidth() - 46, 2);
 	    
 	    //--------------------------------------------------------------//
-	    //                   FOR EACH OF MENU'S ITEM   
+	    //                   FOR EACH OF MENU'S ITEM:   
 	    //
-	    // reload width parameters
-	    // set text content
-	    // set Horizontal Alignment to left
-	    // set icon to null
+	    // - reload width parameters
+	    // - set text content
+	    // - set Horizontal Alignment to left
+	    // - set icon to null
 	    //------------------------------------------------------------- //
-	    
+	   
 	    bbvaIllustration.setSize(menuLateralContent.getWidth(), 100);
 	    bbvaIllustration.setIcon(icon.BBVA_ILLUSTRATION_26X26);
 	    
