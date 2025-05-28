@@ -38,10 +38,13 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -50,7 +53,6 @@ import main.java.com.visual.access.ClientRedirection;
 import main.resources.visual.manager.classes.ColorManager;
 import main.resources.visual.manager.classes.IconImageManager;
 import main.resources.visual.swingcomponents.RoundedPanel;
-import javax.swing.JSeparator;
 
 public class CorporateInformation1 extends JDialog {
 
@@ -206,6 +208,21 @@ public class CorporateInformation1 extends JDialog {
 	// Others
 	// ==========================================================================
 	private static final String SPACE_IN_MENU_ITEM =  "    ";
+	
+	/*private static final String[] CONTENT_LATERAL_MENU_ITEMS =
+	    {
+		    "Políticas de privacidad",
+		    "Términos de uso",
+		    "Como usamos tus datos?",
+		    "Centro de ayuda",
+		    "Acerca de BBVA Digital",
+		    "Licencias de software",
+		    "Historial de actualizaciones"
+	    };
+			
+	private static JLabel item;
+	private static int i = 0;
+	private static int initial_position_x = 20, initial_position_y = 150;*/
 
 	/**
 	 * @see Launch the application.
@@ -213,7 +230,7 @@ public class CorporateInformation1 extends JDialog {
 	public static void main(String[] args) {
 	        try {
 	            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-	                if ("Nimbus".equals(info.getName())) {
+	                if ("Classic".equals(info.getName())) {
 	                    javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 	                    break;
 	                }
@@ -244,6 +261,13 @@ public class CorporateInformation1 extends JDialog {
 	 * @see Create the dialog.
 	 */
 	public CorporateInformation1() {
+	    
+	        addWindowListener(new WindowAdapter() {
+	            public void windowOpened(WindowEvent e) {
+	        	isMenuRetractable = false;
+	            }
+	        });
+	    
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ithan\\eclipse-workspace\\bbva-desktop-app\\bbva_app_runnable\\bin\\main\\resources\\visual\\icons\\V2\\bbva_logo\\favicon.png"));
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setModalityType(ModalityType.APPLICATION_MODAL);
@@ -393,6 +417,45 @@ public class CorporateInformation1 extends JDialog {
 		lbl_action_lateral_menu.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_action_lateral_menu.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		menuLateralContent.add(lbl_action_lateral_menu);
+		
+		/*
+		for (String contentItem : CONTENT_LATERAL_MENU_ITEMS)
+		{
+		    i++;
+		    item = new JLabel(contentItem);
+		    
+		    // set position in coordinate X and Y
+		    if ((i > 1) && (i < 6) || (i == 7))
+			item.setLocation(initial_position_x, initial_position_y = initial_position_y + 40);
+		    else if (i == 6)
+			item.setLocation(initial_position_x, initial_position_y = initial_position_y + 132);
+		    else
+			item.setLocation(initial_position_x, initial_position_y);
+		    
+		    // set visual characteristics  
+		    item.setSize(menuLateralContent.getWidth(), 30);
+		    item.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 17));
+		    item.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+		    item.setHorizontalAlignment(SwingConstants.LEFT);
+		    item.setVerticalAlignment(SwingConstants.CENTER);
+		    item.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		    
+		    // add mouse events
+		    item.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			    item.setForeground(foreground.FOREGROUND_COLOR_LIGHT_BLUE);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+			    item.setForeground(foreground.PRIMARY_COLOR_FONT_TEXT_WHITE);
+			}
+		    });
+		    
+		    menuLateralContent.add(item);
+		}
+		*/
 		
 		MenuItemPrivacyPolicie = new JLabel();
 		MenuItemPrivacyPolicie.addMouseListener(new MouseAdapter() {
@@ -636,6 +699,7 @@ public class CorporateInformation1 extends JDialog {
 		 *        Main Elements For Arrow Direction
 		 * +::::::::::::::::::::::::::::::::::::::::::::::::+
 		 */
+
 		disposeDialog2 = new JLabel();
 		disposeDialog2.addMouseListener(new MouseAdapter() {
 			@Override
@@ -748,12 +812,12 @@ public class CorporateInformation1 extends JDialog {
 	}
 	
 	private static void applySlideMenu() {
-	    if (!isMenuRetractable) {
-		retractMenu();
+	    if (isMenuRetractable) {
+		expandMenu();
 		return;
 	    }
 	    
-	    expandMenu();
+	    retractMenu();
 	}
 	
 	private static void retractMenu() {	    
